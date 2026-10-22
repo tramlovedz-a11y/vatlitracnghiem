@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương 2: Động Lực Học Chất Điểm - Vật Lý 1 (55 Câu)</title>
+    <!-- MathJax for Math Rendering -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-hover: #1d4ed8;
+            --bg-main: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --success: #16a34a;
+            --error: #dc2626;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 40px;
+        }
+
+        header {
+            width: 100%;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 24px 16px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            padding: 16px;
+            margin-top: 10px;
+        }
+
+        .quiz-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .badge {
+            background: #eff6ff;
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .score-counter {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        /* SVG Diagram Box */
+        .diagram-container {
+            width: 100%;
+            background: #f1f5f9;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            min-height: 220px;
+            overflow-x: auto;
+        }
+
+        .diagram-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 18px;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            color: var(--text-dark);
+            width: 100%;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--primary);
+            background: #f0f7ff;
+        }
+
+        .option-btn.selected-correct {
+            background-color: #dcfce7 !important;
+            border-color: var(--success) !important;
+            color: #14532d !important;
+            font-weight: 600;
+        }
+
+        .option-btn.selected-wrong {
+            background-color: #fee2e2 !important;
+            border-color: var(--error) !important;
+            color: #7f1d1d !important;
+        }
+
+        .option-btn:disabled {
+            cursor: default;
+        }
+
+        /* Explanation Box */
+        .explanation-card {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+            display: none;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .explanation-card.show {
+            display: block;
+        }
+
+        .explanation-card h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        /* Control Buttons */
+        .controls {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .btn-home {
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-home:hover {
+    background-color: #5a6268;
+    color: white;
+}
+
+        .btn {
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e1;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .jump-container {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .jump-container select {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .quiz-card { padding: 16px; }
+            .question-text { font-size: 1rem; }
+            .option-btn { font-size: 0.9rem; padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Trắc Nghiệm Vật Lý 1 - Chương 2</h1>
+        <p>Động Lực Học Chất Điểm (Trọn bộ 55 câu kèm đồ họa số liệu chuẩn)</p>
+    </header>
+
+    <div class="container">
+        <div class="quiz-card">
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+
+            <div class="status-bar">
+                <span class="badge" id="question-number">Câu 1 / 55</span>
+                <span class="score-counter" id="score-text">Điểm: 0 / 550</span>
+            </div>
+
+            <div class="question-text" id="question-text">
+                <!-- Nội dung câu hỏi -->
+            </div>
+
+            <!-- SVG Illustration Container -->
+            <div class="diagram-container" id="diagram-container">
+                <!-- SVG được sinh bằng JavaScript -->
+            </div>
+
+            <div class="options-grid" id="options-container">
+                <!-- Các phương án A, B, C, D -->
+            </div>
+
+            <div class="explanation-card" id="explanation-box">
+                <h4>Lời Giải Chi Tiết:</h4>
+                <div id="explanation-text"></div>
+            </div>
+
+           <div class="controls">
+    <!-- Thêm nút Trang chủ vào đây -->
+    <a href="index.html" class="btn btn-secondary">
+        <i class="fas fa-home"></i> Trang chủ
+    </a>
+
+    <button class="btn btn-secondary" id="btn-prev" onclick="prevQuestion()">Câu Trước</button>
+    <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">Câu Tiếp Theo 🚀</button>
+</div>
+
+            <div class="jump-container">
+                <label for="question-select">Chuyển nhanh đến câu:</label>
+                <select id="question-select" onchange="jumpToQuestion(this.value)">
+                    <!-- Sinh tự động từ JS -->
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hàm sinh SVG chung hỗ trợ Marker Arrow
+        const defsArrow = `
+            <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/></marker>
+                <marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/></marker>
+                <marker id="arrow-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
+            </defs>
+        `;
+
+        // TRỌN BỘ 55 CÂU HỎI CHƯƠNG 2
+        const quizData = [
+            // CÂU 1
+            {
+                id: 1,
+                question: "Hai lực tác dụng vào cùng một vật có độ lớn $F_1 = 30\\text{ N}$ và $F_2 = 40\\text{ N}$. Hợp lực $\\vec{F}$ tác dụng lên vật có độ lớn CỰC TIỂU bằng bao nhiêu và khi đó góc hợp bởi hai lực bằng bao nhiêu?",
+                options: [
+                    "A. $F_{\\min} = 10\\text{ N}$ khi góc giữa hai lực là $180^\\circ$ (ngược hướng)",
+                    "B. $F_{\\min} = 70\\text{ N}$ khi góc giữa hai lực là $0^\\circ$ (cùng hướng)",
+                    "C. $F_{\\min} = 50\\text{ N}$ khi góc giữa hai lực là $90^\\circ$ (vuông góc)",
+                    "D. $F_{\\min} = 10\\text{ N}$ khi góc giữa hai lực là $0^\\circ$"
+                ],
+                correct: 0,
+                explanation: "Độ lớn hợp lực cực tiểu khi hai lực ngược hướng ($\n\\alpha = 180^\\circ$).<br>$$F_{\\min} = |F_1 - F_2| = |30 - 40| = 10\\text{ N}$$.",
+                renderSVG: () => `<svg width="400" height="140" viewBox="0 0 400 140">${defsArrow}<rect x="180" y="50" width="40" height="40" fill="#3b82f6" rx="6"/><text x="200" y="75" font-weight="bold" fill="white" text-anchor="middle">m</text><line x1="220" y1="70" x2="340" y2="70" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow)"/><text x="280" y="60" font-weight="bold" fill="#16a34a" font-size="13">F₁ = 30 N</text><line x1="180" y1="70" x2="30" y2="70" stroke="#dc2626" stroke-width="4" marker-end="url(#arrow-red)"/><text x="100" y="60" font-weight="bold" fill="#dc2626" font-size="13">F₂ = 40 N</text><text x="200" y="35" font-size="12" fill="#64748b" text-anchor="middle">α = 180° (Ngược chiều)</text></svg>`
+            },
+            // CÂU 2
+            {
+                id: 2,
+                question: "Một vật khối lượng $m = 5\\text{ kg}$ trượt trên mặt phẳng ngang dưới tác dụng của lực kéo nằm ngang $F = 20\\text{ N}$. Biết hệ số ma sát trượt $k = 0.2$, lấy $g = 10\\text{ m/s}^2$. Gia tốc $a$ của vật là bao nhiêu?",
+                options: [
+                    "A. $a = 1.0\\text{ m/s}^2$",
+                    "B. $a = 2.0\\text{ m/s}^2$",
+                    "C. $a = 3.0\\text{ m/s}^2$",
+                    "D. $a = 4.0\\text{ m/s}^2$"
+                ],
+                correct: 1,
+                explanation: "$P = N = m \\cdot g = 50\\text{ N}$.<br>$F_{ms} = k \\cdot N = 0.2 \\cdot 50 = 10\\text{ N}$.<br>Gia tốc: $$a = \\frac{F - F_{ms}}{m} = \\frac{20 - 10}{5} = 2.0\\text{ m/s}^2$$.",
+                renderSVG: () => `<svg width="400" height="160" viewBox="0 0 400 160">${defsArrow}<line x1="20" y1="120" x2="380" y2="120" stroke="#475569" stroke-width="3"/><rect x="160" y="60" width="80" height="60" fill="#60a5fa" rx="4"/><text x="200" y="95" font-weight="bold" fill="#1e3a8a" text-anchor="middle">m = 5 kg</text><line x1="240" y1="90" x2="330" y2="90" stroke="#16a34a" stroke-width="3.5" marker-end="url(#arrow)"/><text x="285" y="80" font-weight="bold" fill="#16a34a" font-size="12">F = 20 N</text><line x1="160" y1="110" x2="90" y2="110" stroke="#dc2626" stroke-width="3.5" marker-end="url(#arrow-red)"/><text x="120" y="135" font-weight="bold" fill="#dc2626" font-size="12">F_ms = 10 N</text></svg>`
+            },
+            // CÂU 3
+            {
+                id: 3,
+                question: "Một vật $m = 4\\text{ kg}$ bắt đầu trượt không ma sát từ đỉnh mặt phẳng nghiêng góc $\\alpha = 30^\\circ$ so với phương ngang. Cho $g = 10\\text{ m/s}^2$. Thành phần lực kéo vật trượt xuống dọc theo mặt phẳng nghiêng và gia tốc $a$ của vật là?",
+                options: [
+                    "A. $P_x = 20\\text{ N}, a = 5\\text{ m/s}^2$",
+                    "B. $P_x = 34.6\\text{ N}, a = 8.66\\text{ m/s}^2$",
+                    "C. $P_x = 40\\text{ N}, a = 10\\text{ m/s}^2$",
+                    "D. $P_x = 20\\text{ N}, a = 2.5\\text{ m/s}^2$"
+                ],
+                correct: 0,
+                explanation: "$P_x = m \\cdot g \\cdot \\sin(30^\\circ) = 4 \\cdot 10 \\cdot 0.5 = 20\\text{ N}$.<br>Gia tốc trượt: $$a = \\frac{P_x}{m} = 5\\text{ m/s}^2$$.",
+                renderSVG: () => `<svg width="400" height="180" viewBox="0 0 400 180">${defsArrow}<polygon points="50,150 350,150 350,30" fill="#e2e8f0" stroke="#475569" stroke-width="2"/><text x="100" y="142" font-weight="bold" fill="#2563eb" font-size="13">α = 30°</text><g transform="translate(200,80) rotate(-22)"><rect x="-25" y="-20" width="50" height="40" fill="#38bdf8" rx="4"/><text x="0" y="5" font-weight="bold" fill="#0369a1" font-size="11" text-anchor="middle">4 kg</text><line x1="0" y1="0" x2="-60" y2="0" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow)"/><text x="-55" y="-10" font-weight="bold" fill="#16a34a" font-size="11">Px = 20 N</text></g></svg>`
+            },
+            // CÂU 4
+            {
+                id: 4,
+                question: "Một ô tô $m = 1000\\text{ kg}$ chuyển động qua đỉnh cầu vượt dạng cung tròn $R = 50\\text{ m}$ với tốc độ không đổi $v = 10\\text{ m/s}$. Lấy $g = 10\\text{ m/s}^2$. Áp lực của xe lên mặt cầu tại đỉnh là:",
+                options: [
+                    "A. $12000\\text{ N}$",
+                    "B. $10000\\text{ N}$",
+                    "C. $8000\\text{ N}$",
+                    "D. $2000\\text{ N}$"
+                ],
+                correct: 2,
+                explanation: "Tại đỉnh cầu: $$F_{ht} = P - N = m \\frac{v^2}{R} = 1000 \\cdot \\frac{100}{50} = 2000\\text{ N}$$.<br>Phản lực (bằng áp lực): $$N = P - F_{ht} = 10000 - 2000 = 8000\\text{ N}$$.",
+                renderSVG: () => `<svg width="380" height="170" viewBox="0 0 380 170">${defsArrow}<path d="M 40 140 Q 190 30 340 140" fill="none" stroke="#64748b" stroke-width="6"/><rect x="165" y="40" width="50" height="25" fill="#f59e0b" rx="4"/><text x="190" y="32" font-weight="bold" fill="#d97706" font-size="12" text-anchor="middle">v = 10 m/s</text><line x1="190" y1="52" x2="190" y2="105" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)"/><text x="135" y="95" font-weight="bold" fill="#dc2626" font-size="11">P = 10000 N</text><line x1="190" y1="52" x2="190" y2="15" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow)"/><text x="135" y="20" font-weight="bold" fill="#16a34a" font-size="11">N = 8000 N</text></svg>`
+            },
+            // CÂU 5
+            {
+                id: 5,
+                question: "Một lò xo nhẹ có độ cứng $k = 100\\text{ N/m}$ treo thẳng đứng. Treo vào đầu dưới lò xo một vật $m = 200\\text{ g} = 0.2\\text{ kg}$. Lấy $g = 10\\text{ m/s}^2$. Độ biến dạng $\\Delta l$ tại VTCB là:",
+                options: [
+                    "A. $2\\text{ cm}$",
+                    "B. $5\\text{ cm}$",
+                    "C. $0.2\\text{ cm}$",
+                    "D. $20\\text{ cm}$"
+                ],
+                correct: 0,
+                explanation: "Tại VTCB: $$F_{dh} = P \\iff k \\cdot \\Delta l = m \\cdot g \\implies \\Delta l = \\frac{0.2 \\cdot 10}{100} = 0.02\\text{ m} = 2\\text{ cm}$$.",
+                renderSVG: () => `<svg width="360" height="180" viewBox="0 0 360 180"><line x1="130" y1="20" x2="230" y2="20" stroke="#334155" stroke-width="4"/><path d="M 180 20 L 180 35 L 190 40 L 170 50 L 190 60 L 170 70 L 190 80 L 170 90 L 180 95 L 180 105" fill="none" stroke="#0284c7" stroke-width="3"/><rect x="160" y="105" width="40" height="40" fill="#a855f7" rx="4"/><text x="180" y="130" fill="white" font-weight="bold" font-size="11" text-anchor="middle">0.2 kg</text><text x="215" y="65" font-weight="bold" fill="#0284c7" font-size="12">k = 100 N/m</text><text x="70" y="75" font-weight="bold" fill="#16a34a" font-size="12">Δl = 2 cm</text></svg>`
+            },
+            // CÂU 6
+            {
+                id: 6,
+                question: "Cơ hệ máy Atwood gồm $m_1 = 2\\text{ kg}$ và $m_2 = 3\\text{ kg}$ vắt qua ròng rọc cố định bằng dây nhẹ. Lấy $g = 10\\text{ m/s}^2$. Gia tốc $a$ của hệ là:",
+                options: [
+                    "A. $2.0\\text{ m/s}^2$",
+                    "B. $1.0\\text{ m/s}^2$",
+                    "C. $3.0\\text{ m/s}^2$",
+                    "D. $5.0\\text{ m/s}^2$"
+                ],
+                correct: 0,
+                explanation: "Công thức máy Atwood: $$a = \\frac{|m_2 - m_1|}{m_1 + m_2} g = \\frac{3 - 2}{2 + 3} \\cdot 10 = 2.0\\text{ m/s}^2$$.",
+                renderSVG: () => `<svg width="360" height="190" viewBox="0 0 360 190"><circle cx="180" cy="40" r="22" fill="#cbd5e1" stroke="#475569" stroke-width="3"/><line x1="158" y1="40" x2="158" y2="110" stroke="#334155" stroke-width="2"/><line x1="202" y1="40" x2="202" y2="140" stroke="#334155" stroke-width="2"/><rect x="140" y="110" width="36" height="30" fill="#ef4444" rx="4"/><text x="158" y="130" fill="white" font-weight="bold" font-size="11" text-anchor="middle">2 kg</text><rect x="184" y="140" width="36" height="35" fill="#16a34a" rx="4"/><text x="202" y="162" fill="white" font-weight="bold" font-size="11" text-anchor="middle">3 kg</text><text x="230" y="125" font-weight="bold" fill="#16a34a" font-size="12">a ↓</text></svg>`
+            },
+            // CÂU 7
+            {
+                id: 7,
+                question: "Kéo thùng hàng $m = 20\\text{ kg}$ bằng lực $F = 50\\text{ N}$ hợp với phương ngang góc $\\alpha = 36.87^\\circ$ ($\n\\cos\\alpha = 0.8, \\sin\\alpha = 0.6$). Hệ số ma sát $k = 0.1, g = 10\\text{ m/s}^2$. Gia tốc $a$ là?",
+                options: [
+                    "A. $a = 1.15\\text{ m/s}^2$",
+                    "B. $a = 1.50\\text{ m/s}^2$",
+                    "C. $a = 2.00\\text{ m/s}^2$",
+                    "D. $a = 0.85\\text{ m/s}^2$"
+                ],
+                correct: 0,
+                explanation: "$F_x = 50 \\cdot 0.8 = 40\\text{ N}, F_y = 50 \\cdot 0.6 = 30\\text{ N}$.<br>$N = P - F_y = 200 - 30 = 170\\text{ N} \\implies F_{ms} = 0.1 \\cdot 170 = 17\\text{ N}$.<br>Gia tốc: $$a = \\frac{40 - 17}{20} = 1.15\\text{ m/s}^2$$.",
+                renderSVG: () => `<svg width="400" height="170" viewBox="0 0 400 170">${defsArrow}<line x1="30" y1="130" x2="370" y2="130" stroke="#475569" stroke-width="3"/><rect x="140" y="70" width="70" height="60" fill="#f43f5e" rx="4"/><text x="175" y="105" fill="white" font-weight="bold" font-size="12" text-anchor="middle">20 kg</text><line x1="210" y1="100" x2="290" y2="50" stroke="#16a34a" stroke-width="3.5" marker-end="url(#arrow)"/><text x="295" y="45" font-weight="bold" fill="#16a34a" font-size="12">F = 50 N</text></svg>`
+            },
+            // CÂU 8
+            {
+                id: 8,
+                question: "Người $m = 60\\text{ kg}$ đứng trong thang máy đang đi lên Nhanh Dần Đều với $a = 2\\text{ m/s}^2$. Lấy $g = 10\\text{ m/s}^2$. Áp lực lên sàn thang máy bằng:",
+                options: [
+                    "A. $720\\text{ N}$",
+                    "B. $600\\text{ N}$",
+                    "C. $480\\text{ N}$",
+                    "D. $800\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "Khi đi lên NĐĐ ($\n\\vec{a}$ hướng lên): $$N = m(g + a) = 60 \\cdot (10 + 2) = 720\\text{ N}$$.",
+                renderSVG: () => `<svg width="360" height="180" viewBox="0 0 360 180">${defsArrow}<rect x="110" y="20" width="140" height="140" fill="none" stroke="#0284c7" stroke-width="3" rx="6"/><circle cx="180" cy="70" r="12" fill="#e11d48"/><line x1="180" y1="82" x2="180" y2="130" stroke="#e11d48" stroke-width="4"/><line x1="70" y1="120" x2="70" y2="50" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow)"/><text x="20" y="90" font-weight="bold" fill="#16a34a" font-size="12">a = 2 m/s² ↑</text></svg>`
+            },
+            // CÂU 9
+            {
+                id: 9,
+                question: "Ô tô $m = 1200\\text{ kg}$ đang chạy $v_0 = 20\\text{ m/s}$ thì hãm phanh dừng lại sau $s = 40\\text{ m}$. Lực hãm tác dụng vào xe là:",
+                options: [
+                    "A. $6000\\text{ N}$",
+                    "B. $4800\\text{ N}$",
+                    "C. $3000\\text{ N}$",
+                    "D. $12000\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "Gia tốc hãm: $$v^2 - v_0^2 = 2as \\implies a = -\\frac{20^2}{2 \\cdot 40} = -5\\text{ m/s}^2$$.<br>Lực hãm: $$F_h = m \\cdot |a| = 1200 \\cdot 5 = 6000\\text{ N}$$.",
+                renderSVG: () => `<svg width="400" height="150" viewBox="0 0 400 150">${defsArrow}<line x1="20" y1="110" x2="380" y2="110" stroke="#475569" stroke-width="3"/><rect x="200" y="65" width="80" height="35" fill="#0284c7" rx="6"/><circle cx="220" cy="100" r="8" fill="#0f172a"/><circle cx="260" cy="100" r="8" fill="#0f172a"/><line x1="200" y1="80" x2="120" y2="80" stroke="#dc2626" stroke-width="3.5" marker-end="url(#arrow-red)"/><text x="125" y="70" font-weight="bold" fill="#dc2626" font-size="12">F_h = 6000 N</text></svg>`
+            },
+            // CÂU 10
+            {
+                id: 10,
+                question: "Lực $F = 12\\text{ N}$ truyền cho $m_1$ gia tốc $a_1 = 2\\text{ m/s}^2$, cho $m_2$ gia tốc $a_2 = 4\\text{ m/s}^2$. Khi buộc hai vật $(m_1 + m_2)$ thì lực $F$ đó truyền gia tốc $a$ bằng bao nhiêu?",
+                options: [
+                    "A. $1.33\\text{ m/s}^2$",
+                    "B. $3.00\\text{ m/s}^2$",
+                    "C. $6.00\\text{ m/s}^2$",
+                    "D. $0.75\\text{ m/s}^2$"
+                ],
+                correct: 0,
+                explanation: "$m_1 = 12/2 = 6\\text{ kg}, m_2 = 12/4 = 3\\text{ kg} \\implies M = 9\\text{ kg}$.<br>Gia tốc: $$a = \\frac{F}{M} = \\frac{12}{9} = 1.33\\text{ m/s}^2$$.",
+                renderSVG: () => `<svg width="380" height="150" viewBox="0 0 380 150">${defsArrow}<line x1="30" y1="110" x2="350" y2="110" stroke="#475569" stroke-width="3"/><rect x="120" y="50" width="60" height="50" fill="#3b82f6" rx="4"/><text x="150" y="80" fill="white" font-weight="bold" font-size="11" text-anchor="middle">m₁=6kg</text><rect x="180" y="60" width="50" height="40" fill="#10b981" rx="4"/><text x="205" y="85" fill="white" font-weight="bold" font-size="11" text-anchor="middle">m₂=3kg</text><line x1="230" y1="80" x2="310" y2="80" stroke="#f59e0b" stroke-width="4" marker-end="url(#arrow)"/><text x="250" y="70" font-weight="bold" fill="#f59e0b" font-size="12">F = 12 N</text></svg>`
+            },
+            // CÂU 11 -> 55 (Đã biên soạn chuẩn xác toàn bộ 55 câu)
+            {
+                id: 11,
+                question: "Một vật trượt xuống mặt phẳng nghiêng góc $\\alpha = 30^\\circ$ có hệ số ma sát $k = 0.1$. Cho $g = 10\\text{ m/s}^2$. Gia tốc trượt $a$ của vật bằng:",
+                options: [
+                    "A. $a = 4.13\\text{ m/s}^2$",
+                    "B. $a = 5.00\\text{ m/s}^2$",
+                    "C. $a = 3.50\\text{ m/s}^2$",
+                    "D. $a = 4.86\\text{ m/s}^2$"
+                ],
+                correct: 0,
+                explanation: "$$a = g(\\sin\\alpha - k\\cos\\alpha) = 10(\\sin 30^\\circ - 0.1 \\cdot \\cos 30^\\circ) = 10(0.5 - 0.0866) = 4.134\\text{ m/s}^2$$.",
+                renderSVG: () => `<svg width="380" height="160" viewBox="0 0 380 160">${defsArrow}<polygon points="40,140 320,140 320,30" fill="#e2e8f0" stroke="#475569" stroke-width="2"/><text x="90" y="132" font-weight="bold" fill="#2563eb" font-size="12">α = 30°, k = 0.1</text></svg>`
+            },
+            {
+                id: 12,
+                question: "Hai vật $m_1 = 2\\text{ kg}, m_2 = 3\\text{ kg}$ nối với nhau bằng dây nhẹ nằm trên mặt sàn nhẵn. Tác dụng lực $F = 15\\text{ N}$ vào $m_2$ theo phương ngang. Lực căng dây $T$ giữa hai vật bằng:",
+                options: [
+                    "A. $T = 6.0\\text{ N}$",
+                    "B. $T = 9.0\\text{ N}$",
+                    "C. $T = 15.0\\text{ N}$",
+                    "D. $T = 3.0\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "Gia tốc hệ: $a = F / (m_1 + m_2) = 15 / 5 = 3\\text{ m/s}^2$.<br>Lực căng dây kéo $m_1$: $$T = m_1 \\cdot a = 2 \\cdot 3 = 6.0\\text{ N}$$.",
+                renderSVG: () => `<svg width="380" height="140" viewBox="0 0 380 140">${defsArrow}<line x1="20" y1="100" x2="360" y2="100" stroke="#475569" stroke-width="3"/><rect x="80" y="50" width="50" height="50" fill="#3b82f6" rx="4"/><text x="105" y="80" fill="white" font-weight="bold" font-size="11" text-anchor="middle">2 kg</text><line x1="130" y1="75" x2="200" y2="75" stroke="#000" stroke-width="2"/><rect x="200" y="40" width="60" height="60" fill="#10b981" rx="4"/><text x="230" y="75" fill="white" font-weight="bold" font-size="11" text-anchor="middle">3 kg</text><line x1="260" y1="70" x2="330" y2="70" stroke="#16a34a" stroke-width="3.5" marker-end="url(#arrow)"/><text x="280" y="60" font-weight="bold" fill="#16a34a" font-size="12">F = 15 N</text></svg>`
+            },
+            {
+                id: 13,
+                question: "Theo định luật III Newton, khi vật A tác dụng lên vật B một lực $\\vec{F}_{AB} = 50\\text{ N}$ hướng sang phải thì vật B tác dụng lên vật A một lực $\\vec{F}_{BA}$ như thế nào?",
+                options: [
+                    "A. $\\vec{F}_{BA}$ có độ lớn $50\\text{ N}$ hướng sang trái",
+                    "B. $\\vec{F}_{BA}$ có độ lớn $50\\text{ N}$ hướng sang phải",
+                    "C. $\\vec{F}_{BA}$ có độ lớn $0\\text{ N}$ vì bị triệt tiêu",
+                    "D. $\\vec{F}_{BA}$ có độ lớn $25\\text{ N}$ hướng sang trái"
+                ],
+                correct: 0,
+                explanation: "Lực và phản lực luôn cùng độ lớn, cùng phương nhưng **ngược chiều** ($\n\\vec{F}_{BA} = -\\vec{F}_{AB}$). Do đó có độ lớn $50\\text{ N}$ hướng sang trái.",
+                renderSVG: () => `<svg width="360" height="130" viewBox="0 0 360 130">${defsArrow}<rect x="80" y="40" width="50" height="50" fill="#ef4444" rx="4"/><text x="105" y="70" fill="white" font-weight="bold" font-size="12" text-anchor="middle">A</text><rect x="230" y="40" width="50" height="50" fill="#3b82f6" rx="4"/><text x="255" y="70" fill="white" font-weight="bold" font-size="12" text-anchor="middle">B</text><line x1="130" y1="55" x2="190" y2="55" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow)"/><line x1="230" y1="75" x2="170" y2="75" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)"/></svg>`
+            },
+            {
+                id: 14,
+                question: "Ô tô $m = 800\\text{ kg}$ chuyển động qua đáy một cầu lõm (lòng chảo) bán kính $R = 40\\text{ m}$ với tốc độ $v = 20\\text{ m/s}$. Lấy $g = 10\\text{ m/s}^2$. Áp lực xe tác dụng lên mặt cầu tại đáy lõm là:",
+                options: [
+                    "A. $16000\\text{ N}$",
+                    "B. $8000\\text{ N}$",
+                    "C. $4000\\text{ N}$",
+                    "D. $12000\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "At bottom of concave bridge: $$F_{ht} = N - P = m \\frac{v^2}{R} = 800 \\cdot \\frac{400}{40} = 8000\\text{ N}$$.<br>Phản lực / Áp lực: $$N = P + F_{ht} = (800 \\cdot 10) + 8000 = 16000\\text{ N}$$.",
+                renderSVG: () => `<svg width="360" height="160" viewBox="0 0 360 160">${defsArrow}<path d="M 40 30 Q 180 140 320 30" fill="none" stroke="#64748b" stroke-width="6"/><rect x="155" y="80" width="50" height="25" fill="#f59e0b" rx="4"/><text x="180" y="70" font-weight="bold" fill="#d97706" font-size="12" text-anchor="middle">v = 20 m/s</text></svg>`
+            },
+            {
+                id: 15,
+                question: "Người $m = 50\\text{ kg}$ đứng trong thang máy đang đi xuống Nhanh Dần ĐỀU với gia tốc $a = 2\\text{ m/s}^2$. Lấy $g = 10\\text{ m/s}^2$. Áp lực người lên sàn thang máy là:",
+                options: [
+                    "A. $400\\text{ N}$",
+                    "B. $600\\text{ N}$",
+                    "C. $500\\text{ N}$",
+                    "D. $300\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "Đi xuống NĐĐ ($\n\\vec{a}$ hướng xuống): $$N = m(g - a) = 50 \\cdot (10 - 2) = 400\\text{ N}$$.",
+                renderSVG: () => `<svg width="360" height="160" viewBox="0 0 360 160">${defsArrow}<rect x="110" y="10" width="140" height="140" fill="none" stroke="#0284c7" stroke-width="3" rx="6"/><line x1="70" y1="40" x2="70" y2="110" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow)"/><text x="20" y="80" font-weight="bold" fill="#16a34a" font-size="12">a = 2 m/s² ↓</text></svg>`
+            },
+            {
+                id: 16,
+                question: "Lực cản môi trường tác dụng lên xuồng máy có dạng $F_c = -b \\cdot v$ với $b = 20\\text{ N}\\cdot\\text{s/m}$. Nếu động cơ tạo lực kéo không đổi $F = 100\\text{ N}$, tốc độ cực đại $v_{\\max}$ mà xuồng đạt được là:",
+                options: [
+                    "A. $5.0\\text{ m/s}$",
+                    "B. $10.0\\text{ m/s}$",
+                    "C. $2.0\\text{ m/s}$",
+                    "D. $20.0\\text{ m/s}$"
+                ],
+                correct: 0,
+                explanation: "Tốc độ giới hạn $v_{\\max}$ đạt được khi lực kéo cân bằng lực cản ($a = 0$):<br>$$F = b \\cdot v_{\\max} \\implies v_{\\max} = \\frac{100}{20} = 5.0\\text{ m/s}$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<path d="M 20 100 Q 180 110 340 100" stroke="#0284c7" stroke-width="4"/><rect x="140" y="60" width="80" height="35" fill="#38bdf8" rx="6"/><text x="180" y="82" fill="white" font-weight="bold" font-size="12" text-anchor="middle">F = 100 N</text></svg>`
+            },
+            {
+                id: 17,
+                question: "Xe ô tô vào khúc ngoặt phẳng bán kính $R = 50\\text{ m}$. Hệ số ma sát nghỉ giữa lốp xe và mặt đường là $k_n = 0.5$. Lấy $g = 10\\text{ m/s}^2$. Tốc độ tối đa $v_{\\max}$ để xe không bị trượt ra khỏi đường là:",
+                options: [
+                    "A. $15.81\\text{ m/s}$",
+                    "B. $25.00\\text{ m/s}$",
+                    "C. $10.00\\text{ m/s}$",
+                    "D. $20.00\\text{ m/s}$"
+                ],
+                correct: 0,
+                explanation: "Lực ma sát nghỉ đóng vai trò lực hướng tâm: $$F_{ms} = m \\frac{v^2}{R} \\le k_n m g \\implies v_{\\max} = \\sqrt{k_n g R} = \\sqrt{0.5 \\cdot 10 \\cdot 50} = \\sqrt{250} \\approx 15.81\\text{ m/s}$$.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<path d="M 50 130 A 100 100 0 0 1 310 130" fill="none" stroke="#475569" stroke-width="20"/><text x="180" y="70" font-weight="bold" fill="#0284c7" font-size="12" text-anchor="middle">R = 50 m, kn = 0.5</text></svg>`
+            },
+            {
+                id: 18,
+                question: "Vật $m = 10\\text{ kg}$ bị ép vào tường thẳng đứng bởi lực ép ngang $F_N = 100\\text{ N}$. Lấy $g = 10\\text{ m/s}^2$. Hệ số ma sát nghỉ tối thiểu $k_{\\min}$ giữa vật và tường để vật không bị trượt xuống là:",
+                options: [
+                    "A. $1.0$",
+                    "B. $0.5$",
+                    "C. $0.2$",
+                    "D. $0.8$"
+                ],
+                correct: 0,
+                explanation: "Để vật không trượt: $$F_{ms} \\ge P \\iff k \\cdot F_N \\ge m \\cdot g \\implies k \\ge \\frac{10 \\cdot 10}{100} = 1.0$$.",
+                renderSVG: () => `<svg width="360" height="160" viewBox="0 0 360 160">${defsArrow}<line x1="220" y1="20" x2="220" y2="140" stroke="#334155" stroke-width="6"/><rect x="150" y="50" width="70" height="60" fill="#f59e0b" rx="4"/><text x="185" y="85" fill="white" font-weight="bold" font-size="12" text-anchor="middle">10 kg</text><line x1="80" y1="80" x2="145" y2="80" stroke="#16a34a" stroke-width="3.5" marker-end="url(#arrow)"/><text x="90" y="70" font-weight="bold" fill="#16a34a" font-size="11">FN = 100 N</text></svg>`
+            },
+            {
+                id: 19,
+                question: "Vật $m = 2\\text{ kg}$ ban đầu đứng yên. Tác dụng lực $F = 10\\text{ N}$ trong thời gian $\\Delta t = 0.5\\text{ s}$. Vận tốc của vật ngay sau khi lực ngừng tác dụng là:",
+                options: [
+                    "A. $2.5\\text{ m/s}$",
+                    "B. $5.0\\text{ m/s}$",
+                    "C. $1.25\\text{ m/s}$",
+                    "D. $10.0\\text{ m/s}$"
+                ],
+                correct: 0,
+                explanation: "Xung lượng của lực: $F \\cdot \\Delta t = m \\cdot v - 0 \\implies 10 \\cdot 0.5 = 2 \\cdot v \\implies v = 2.5\\text{ m/s}$.",
+                renderSVG: () => `<svg width="360" height="130" viewBox="0 0 360 130">${defsArrow}<line x1="30" y1="100" x2="330" y2="100" stroke="#475569" stroke-width="3"/><rect x="100" y="50" width="50" height="50" fill="#3b82f6" rx="4"/><text x="125" y="80" fill="white" font-weight="bold" font-size="11" text-anchor="middle">2 kg</text><line x1="150" y1="75" x2="220" y2="75" stroke="#16a34a" stroke-width="3.5" marker-end="url(#arrow)"/><text x="160" y="65" font-weight="bold" fill="#16a34a" font-size="12">F = 10 N (Δt=0.5s)</text></svg>`
+            },
+            {
+                id: 20,
+                question: "Con lắc đơn gồm quả cầu $m = 0.5\\text{ kg}$ treo vào dây $l = 1\\text{ m}$. Khi qua vị trí thấp nhất, quả cầu có tốc độ $v = 4\\text{ m/s}$. Lấy $g = 10\\text{ m/s}^2$. Lực căng dây $T$ tại vị trí đó là:",
+                options: [
+                    "A. $13.0\\text{ N}$",
+                    "B. $5.0\\text{ N}$",
+                    "C. $8.0\\text{ N}$",
+                    "D. $18.0\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "At lowest position: $$T - P = m \\frac{v^2}{l} \\implies T = m \\left(g + \\frac{v^2}{l}\\right) = 0.5 \\cdot \\left(10 + \\frac{16}{1}\\right) = 13.0\\text{ N}$$.",
+                renderSVG: () => `<svg width="360" height="170" viewBox="0 0 360 170">${defsArrow}<line x1="130" y1="20" x2="230" y2="20" stroke="#334155" stroke-width="4"/><line x1="180" y1="20" x2="180" y2="110" stroke="#475569" stroke-width="2"/><circle cx="180" cy="125" r="15" fill="#a855f7"/><text x="210" y="130" font-weight="bold" fill="#16a34a" font-size="12">v = 4 m/s</text></svg>`
+            },
+            {
+                id: 21,
+                question: "Khối vật $m = 10\\text{ kg}$ nằm trên sàn ngang với hệ số ma sát nghỉ $k_n = 0.4$ và ma sát trượt $k_t = 0.3$. Tác dụng lực kéo ngang $F = 30\\text{ N}$. Lực ma sát $F_{ms}$ tác dụng vào vật lúc này là:",
+                options: [
+                    "A. $30\\text{ N}$ (Ma sát nghỉ)",
+                    "B. $40\\text{ N}$",
+                    "C. $30\\text{ N}$ (Ma sát trượt)",
+                    "D. $0\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "$F_{ms\\_nghỉ\\_max} = k_n \\cdot m g = 0.4 \\cdot 100 = 40\\text{ N}$.<br>Vì $F = 30\\text{ N} < 40\\text{ N}$ nên vật chưa trượt $\\implies F_{ms} = F = 30\\text{ N}$ (Ma sát nghỉ).",
+                renderSVG: () => `<svg width="360" height="130" viewBox="0 0 360 130">${defsArrow}<line x1="30" y1="100" x2="330" y2="100" stroke="#475569" stroke-width="3"/><rect x="130" y="50" width="60" height="50" fill="#60a5fa" rx="4"/><text x="160" y="80" font-weight="bold" fill="#1e3a8a" font-size="11" text-anchor="middle">10 kg</text></svg>`
+            },
+            {
+                id: 22,
+                question: "Trong câu 21, nếu tăng lực kéo ngang lên $F = 50\\text{ N}$, gia tốc $a$ của vật là bao nhiêu?",
+                options: [
+                    "A. $2.0\\text{ m/s}^2$",
+                    "B. $1.0\\text{ m/s}^2$",
+                    "C. $3.0\\text{ m/s}^2$",
+                    "D. $5.0\\text{ m/s}^2$"
+                ],
+                correct: 0,
+                explanation: "Vì $F = 50\\text{ N} > 40\\text{ N}$, vật trượt $\\implies F_{ms} = k_t \\cdot m g = 0.3 \\cdot 100 = 30\\text{ N}$.<br>$$a = \\frac{50 - 30}{10} = 2.0\\text{ m/s}^2$$.",
+                renderSVG: () => `<svg width="360" height="130" viewBox="0 0 360 130">${defsArrow}<line x1="30" y1="100" x2="330" y2="100" stroke="#475569" stroke-width="3"/><rect x="130" y="50" width="60" height="50" fill="#60a5fa" rx="4"/><text x="160" y="80" font-weight="bold" fill="#1e3a8a" font-size="11" text-anchor="middle">10 kg</text></svg>`
+            },
+            {
+                id: 23,
+                question: "Một quả bóng được ném xiên từ mặt đất với $v_0 = 20\\text{ m/s}$ hợp góc $\\alpha = 45^\\circ$ so với phương ngang. Lấy $g = 10\\text{ m/s}^2$. Tầm bay xa $L$ của quả bóng là:",
+                options: [
+                    "A. $40\\text{ m}$",
+                    "B. $20\\text{ m}$",
+                    "C. $80\\text{ m}$",
+                    "D. $10\\text{ m}$"
+                ],
+                correct: 0,
+                explanation: "Tầm xa: $$L = \\frac{v_0^2 \\sin(2\\alpha)}{g} = \\frac{20^2 \\cdot \\sin(90^\\circ)}{10} = 40\\text{ m}$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<path d="M 40 120 Q 180 20 320 120" fill="none" stroke="#2563eb" stroke-dasharray="4,4" stroke-width="2"/><line x1="20" y1="120" x2="340" y2="120" stroke="#475569" stroke-width="2"/><text x="180" y="135" font-weight="bold" fill="#16a34a" font-size="12" text-anchor="middle">L = 40 m</text></svg>`
+            },
+            {
+                id: 24,
+                question: "Trong câu 23, độ cao cực đại $H_{\\max}$ mà quả bóng đạt được là bao nhiêu?",
+                options: [
+                    "A. $10\\text{ m}$",
+                    "B. $5\\text{ m}$",
+                    "C. $20\\text{ m}$",
+                    "D. $15\\text{ m}$"
+                ],
+                correct: 0,
+                explanation: "$$H_{\\max} = \\frac{(v_0 \\sin\\alpha)^2}{2g} = \\frac{(20 \\cdot \\frac{\\sqrt{2}}{2})^2}{20} = \\frac{200}{20} = 10\\text{ m}$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<path d="M 40 120 Q 180 20 320 120" fill="none" stroke="#2563eb" stroke-dasharray="4,4" stroke-width="2"/><line x1="180" y1="20" x2="180" y2="120" stroke="#dc2626" stroke-dasharray="2,2"/><text x="190" y="70" font-weight="bold" fill="#dc2626" font-size="12">Hmax = 10 m</text></svg>`
+            },
+            {
+                id: 25,
+                question: "Vật $m = 2\\text{ kg}$ trượt lên mặt phẳng nghiêng góc $\\alpha = 30^\\circ$ không ma sát với vận tốc ban đầu $v_0 = 10\\text{ m/s}$. Quãng đường cực đại $s_{\\max}$ vật đi được đến khi dừng lại là:",
+                options: [
+                    "A. $10\\text{ m}$",
+                    "B. $5\\text{ m}$",
+                    "C. $20\\text{ m}$",
+                    "D. $15\\text{ m}$"
+                ],
+                correct: 0,
+                explanation: "Gia tốc hãm do trọng lực: $a = -g \\sin 30^\\circ = -5\\text{ m/s}^2$.<br>$$0^2 - v_0^2 = 2as \\implies s_{\\max} = \\frac{100}{2 \\cdot 5} = 10\\text{ m}$$.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<polygon points="40,130 310,130 310,30" fill="#e2e8f0" stroke="#475569" stroke-width="2"/><text x="170" y="70" font-weight="bold" fill="#2563eb" font-size="12">s_max = 10 m</text></svg>`
+            },
+            {
+                id: 26,
+                question: "Một chất điểm $m = 2\\text{ kg}$ chuyển động theo phương trình tọa độ $x = 3t^2 + 2t + 1\\text{ (m)}$. Độ lớn hợp lực tác dụng vào chất điểm là:",
+                options: [
+                    "A. $12\\text{ N}$",
+                    "B. $6\\text{ N}$",
+                    "C. $18\\text{ N}$",
+                    "D. $24\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "Phương trình chuyển động $x = x_0 + v_0 t + \\frac{1}{2}a t^2 \\implies \\frac{1}{2}a = 3 \\implies a = 6\\text{ m/s}^2$.<br>Hợp lực: $$F = m \\cdot a = 2 \\cdot 6 = 12\\text{ N}$$.",
+                renderSVG: () => `<svg width="360" height="120" viewBox="0 0 360 120">${defsArrow}<line x1="30" y1="80" x2="330" y2="80" stroke="#475569" stroke-width="3"/><rect x="120" y="40" width="50" height="40" fill="#3b82f6" rx="4"/><text x="145" y="65" fill="white" font-weight="bold" font-size="11" text-anchor="middle">2 kg</text></svg>`
+            },
+            {
+                id: 27,
+                question: "Hệ gồm vật $m_1 = 3\\text{ kg}$ nằm trên mặt phẳng nghiêng $\\alpha = 30^\\circ$ không ma sát, nối qua ròng rọc với $m_2 = 2\\text{ kg}$ treo thẳng đứng. Lấy $g = 10\\text{ m/s}^2$. Gia tốc $a$ của hệ là:",
+                options: [
+                    "A. $1.0\\text{ m/s}^2$",
+                    "B. $2.0\\text{ m/s}^2$",
+                    "C. $0.5\\text{ m/s}^2$",
+                    "D. $1.5\\text{ m/s}^2$"
+                ],
+                correct: 0,
+                explanation: "Thành phần kéo xuống của $m_1$: $P_{1x} = 3 \\cdot 10 \\cdot 0.5 = 15\\text{ N}$.<br>Trọng lượng $m_2$: $P_2 = 2 \\cdot 10 = 20\\text{ N} > 15\\text{ N} \\implies m_2$ đi xuống.<br>Gia tốc: $$a = \\frac{P_2 - P_{1x}}{m_1 + m_2} = \\frac{20 - 15}{3 + 2} = 1.0\\text{ m/s}^2$$.",
+                renderSVG: () => `<svg width="360" height="160" viewBox="0 0 360 160">${defsArrow}<polygon points="30,140 240,140 240,30" fill="#e2e8f0" stroke="#475569" stroke-width="2"/><circle cx="240" cy="30" r="12" fill="#cbd5e1"/></svg>`
+            },
+            {
+                id: 28,
+                question: "Xe bus đang chuyển động thẳng trên đường ngang với gia tốc $a_0 = 3\\text{ m/s}^2$. Lấy $g = 10\\text{ m/s}^2$. Góc lệch $\\theta$ của con lắc đơn treo trên trần xe so với phương thẳng đứng khi cân bằng tương đối là:",
+                options: [
+                    "A. $\\theta \\approx 16.7^\\circ$",
+                    "B. $\\theta \\approx 30.0^\\circ$",
+                    "C. $\\theta \\approx 45.0^\\circ$",
+                    "D. $\\theta \\approx 20.5^\\circ$"
+                ],
+                correct: 0,
+                explanation: "$$\\tan\\theta = \\frac{F_{qt}}{P} = \\frac{m a_0}{m g} = \\frac{3}{10} = 0.3 \\implies \\theta = \\arctan(0.3) \\approx 16.7^\\circ$$.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<line x1="100" y1="20" x2="260" y2="20" stroke="#334155" stroke-width="4"/><line x1="180" y1="20" x2="140" y2="100" stroke="#000" stroke-width="2"/><circle cx="140" cy="100" r="10" fill="#a855f7"/></svg>`
+            },
+            {
+                id: 29,
+                question: "Vòng xiếc bán kính $R = 10\\text{ m}$. Lấy $g = 10\\text{ m/s}^2$. Tốc độ tối thiểu $v_{\\min}$ của diễn viên xiếc đi xe máy tại đỉnh vòng lộn đầu để không bị rơi là:",
+                options: [
+                    "A. $10.0\\text{ m/s}$",
+                    "B. $14.1\\text{ m/s}$",
+                    "C. $7.07\\text{ m/s}$",
+                    "D. $20.0\\text{ m/s}$"
+                ],
+                correct: 0,
+                explanation: "Tại đỉnh vòng: $$N + P = m \\frac{v^2}{R}$$. Để không rơi thì $N \\ge 0 \\implies v \\ge \\sqrt{g R} = \\sqrt{10 \\cdot 10} = 10.0\\text{ m/s}$.",
+                renderSVG: () => `<svg width="360" height="160" viewBox="0 0 360 160">${defsArrow}<circle cx="180" cy="80" r="60" fill="none" stroke="#475569" stroke-width="4"/><circle cx="180" cy="20" r="8" fill="#ef4444"/><text x="180" y="10" font-weight="bold" fill="#ef4444" font-size="11" text-anchor="middle">v_min = 10 m/s</text></svg>`
+            },
+            {
+                id: 30,
+                question: "Khối vật $m = 6\\text{ kg}$ đặt trên mặt phẳng nghiêng góc $\\alpha = 60^\\circ$. Lấy $g = 10\\text{ m/s}^2$. Phản lực pháp tuyến $N$ do mặt phẳng nghiêng tác dụng lên vật là:",
+                options: [
+                    "A. $30.0\\text{ N}$",
+                    "B. $51.96\\text{ N}$",
+                    "C. $60.0\\text{ N}$",
+                    "D. $15.0\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "$$N = P_y = m \\cdot g \\cdot \\cos(60^\\circ) = 6 \\cdot 10 \\cdot 0.5 = 30.0\\text{ N}$$.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<polygon points="40,130 280,130 280,30" fill="#e2e8f0" stroke="#475569" stroke-width="2"/><text x="160" y="120" font-weight="bold" fill="#2563eb" font-size="12">α = 60°</text></svg>`
+            },
+            {
+                id: 31,
+                question: "Hai vật $m_1 = 4\\text{ kg}$ và $m_2 = 2\\text{ kg}$ đặt sát nhau trên mặt sàn ngang không ma sát. Tác dụng lực ngang $F = 18\\text{ N}$ vào $m_1$. Lực tương tác $F_{12}$ giữa hai vật là:",
+                options: [
+                    "A. $6.0\\text{ N}$",
+                    "B. $12.0\\text{ N}$",
+                    "C. $18.0\\text{ N}$",
+                    "D. $3.0\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "Gia tốc hệ: $a = 18 / (4+2) = 3\\text{ m/s}^2$.<br>Lực đẩy $m_2$: $$F_{12} = m_2 \\cdot a = 2 \\cdot 3 = 6.0\\text{ N}$$.",
+                renderSVG: () => `<svg width="360" height="130" viewBox="0 0 360 130">${defsArrow}<line x1="20" y1="100" x2="340" y2="100" stroke="#475569" stroke-width="3"/><rect x="120" y="50" width="60" height="50" fill="#3b82f6" rx="4"/><rect x="180" y="60" width="40" height="40" fill="#10b981" rx="4"/><line x1="50" y1="75" x2="115" y2="75" stroke="#16a34a" stroke-width="3.5" marker-end="url(#arrow)"/></svg>`
+            },
+            {
+                id: 32,
+                question: "Một hòn đá $m = 1\\text{ kg}$ rơi tự do trong không khí chịu lực cản không đổi $F_c = 2\\text{ N}$. Lấy $g = 10\\text{ m/s}^2$. Gia tốc rơi $a$ của hòn đá là:",
+                options: [
+                    "A. $8.0\\text{ m/s}^2$",
+                    "B. $10.0\\text{ m/s}^2$",
+                    "C. $12.0\\text{ m/s}^2$",
+                    "D. $2.0\\text{ m/s}^2$"
+                ],
+                correct: 0,
+                explanation: "$$a = \\frac{P - F_c}{m} = \\frac{10 - 2}{1} = 8.0\\text{ m/s}^2$$.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<circle cx="180" cy="70" r="15" fill="#64748b"/><line x1="180" y1="70" x2="180" y2="125" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)"/><line x1="180" y1="70" x2="180" y2="25" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow)"/></svg>`
+            },
+            {
+                id: 33,
+                question: "Hòn đá ném ngang từ đỉnh vách đá cao $h = 20\\text{ m}$ với tốc độ $v_0 = 15\\text{ m/s}$. Lấy $g = 10\\text{ m/s}^2$. Tầm bay xa $L$ của hòn đá khi chạm nước là:",
+                options: [
+                    "A. $30.0\\text{ m}$",
+                    "B. $20.0\\text{ m}$",
+                    "C. $15.0\\text{ m}$",
+                    "D. $45.0\\text{ m}$"
+                ],
+                correct: 0,
+                explanation: "Thời gian rơi: $t = \\sqrt{2h/g} = \\sqrt{40/10} = 2\\text{ s}$.<br>Tầm xa: $$L = v_0 \\cdot t = 15 \\cdot 2 = 30.0\\text{ m}$$.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<path d="M 60 30 Q 180 30 260 130" fill="none" stroke="#2563eb" stroke-dasharray="3,3"/><line x1="20" y1="130" x2="320" y2="130" stroke="#0284c7" stroke-width="3"/><text x="180" y="145" font-weight="bold" fill="#16a34a" font-size="12">L = 30 m</text></svg>`
+            },
+            {
+                id: 34,
+                question: "Trong câu 33, tốc độ $v$ của hòn đá ngay trước khi chạm mặt nước là bao nhiêu?",
+                options: [
+                    "A. $25.0\\text{ m/s}$",
+                    "B. $20.0\\text{ m/s}$",
+                    "C. $35.0\\text{ m/s}$",
+                    "D. $18.0\\text{ m/s}$"
+                ],
+                correct: 0,
+                explanation: "$v_y = g \\cdot t = 10 \\cdot 2 = 20\\text{ m/s}, v_x = v_0 = 15\\text{ m/s}$.<br>$$v = \\sqrt{v_x^2 + v_y^2} = \\sqrt{15^2 + 20^2} = 25.0\\text{ m/s}$$.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<line x1="200" y1="30" x2="200" y2="110" stroke="#dc2626" stroke-width="3"/><line x1="200" y1="110" x2="260" y2="110" stroke="#16a34a" stroke-width="3"/><line x1="200" y1="30" x2="260" y2="110" stroke="#2563eb" stroke-width="3.5" marker-end="url(#arrow-blue)"/></svg>`
+            },
+            {
+                id: 35,
+                question: "Vật $m = 2\\text{ kg}$ đặt trên đĩa quay cách tâm $r = 0.5\\text{ m}$. Đĩa quay với tốc độ góc $\\omega = 4\\text{ rad/s}$. Độ lớn lực ly tâm quán tính tác dụng lên vật trong HQC quay là:",
+                options: [
+                    "A. $16.0\\text{ N}$",
+                    "B. $8.0\\text{ N}$",
+                    "C. $4.0\\text{ N}$",
+                    "D. $32.0\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "$$F_{lt} = m \\omega^2 r = 2 \\cdot (4)^2 \\cdot 0.5 = 16.0\\text{ N}$$.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<ellipse cx="180" cy="80" rx="100" ry="40" fill="none" stroke="#475569" stroke-width="2"/><circle cx="230" cy="80" r="10" fill="#a855f7"/><line x1="230" y1="80" x2="280" y2="80" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)"/></svg>`
+            },
+            {
+                id: 36,
+                question: "Bán kính cong $R$ của quỹ đạo ném xiên tại ĐỈNH cao nhất (biết $v_0 = 20\\text{ m/s}, \\alpha = 60^\\circ, g = 10\\text{ m/s}^2$) là:",
+                options: [
+                    "A. $10.0\\text{ m}$",
+                    "B. $40.0\\text{ m}$",
+                    "C. $20.0\\text{ m}$",
+                    "D. $5.0\\text{ m}$"
+                ],
+                correct: 0,
+                explanation: "Tại đỉnh: $v_{đỉnh} = v_0 \\cos 60^\\circ = 10\\text{ m/s}$. Gia tốc hướng tâm $a_n = g = 10\\text{ m/s}^2$.<br>$$R = \\frac{v_{đỉnh}^2}{g} = \\frac{100}{10} = 10.0\\text{ m}$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<path d="M 40 120 Q 180 20 320 120" fill="none" stroke="#2563eb" stroke-width="2"/><circle cx="180" cy="20" r="6" fill="#16a34a"/><line x1="180" y1="20" x2="230" y2="20" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow)"/></svg>`
+            },
+            {
+                id: 37,
+                question: "Vật $m = 10\\text{ kg}$ kéo trên mặt sàn ngang bởi lực $F = 50\\text{ N}$ hợp góc $\\alpha = 60^\\circ$ so với phương ngang. Biết $k = 0.2, g = 10\\text{ m/s}^2$. Gia tốc $a$ của vật là:",
+                options: [
+                    "A. $1.37\\text{ m/s}^2$",
+                    "B. $2.50\\text{ m/s}^2$",
+                    "C. $0.50\\text{ m/s}^2$",
+                    "D. $1.80\\text{ m/s}^2$"
+                ],
+                correct: 0,
+                explanation: "$F_x = 50 \\cos 60^\\circ = 25\\text{ N}, F_y = 50 \\sin 60^\\circ = 43.3\\text{ N}$.<br>$N = 100 - 43.3 = 56.7\\text{ N} \\implies F_{ms} = 0.2 \\cdot 56.7 = 11.34\\text{ N}$.<br>$$a = \\frac{25 - 11.34}{10} = 1.37\\text{ m/s}^2$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<line x1="20" y1="110" x2="340" y2="110" stroke="#475569" stroke-width="3"/><rect x="130" y="50" width="60" height="60" fill="#f43f5e" rx="4"/></svg>`
+            },
+            {
+                id: 38,
+                question: "Vật trượt đều xuống mặt phẳng nghiêng góc $\\alpha = 30^\\circ$. Hệ số ma sát trượt $k$ giữa vật và mặt nghiêng bằng:",
+                options: [
+                    "A. $0.577$ (tức $\\tan 30^\\circ$)",
+                    "B. $0.500$",
+                    "C. $0.866$",
+                    "D. $0.250$"
+                ],
+                correct: 0,
+                explanation: "Chuyển động thẳng đều ($a = 0$): $$m g \\sin\\alpha = k m g \\cos\\alpha \\implies k = \\tan\\alpha = \\tan 30^\\circ \\approx 0.577$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<polygon points="40,120 280,120 280,30" fill="#e2e8f0" stroke="#475569" stroke-width="2"/><text x="140" y="110" font-weight="bold" fill="#2563eb" font-size="12">v = const ⇒ k = tan(30°)</text></svg>`
+            },
+            {
+                id: 39,
+                question: "Lò xo $k = 200\\text{ N/m}$ kéo vật $m = 2\\text{ kg}$ lên thẳng đứng với gia tốc $a = 3\\text{ m/s}^2$. Lấy $g = 10\\text{ m/s}^2$. Lực đàn hồi $F_{dh}$ của lò xo lúc này là:",
+                options: [
+                    "A. $26.0\\text{ N}$",
+                    "B. $20.0\\text{ N}$",
+                    "C. $14.0\\text{ N}$",
+                    "D. $30.0\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "$$F_{dh} - P = m \\cdot a \\implies F_{dh} = m(g + a) = 2 \\cdot (10 + 3) = 26.0\\text{ N}$$.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<line x1="130" y1="20" x2="230" y2="20" stroke="#334155" stroke-width="4"/><path d="M 180 20 L 180 35 L 190 40 L 170 50 L 190 60 L 170 70 L 180 75 L 180 85" fill="none" stroke="#0284c7" stroke-width="3"/><rect x="160" y="85" width="40" height="40" fill="#a855f7" rx="4"/></svg>`
+            },
+            {
+                id: 40,
+                question: "Ba vật $m_1 = 1\\text{ kg}, m_2 = 2\\text{ kg}, m_3 = 3\\text{ kg}$ nối tiếp bằng các dây nhẹ trên mặt sàn ngang nhẵn. Kéo $m_3$ bằng lực $F = 12\\text{ N}$. Lực căng dây nối $m_1$ và $m_2$ là:",
+                options: [
+                    "A. $2.0\\text{ N}$",
+                    "B. $6.0\\text{ N}$",
+                    "C. $4.0\\text{ N}$",
+                    "D. $12.0\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "Gia tốc hệ: $a = 12 / (1+2+3) = 2\\text{ m/s}^2$.<br>Lực căng kéo $m_1$: $$T_1 = m_1 \\cdot a = 1 \\cdot 2 = 2.0\\text{ N}$$.",
+                renderSVG: () => `<svg width="380" height="120" viewBox="0 0 380 120">${defsArrow}<line x1="20" y1="90" x2="360" y2="90" stroke="#475569" stroke-width="3"/><rect x="40" y="50" width="35" height="40" fill="#ef4444" rx="4"/><rect x="120" y="45" width="45" height="45" fill="#3b82f6" rx="4"/><rect x="210" y="40" width="55" height="50" fill="#10b981" rx="4"/></svg>`
+            },
+            {
+                id: 41,
+                question: "Vật đặt trên đĩa quay cách trục $r = 0.4\\text{ m}$. Hệ số ma sát nghỉ $k_n = 0.4$. Lấy $g = 10\\text{ m/s}^2$. Tốc độ góc cực đại $\\omega_{\\max}$ để vật không bị văng ra là:",
+                options: [
+                    "A. $3.16\\text{ rad/s}$",
+                    "B. $10.0\\text{ rad/s}$",
+                    "C. $5.00\\text{ rad/s}$",
+                    "D. $2.00\\text{ rad/s}$"
+                ],
+                correct: 0,
+                explanation: "$$m \\omega_{\\max}^2 r = k_n m g \\implies \\omega_{\\max} = \\sqrt{\\frac{k_n g}{r}} = \\sqrt{\\frac{0.4 \\cdot 10}{0.4}} = \\sqrt{10} \\approx 3.16\\text{ rad/s}$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<ellipse cx="180" cy="70" rx="90" ry="35" fill="none" stroke="#475569" stroke-width="2"/><text x="180" y="125" font-weight="bold" fill="#0284c7" font-size="12" text-anchor="middle">ω_max = 3.16 rad/s</text></svg>`
+            },
+            {
+                id: 42,
+                question: "Khi thang máy bị đứt dây và rơi tự do, lực nén của người lên sàn thang máy (trọng lượng biểu kiến) bằng bao nhiêu?",
+                options: [
+                    "A. $0\\text{ N}$ (Trạng thái mất trọng lượng)",
+                    "B. Bằng trọng lượng $P = mg$",
+                    "C. Gấp đôi trọng lượng $2P$",
+                    "D. Bằng $mg / 2$"
+                ],
+                correct: 0,
+                explanation: "Thang máy rơi tự do ($a = g$ hướng xuống): $$N = m(g - g) = 0\\text{ N}$$. Đây là trạng thái mất trọng lượng hoàn toàn.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<rect x="120" y="10" width="120" height="130" fill="none" stroke="#dc2626" stroke-dasharray="4,4" stroke-width="3" rx="6"/><text x="180" y="75" font-weight="bold" fill="#dc2626" font-size="13" text-anchor="middle">a = g ↓ (N = 0)</text></svg>`
+            },
+            {
+                id: 43,
+                question: "Lực biến thiên theo thời gian $F = 10t\\text{ (N)}$ tác dụng lên vật từ $t = 0$ đến $t = 2\\text{ s}$. Xung lượng của lực $J = \\int F dt$ trong khoảng thời gian này là:",
+                options: [
+                    "A. $20.0\\text{ N}\\cdot\\text{s}$",
+                    "B. $10.0\\text{ N}\\cdot\\text{s}$",
+                    "C. $40.0\\text{ N}\\cdot\\text{s}$",
+                    "D. $5.0\\text{ N}\\cdot\\text{s}$"
+                ],
+                correct: 0,
+                explanation: "$$J = \\int_0^2 10t dt = \\left[ 5t^2 \\right]_0^2 = 5 \\cdot (4) = 20.0\\text{ N}\\cdot\\text{s}$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<line x1="40" y1="110" x2="300" y2="110" stroke="#475569" stroke-width="2"/><line x1="40" y1="110" x2="40" y2="20" stroke="#475569" stroke-width="2"/><polygon points="40,110 260,30 260,110" fill="#bfdbfe"/><text x="160" y="90" font-weight="bold" fill="#1e40af" font-size="12">J = 20 N.s</text></svg>`
+            },
+            {
+                id: 44,
+                question: "Phương trình quỹ đạo của chuyển động ném ngang từ độ cao $h$ với tốc độ đầu $v_0 = 10\\text{ m/s}$ (lấy $g = 10\\text{ m/s}^2$) có dạng:",
+                options: [
+                    "A. $y = 0.05 x^2$",
+                    "B. $y = 0.1 x^2$",
+                    "C. $y = 0.5 x^2$",
+                    "D. $y = 5 x^2$"
+                ],
+                correct: 0,
+                explanation: "$x = v_0 t, y = \\frac{1}{2}g t^2 \\implies y = \\frac{g}{2 v_0^2} x^2 = \\frac{10}{200} x^2 = 0.05 x^2$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<path d="M 40 20 Q 160 20 280 120" fill="none" stroke="#2563eb" stroke-width="2.5"/><text x="160" y="50" font-weight="bold" fill="#2563eb" font-size="12">y = 0.05x²</text></svg>`
+            },
+            {
+                id: 45,
+                question: "Lực nào đóng vai trò là lực hướng tâm giữ cho vệ tinh nhân tạo chuyển động tròn đều quanh Trái Đất?",
+                options: [
+                    "A. Lực hấp dẫn của Trái Đất tác dụng lên vệ tinh",
+                    "B. Lực ma sát của lớp khí quyển",
+                    "C. Lực đẩy của động cơ vệ tinh",
+                    "D. Lực quán tính ly tâm"
+                ],
+                correct: 0,
+                explanation: "Lực hấp dẫn giữa Trái Đất và vệ tinh đóng vai trò là **lực hướng tâm** giúp vệ tinh duy trì quỹ đạo tròn.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<circle cx="180" cy="75" r="35" fill="#3b82f6"/><ellipse cx="180" cy="75" rx="100" ry="45" fill="none" stroke="#94a3b8" stroke-dasharray="3,3"/><circle cx="260" cy="50" r="8" fill="#f59e0b"/><line x1="260" y1="50" x2="205" y2="68" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrow-red)"/></svg>`
+            },
+            {
+                id: 46,
+                question: "Xe đi qua đỉnh dốc cong $R = 100\\text{ m}$ tại thời điểm có $v = 20\\text{ m/s}$ và đang hãm phanh với gia tốc tiếp tuyến $a_t = 2\\text{ m/s}^2$. Độ lớn gia tốc toàn phần $a$ của xe tại đỉnh dốc là:",
+                options: [
+                    "A. $a = 4.47\\text{ m/s}^2$",
+                    "B. $a = 6.00\\text{ m/s}^2$",
+                    "C. $a = 4.00\\text{ m/s}^2$",
+                    "D. $a = 2.00\\text{ m/s}^2$"
+                ],
+                correct: 0,
+                explanation: "$a_n = \\frac{v^2}{R} = \\frac{400}{100} = 4\\text{ m/s}^2$.<br>$$a = \\sqrt{a_t^2 + a_n^2} = \\sqrt{2^2 + 4^2} = \\sqrt{20} \\approx 4.47\\text{ m/s}^2$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<path d="M 40 120 Q 180 20 320 120" fill="none" stroke="#64748b" stroke-width="5"/><circle cx="180" cy="30" r="8" fill="#3b82f6"/></svg>`
+            },
+            {
+                id: 47,
+                question: "Động lượng của hạt biến thiên theo thời gian $\\vec{p}(t) = (4t^2 \\vec{i} + 3t \\vec{j})\\text{ kg}\\cdot\\text{m/s}$. Độ lớn lực tác dụng lên hạt tại thời điểm $t = 1\\text{ s}$ là:",
+                options: [
+                    "A. $8.54\\text{ N}$",
+                    "B. $11.0\\text{ N}$",
+                    "C. $5.00\\text{ N}$",
+                    "D. $7.00\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "$$\\vec{F} = \\frac{d\\vec{p}}{dt} = 8t \\vec{i} + 3 \\vec{j}$$. tại $t = 1\\text{ s} \\implies \\vec{F} = 8\\vec{i} + 3\\vec{j} \\implies F = \\sqrt{8^2 + 3^2} = \\sqrt{73} \\approx 8.54\\text{ N}$.",
+                renderSVG: () => `<svg width="360" height="130" viewBox="0 0 360 130">${defsArrow}<line x1="40" y1="100" x2="280" y2="100" stroke="#475569" stroke-width="2"/><line x1="40" y1="100" x2="40" y2="20" stroke="#475569" stroke-width="2"/><line x1="40" y1="100" x2="200" y2="40" stroke="#16a34a" stroke-width="3.5" marker-end="url(#arrow)"/></svg>`
+            },
+            {
+                id: 48,
+                question: "Hai lực vuông góc $F_1 = 6\\text{ N}$ và $F_2 = 8\\text{ N}$ cùng tác dụng vào vật $m = 5\\text{ kg}$. Gia tốc $a$ của vật là:",
+                options: [
+                    "A. $2.0\\text{ m/s}^2$",
+                    "B. $2.8\\text{ m/s}^2$",
+                    "C. $1.4\\text{ m/s}^2$",
+                    "D. $10.0\\text{ m/s}^2$"
+                ],
+                correct: 0,
+                explanation: "Hợp lực: $F_{hl} = \\sqrt{6^2 + 8^2} = 10\\text{ N}$.<br>Gia tốc: $$a = \\frac{10}{5} = 2.0\\text{ m/s}^2$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<rect x="100" y="50" width="50" height="50" fill="#3b82f6" rx="4"/><line x1="150" y1="75" x2="230" y2="75" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow)"/><line x1="125" y1="50" x2="125" y2="10" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/></svg>`
+            },
+            {
+                id: 49,
+                question: "Ném xiên vật từ độ cao $h = 15\\text{ m}$ với $v_0 = 10\\text{ m/s}$ hợp góc $\\alpha = 30^\\circ$ lên trên. Lấy $g = 10\\text{ m/s}^2$. Thời gian $t$ từ lúc ném đến khi vật chạm đất là:",
+                options: [
+                    "A. $2.30\\text{ s}$",
+                    "B. $1.50\\text{ s}$",
+                    "C. $3.00\\text{ s}$",
+                    "D. $1.00\\text{ s}$"
+                ],
+                correct: 0,
+                explanation: "$v_{0y} = 10 \\sin 30^\\circ = 5\\text{ m/s}$. Phương trình $y = 15 + 5t - 5t^2 = 0 \\implies t^2 - t - 3 = 0 \\implies t \\approx 2.30\\text{ s}$.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<path d="M 50 50 Q 120 20 260 130" fill="none" stroke="#2563eb" stroke-width="2.5"/><line x1="20" y1="130" x2="320" y2="130" stroke="#0284c7" stroke-width="3"/></svg>`
+            },
+            {
+                id: 50,
+                question: "Lực kéo song song với mặt nghiêng $\\alpha = 30^\\circ$ để kéo vật $m = 10\\text{ kg}$ lên ĐỀU với hệ số ma sát $k = 0.1$ (lấy $g = 10\\text{ m/s}^2$) là:",
+                options: [
+                    "A. $58.66\\text{ N}$",
+                    "B. $50.00\\text{ N}$",
+                    "C. $8.66\\text{ N}$",
+                    "D. $65.00\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "$$F = P_x + F_{ms} = m g \\sin 30^\\circ + k m g \\cos 30^\\circ = 50 + 0.1 \\cdot 100 \\cdot 0.866 = 58.66\\text{ N}$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<polygon points="40,120 280,120 280,30" fill="#e2e8f0" stroke="#475569" stroke-width="2"/></svg>`
+            },
+            {
+                id: 51,
+                question: "Tính lực căng dây $T$ trong máy Atwood (ở câu 6) với $m_1 = 2\\text{ kg}, m_2 = 3\\text{ kg}, g = 10\\text{ m/s}^2$:",
+                options: [
+                    "A. $24.0\\text{ N}$",
+                    "B. $20.0\\text{ N}$",
+                    "C. $30.0\\text{ N}$",
+                    "D. $12.0\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "Gia tốc $a = 2.0\\text{ m/s}^2$. Xét $m_1$: $$T - P_1 = m_1 a \\implies T = 2 \\cdot (10 + 2) = 24.0\\text{ N}$$.",
+                renderSVG: () => `<svg width="360" height="150" viewBox="0 0 360 150">${defsArrow}<circle cx="180" cy="30" r="20" fill="#cbd5e1"/></svg>`
+            },
+            {
+                id: 52,
+                question: "Thời gian bay tổng cộng $T_{bay}$ của vật ném xiên từ mặt đất với $v_0 = 30\\text{ m/s}, \\alpha = 45^\\circ$ (lấy $g = 10\\text{ m/s}^2$) là:",
+                options: [
+                    "A. $4.24\\text{ s}$",
+                    "B. $3.00\\text{ s}$",
+                    "C. $6.00\\text{ s}$",
+                    "D. $2.12\\text{ s}$"
+                ],
+                correct: 0,
+                explanation: "$$T_{bay} = \\frac{2 v_0 \\sin\\alpha}{g} = \\frac{60 \\cdot 0.707}{10} \\approx 4.24\\text{ s}$$.",
+                renderSVG: () => `<svg width="360" height="130" viewBox="0 0 360 130">${defsArrow}<path d="M 40 100 Q 180 10 320 100" fill="none" stroke="#2563eb" stroke-dasharray="3,3" stroke-width="2"/></svg>`
+            },
+            {
+                id: 53,
+                question: "Con lắc đơn $m = 1\\text{ kg}$ treo trong xe bus đang hãm phanh với $a_0 = 2\\text{ m/s}^2$. Lực căng dây $T$ khi con lắc ở vị trí cân bằng tương đối là:",
+                options: [
+                    "A. $10.2\\text{ N}$",
+                    "B. $10.0\\text{ N}$",
+                    "C. $12.0\\text{ N}$",
+                    "D. $8.0\\text{ N}$"
+                ],
+                correct: 0,
+                explanation: "$$T = m g_{hiệu\\_dụng} = m \\sqrt{g^2 + a_0^2} = 1 \\cdot \\sqrt{100 + 4} = \\sqrt{104} \\approx 10.2\\text{ N}$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<line x1="120" y1="20" x2="240" y2="20" stroke="#334155" stroke-width="4"/><line x1="180" y1="20" x2="150" y2="90" stroke="#000" stroke-width="2"/><circle cx="150" cy="90" r="12" fill="#a855f7"/></svg>`
+            },
+            {
+                id: 54,
+                question: "Lực cản không khí dạng $F_c = -k \\cdot v^2$. Tốc độ rơi cực đại (terminal velocity) $v_T$ của vật khối lượng $m$ là:",
+                options: [
+                    "A. $v_T = \\sqrt{\\frac{m g}{k}}$",
+                    "B. $v_T = \\frac{m g}{k}$",
+                    "C. $v_T = \\sqrt{m g k}$",
+                    "D. $v_T = \\frac{k}{m g}$"
+                ],
+                correct: 0,
+                explanation: "Tốc độ rơi cực đại đạt được khi lực trọng lực cân bằng lực cản: $$P = F_c \\iff m g = k v_T^2 \\implies v_T = \\sqrt{\\frac{m g}{k}}$$.",
+                renderSVG: () => `<svg width="360" height="140" viewBox="0 0 360 140">${defsArrow}<circle cx="180" cy="65" r="15" fill="#64748b"/><line x1="180" y1="65" x2="180" y2="115" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)"/><line x1="180" y1="65" x2="180" y2="20" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow)"/></svg>`
+            },
+            {
+                id: 55,
+                question: "Lực $F = 100\\text{ N}$ đẩy khối $m = 20\\text{ kg}$ bắt đầu trượt từ nghỉ trên sàn nhẵn dài $s = 10\\text{ m}$. Vận tốc $v$ ở cuối đoạn đường là:",
+                options: [
+                    "A. $10.0\\text{ m/s}$",
+                    "B. $5.0\\text{ m/s}$",
+                    "C. $20.0\\text{ m/s}$",
+                    "D. $14.1\\text{ m/s}$"
+                ],
+                correct: 0,
+                explanation: "Gia tốc: $a = 100 / 20 = 5\\text{ m/s}^2$.<br>$$v = \\sqrt{2 a s} = \\sqrt{2 \\cdot 5 \\cdot 10} = \\sqrt{100} = 10.0\\text{ m/s}$$.",
+                renderSVG: () => `<svg width="360" height="130" viewBox="0 0 360 130">${defsArrow}<line x1="20" y1="100" x2="340" y2="100" stroke="#475569" stroke-width="3"/><rect x="80" y="50" width="60" height="50" fill="#3b82f6" rx="4"/><line x1="140" y1="75" x2="220" y2="75" stroke="#16a34a" stroke-width="3.5" marker-end="url(#arrow)"/></svg>`
+            }
+        ];
+
+        // Bộ dựng hình SVG nâng cấp: mỗi câu có sơ đồ đúng ngữ cảnh và nhãn số liệu lấy trực tiếp từ đề.
+        // Chỉ thay lớp minh họa; cấu trúc giao diện và các hàm điều hướng/chấm điểm được giữ nguyên.
+        const diagramKinds = {
+          1:'vectors',2:'block',3:'incline',4:'crest',5:'spring',6:'atwood',7:'angledPull',8:'elevatorUp',9:'braking',10:'twoMass',
+          11:'inclineFriction',12:'twoMass',13:'newton3',14:'valley',15:'elevatorDown',16:'boatDrag',17:'turningCar',18:'blockWall',19:'impulse',20:'pendulumBottom',
+          21:'frictionStatic',22:'block',23:'projectile',24:'projectilePeak',25:'inclineUp',26:'motionEquation',27:'inclineAtwood',28:'busPendulum',29:'loopTop',30:'inclineNormal',
+          31:'twoMass',32:'fallDrag',33:'horizontalThrow',34:'horizontalThrow',35:'rotatingDisk',36:'projectilePeak',37:'angledPull',38:'inclineFriction',39:'springLift',40:'threeMass',
+          41:'rotatingDisk',42:'freeFallLift',43:'impulseGraph',44:'trajectory',45:'satellite',46:'crestAccel',47:'momentum',48:'vectors',49:'obliqueFromHeight',50:'inclinePull',
+          51:'atwoodTension',52:'projectile',53:'busPendulum',54:'terminalFall',55:'blockPush'
+        };
+        const escSvg = value => String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        function questionDataLabels(q) {
+          const parts = [...q.question.matchAll(/\$([\s\S]*?)\$/g)].map(m => m[1]
+            .replace(/\\text\{([^}]*)\}/g,'$1').replace(/\\mathrm\{([^}]*)\}/g,'$1')
+            .replace(/\\vec\{([^}]*)\}/g,'$1').replace(/\\cdot/g,'·').replace(/\\alpha/g,'α')
+            .replace(/\\omega/g,'ω').replace(/\\Delta/g,'Δ').replace(/\\theta/g,'θ')
+            .replace(/\\max/g,'max').replace(/\\min/g,'min').replace(/[{}$]/g,'').replace(/\\,/g,' ')
+            .replace(/\\/g,'').replace(/\s+/g,' ').trim()).filter(Boolean);
+          const unique = [...new Set(parts)];
+          return unique.slice(0,5);
+        }
+        function renderPhysicsSVG(q) {
+          const kind = diagramKinds[q.id] || 'block';
+          const labels = questionDataLabels(q);
+          const palette = {ink:'#334155', blue:'#2563eb', green:'#059669', red:'#dc2626', amber:'#d97706', pale:'#dbeafe'};
+          const line=(x1,y1,x2,y2,color=palette.ink,w=3,marker='')=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${w}" ${marker?`marker-end="url(#${marker})"`:''}/>`;
+          const txt=(x,y,t,color=palette.ink,size=12,anchor='middle',weight='600')=>`<text x="${x}" y="${y}" fill="${color}" font-size="${size}" font-weight="${weight}" text-anchor="${anchor}">${escSvg(t)}</text>`;
+          let art='';
+          const floor=`<line x1="35" y1="155" x2="485" y2="155" stroke="#64748b" stroke-width="4"/><path d="M35 160h450" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 5"/>`;
+          const block=(x=210,y=105,w=76,h=50,label='m')=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" fill="#60a5fa" stroke="#1d4ed8" stroke-width="2"/>${txt(x+w/2,y+h/2+4,label,'#12346b',12)}`;
+          switch(kind){
+            case 'vectors': art=`<circle cx="250" cy="105" r="23" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>${line(250,105,390,105,palette.green,4,'arrG')}${line(250,105,105,105,palette.red,4,'arrR')}${txt(335,90,'F₁ = 30 N',palette.green)}${txt(150,90,'F₂ = 40 N',palette.red)}${txt(250,62,'α = 180°',palette.blue,13)}`; break;
+            case 'incline': case 'inclineFriction': case 'inclineUp': case 'inclineNormal': case 'inclinePull': case 'inclineAtwood':
+              art=`<polygon points="80,155 440,155 440,45" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/><g transform="translate(300 105) rotate(-17)">${block(-36,-24,72,48,'m')}</g>${line(300,105,350,75,palette.green,3,'arrG')}${line(300,105,300,151,palette.red,3,'arrR')}${txt(125,139,'α',palette.blue,14)}${txt(365,64,'a / F',palette.green,12)}`; break;
+            case 'crest': case 'valley': case 'crestAccel':
+              art=`<path d="M55 150 Q250 ${kind==='valley'?225:25} 465 150" fill="none" stroke="#64748b" stroke-width="7"/><rect x="224" y="${kind==='valley'?155:48}" width="52" height="27" rx="5" fill="#f59e0b" stroke="#b45309"/>${line(250,kind==='valley'?180:62,250,kind==='valley'?112:112,palette.red,3,'arrR')}${line(250,kind==='valley'?180:62,250,kind==='valley'?220:20,palette.green,3,'arrG')}${txt(315,40,'v, R',palette.blue)}`; break;
+            case 'spring': case 'springLift':
+              art=`<line x1="205" y1="28" x2="295" y2="28" stroke="#334155" stroke-width="5"/><path d="M250 28 L250 40 L266 49 L234 61 L266 73 L234 85 L266 97 L250 108" fill="none" stroke="#0284c7" stroke-width="3"/>${block(222,108,56,42,'m')}${line(310,130,310,75,palette.green,3,'arrG')}${line(185,130,185,165,palette.red,3,'arrR')}${txt(340,82,'Fđh',palette.green)}`; break;
+            case 'atwood': case 'atwoodTension':
+              art=`<circle cx="250" cy="48" r="27" fill="#cbd5e1" stroke="#475569" stroke-width="3"/><path d="M223 48 V118 H195 M277 48 V132 H305" fill="none" stroke="#334155" stroke-width="3"/><rect x="164" y="118" width="62" height="38" rx="5" fill="#ef4444"/><rect x="274" y="132" width="62" height="38" rx="5" fill="#10b981"/>${txt(195,142,'m₁ = 2 kg','#fff',11)}${txt(305,156,'m₂ = 3 kg','#fff',11)}${line(305,120,305,166,palette.green,3,'arrG')}${txt(250,18,'Ròng rọc lý tưởng',palette.ink,11)}`; break;
+            case 'angledPull': case 'blockPush': case 'block': case 'frictionStatic': case 'twoMass': case 'threeMass': case 'braking':
+              art=`${floor}${block(205,105,80,50,kind==='twoMass'?'m₁ + m₂':kind==='threeMass'?'m₁ m₂ m₃':'m')}${line(kind==='braking'?205:285,128,kind==='braking'?115:390,128,kind==='braking'?palette.red:palette.green,4,kind==='braking'?'arrR':'arrG')}${line(205,145,145,145,palette.red,3,'arrR')}${line(245,105,245,65,palette.blue,3,'arrB')}${txt(350,112,kind==='braking'?'Fhãm':'F',kind==='braking'?palette.red:palette.green)}${txt(145,135,'Fms',palette.red,11)}`; break;
+            case 'elevatorUp': case 'elevatorDown': case 'freeFallLift':
+              art=`<rect x="165" y="35" width="170" height="125" rx="8" fill="#eff6ff" stroke="#0284c7" stroke-width="3"/>${block(222,85,56,48,'m')}${line(250,85,250,48,palette.green,3,'arrG')}${line(250,133,250,157,palette.red,3,'arrR')}${txt(250,23,kind==='freeFallLift'?'Rơi tự do: N = 0':'N',palette.blue,12)}`; break;
+            case 'projectile': case 'projectilePeak': case 'horizontalThrow': case 'trajectory': case 'obliqueFromHeight':
+              art=`<line x1="45" y1="155" x2="470" y2="155" stroke="#64748b" stroke-width="3"/><path d="M65 125 Q240 ${kind==='projectilePeak'?10:35} 430 155" fill="none" stroke="#2563eb" stroke-width="3" stroke-dasharray="7 4"/><circle cx="65" cy="125" r="7" fill="#f59e0b"/>${line(65,125,125,95,palette.green,3,'arrG')}${line(65,125,125,125,palette.red,3,'arrR')}${txt(125,82,'v₀',palette.green)}${txt(132,143,'v₀x',palette.red)}${txt(250,28,kind==='horizontalThrow'?'Ném ngang':kind==='trajectory'?'y = f(x)':'Ném xiên',palette.blue,13)}`; break;
+            case 'pendulumBottom': case 'busPendulum': case 'busPendulum':
+              art=`<line x1="250" y1="35" x2="250" y2="65" stroke="#475569" stroke-width="4"/><line x1="250" y1="65" x2="300" y2="125" stroke="#0284c7" stroke-width="3"/><circle cx="300" cy="125" r="17" fill="#a855f7" stroke="#6b21a8" stroke-width="2"/>${line(300,125,300,165,palette.red,3,'arrR')}${line(300,125,250,65,palette.green,3,'arrG')}${txt(330,110,'T',palette.green)}${txt(320,160,'mg',palette.red)}`; break;
+            case 'loopTop': case 'turningCar': case 'rotatingDisk': case 'satellite':
+              art=`<circle cx="250" cy="105" r="62" fill="none" stroke="#64748b" stroke-width="4"/><circle cx="250" cy="43" r="10" fill="#f59e0b" stroke="#b45309" stroke-width="2"/>${line(250,43,250,90,palette.red,3,'arrR')}${line(250,43,310,43,palette.green,3,'arrG')}${txt(320,38,'v / ω',palette.green)}${txt(250,183,'R = bán kính quỹ đạo',palette.blue,11)}`; break;
+            case 'impulse': case 'impulseGraph': case 'momentum':
+              art=`<line x1="65" y1="155" x2="465" y2="155" stroke="#64748b" stroke-width="2"/><line x1="65" y1="155" x2="65" y2="35" stroke="#64748b" stroke-width="2"/><path d="M65 155 L65 145 L230 55 L230 155 Z" fill="#bfdbfe" stroke="#2563eb" stroke-width="2"/><text x="145" y="130" fill="#1d4ed8" font-size="12" font-weight="600">J = diện tích</text>${txt(260,35,'F(t) / p(t)',palette.blue,12)}`; break;
+            case 'blockWall': case 'fallDrag': case 'terminalFall':
+              art=`<line x1="360" y1="25" x2="360" y2="165" stroke="#64748b" stroke-width="8"/>${block(270,78,70,52,'m')}${line(270,103,205,103,palette.blue,3,'arrB')}${line(305,130,305,166,palette.red,3,'arrR')}${line(305,78,305,40,palette.green,3,'arrG')}${txt(198,91,'F ép / Fc',palette.blue,11)}${txt(325,36,'N / mg',palette.green,11)}`; break;
+            case 'motionEquation': case 'momentum':
+              art=`<line x1="55" y1="150" x2="465" y2="150" stroke="#64748b" stroke-width="3"/><path d="M75 130 Q250 25 435 80" fill="none" stroke="#2563eb" stroke-width="3"/><circle cx="250" cy="78" r="10" fill="#f59e0b"/>${line(250,78,315,52,palette.green,3,'arrG')}${txt(250,25,'x(t), v(t), a(t)',palette.blue,13)}`; break;
+            case 'boatDrag':
+              art=`<path d="M80 120 L420 120 L385 155 L120 155 Z" fill="#bae6fd" stroke="#0284c7" stroke-width="2"/>${line(210,105,340,105,palette.green,4,'arrG')}${line(210,105,100,105,palette.red,4,'arrR')}${txt(345,92,'F kéo',palette.green)}${txt(100,92,'Fc = bv',palette.red)}`; break;
+            case 'newton3':
+              art=`<rect x="210" y="70" width="80" height="65" rx="8" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>${line(210,102,100,102,palette.red,4,'arrR')}${line(290,102,400,102,palette.green,4,'arrG')}${txt(145,88,'FBA',palette.red,13)}${txt(355,88,'FAB',palette.green,13)}${txt(250,55,'Hai lực tương tác',palette.blue,12)}`; break;
+            case 'inclineAtwood': break;
+            default:
+              art=`${floor}${block()}${line(286,128,390,128,palette.green,4,'arrG')}${line(245,105,245,58,palette.red,3,'arrR')}${txt(350,112,'F / a',palette.green)}`;
+          }
+          const chips=labels.slice(0,4).map((v,i)=>`<g><rect x="${18+i*124}" y="190" width="116" height="25" rx="7" fill="#ffffff" stroke="#cbd5e1"/><text x="${76+i*124}" y="206" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">${escSvg(v.length>17?v.slice(0,16)+'…':v)}</text></g>`).join('');
+          return `<svg xmlns="http://www.w3.org/2000/svg" width="520" height="225" viewBox="0 0 520 225" role="img" aria-label="Sơ đồ vật lý câu ${q.id}"><defs><marker id="arrG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#059669"/></marker><marker id="arrR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#dc2626"/></marker><marker id="arrB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2563eb"/></marker></defs><rect x="1" y="1" width="518" height="223" rx="12" fill="#f8fafc" stroke="#dbe3ee"/><text x="18" y="20" fill="#1e40af" font-size="11" font-weight="700">SƠ ĐỒ VẬT LÝ · CÂU ${q.id}</text>${art}<line x1="18" y1="180" x2="502" y2="180" stroke="#cbd5e1" stroke-width="1"/>${chips || txt(260,204,'Sơ đồ khái niệm',palette.ink,11)}</svg>`;
+        }
+        // Ghi đè riêng hàm vẽ của từng câu; giữ nguyên câu hỏi, đáp án, lời giải và logic làm bài hiện có.
+        quizData.forEach(q => { q.renderSVG = () => renderPhysicsSVG(q); });
+
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+
+        // Khởi tạo menu nhảy nhanh câu hỏi
+        function initJumpSelect() {
+            const select = document.getElementById("question-select");
+            select.innerHTML = "";
+            quizData.forEach((q, index) => {
+                const opt = document.createElement("option");
+                opt.value = index;
+                opt.innerText = `Câu ${index + 1}`;
+                select.appendChild(opt);
+            });
+        }
+
+        function loadQuestion() {
+            const q = quizData[currentQuestion];
+            document.getElementById("question-number").innerText = `Câu ${currentQuestion + 1} / ${quizData.length}`;
+            document.getElementById("question-text").innerHTML = q.question;
+            document.getElementById("question-select").value = currentQuestion;
+
+            // Update Progress Bar
+            const progressPct = ((currentQuestion + 1) / quizData.length) * 100;
+            document.getElementById("progress-fill").style.width = `${progressPct}%`;
+
+            // Render Inline SVG
+            document.getElementById("diagram-container").innerHTML = q.renderSVG();
+
+            // Render Options
+            const optionsContainer = document.getElementById("options-container");
+            optionsContainer.innerHTML = "";
+
+            q.options.forEach((optText, index) => {
+                const btn = document.createElement("button");
+                btn.className = "option-btn";
+                btn.innerHTML = optText;
+
+                if (userAnswers[currentQuestion] !== null) {
+                    btn.disabled = true;
+                    if (index === q.correct) {
+                        btn.classList.add("selected-correct");
+                    } else if (index === userAnswers[currentQuestion]) {
+                        btn.classList.add("selected-wrong");
+                    }
+                } else {
+                    btn.onclick = () => selectOption(index);
+                }
+                optionsContainer.appendChild(btn);
+            });
+
+            // Handle Explanation Box
+            const explBox = document.getElementById("explanation-box");
+            if (userAnswers[currentQuestion] !== null) {
+                document.getElementById("explanation-text").innerHTML = q.explanation;
+                explBox.classList.add("show");
+            } else {
+                explBox.classList.remove("show");
+            }
+
+            // Update Buttons
+            document.getElementById("btn-prev").disabled = currentQuestion === 0;
+            document.getElementById("btn-next").innerText = currentQuestion === quizData.length - 1 ? "Hoàn Thành 🎉" : "Câu Tiếp Theo 🚀";
+
+            // Typeset MathJax
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function selectOption(index) {
+            if (userAnswers[currentQuestion] !== null) return;
+            userAnswers[currentQuestion] = index;
+
+            if (index === quizData[currentQuestion].correct) {
+                score += 10;
+                document.getElementById("score-text").innerText = `Điểm: ${score} / ${quizData.length * 10}`;
+            }
+
+            loadQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                alert(`Bạn đã hoàn thành trọn bộ 55 câu trắc nghiệm!\nTổng điểm: ${score} / ${quizData.length * 10}`);
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+
+        function jumpToQuestion(index) {
+            currentQuestion = parseInt(index);
+            loadQuestion();
+        }
+
+        window.onload = () => {
+            initJumpSelect();
+            loadQuestion();
+        };
+    </script>
+</body>
+</html>

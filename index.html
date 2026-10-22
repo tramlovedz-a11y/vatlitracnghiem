@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1e3c72">
+<title>Vật Lí 1 - Cổng Ôn Tập Trắc Nghiệm</title>
+<style>
+:root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card-border: #334155;
+    --tx: #f8fafc;
+    --mu: #94a3b8;
+    --pr: #3b82f6;
+    --pr2: #8b5cf6;
+    --acc: #06b6d4;
+    --ok: #10b981;
+    --sh: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+    background-color: var(--bg);
+    color: var(--tx);
+    line-height: 1.6;
+    padding-bottom: 40px;
+}
+
+/* Header & Physics Visual Animation */
+.hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #1e3c72 100%);
+    padding: calc(env(safe-area-inset-top) + 30px) 20px 40px;
+    border-radius: 0 0 32px 32px;
+    box-shadow: var(--sh);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-visual {
+    width: 100%;
+    max-width: 360px;
+    height: 160px;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+.hero h1 {
+    margin: 10px 0 6px;
+    font-size: 26px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    margin: 0;
+    color: var(--mu);
+    font-size: 15px;
+}
+
+/* Main Container */
+.container {
+    max-width: 680px;
+    margin: -20px auto 0;
+    padding: 0 16px;
+    position: relative;
+    z-index: 10;
+}
+
+.banner-all {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    padding: 18px 20px;
+    border-radius: 22px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.35);
+    margin-bottom: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.banner-all:active { transform: scale(0.98); }
+.banner-all .icon { font-size: 32px; flex: none; }
+.banner-all b { display: block; font-size: 18px; }
+.banner-all small { opacity: 0.9; font-size: 13px; }
+
+.section-title {
+    font-size: 14px;
+    color: var(--mu);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px 4px 12px;
+    font-weight: 700;
+}
+
+/* Chapter Cards Grid */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+@media (min-width: 580px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 16px;
+    text-decoration: none;
+    color: var(--tx);
+    box-shadow: var(--sh);
+    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:active { transform: scale(0.97); }
+.card:hover { border-color: var(--pr); }
+
+.card .num {
+    flex: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--pr), var(--pr2));
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 17px;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.card .info { flex: 1; }
+.card .info h3 { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.3; }
+.card .info p { margin: 4px 0 0; font-size: 12px; color: var(--mu); }
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 6px;
+}
+.badge.ready { background: #064e3b; color: #34d399; }
+.badge.pending { background: #312e81; color: #a5b4fc; }
+
+.footer-info {
+    text-align: center;
+    color: var(--mu);
+    font-size: 13px;
+    margin-top: 30px;
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+    <!-- Mô hình Vật lí Động (Con lắc & Quỹ đạo nguyên tử) -->
+    <svg class="hero-visual" viewBox="0 0 360 160">
+        <defs>
+            <linearGradient id="gradP" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#60a5fa"/>
+                <stop offset="100%" stop-color="#3b82f6"/>
+            </linearGradient>
+            <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+
+        <!-- Quỹ đạo nguyên tử quay quanh tâm -->
+        <ellipse cx="180" cy="80" rx="120" ry="40" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.4" transform="rotate(-20 180 80)"/>
+        <ellipse cx="180" cy="80" rx="120" ry="40" fill="none" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.4" transform="rotate(20 180 80)"/>
+
+        <!-- Hạt proton ở tâm -->
+        <circle cx="180" cy="80" r="10" fill="url(#gradP)" filter="url(#glow)"/>
+
+        <!-- Con lắc chuyển động đu đưa -->
+        <g id="pendulum">
+            <line x1="180" y1="10" x2="180" y2="120" stroke="#94a3b8" stroke-width="2"/>
+            <circle cx="180" cy="120" r="14" fill="#f59e0b" filter="url(#glow)"/>
+        </g>
+    </svg>
+
+    <h1>VẬT LÍ 1 - ĐẠI HỌC</h1>
+    <p>Cổng luyện tập trắc nghiệm & mô phỏng tương tác</p>
+</header>
+
+<div class="container">
+    <!-- Nút Trộn Tất Cả -->
+    <a href="chuong1.html" class="banner-all">
+        <div class="icon">🎲</div>
+        <div>
+            <b>Luyện Tập Trộn Tổng Hợp</b>
+            <small>Ôn tập ngẫu nhiên tất cả các chương</small>
+        </div>
+    </a>
+
+    <div class="section-title">Danh sách các chương học</div>
+
+    <div class="grid">
+        <!-- Chương 1 -->
+        <a href="chuong1.html" class="card">
+            <div class="num">1</div>
+            <div class="info">
+                <h3>Động học chất điểm</h3>
+                <p>Vận tốc, gia tốc, ném xiên, chuyển động tròn</p>
+                <span class="badge ready">69 Câu • Sẵn sàng</span>
+            </div>
+        </a>
+
+        <!-- Chương 2 -->
+        <a href="chuong2.html" class="card">
+            <div class="num">2</div>
+            <div class="info">
+                <h3>Động lực học chất điểm</h3>
+                <p>Định luật Newton, ma sát, thang máy, cầu cong</p>
+                <span class="badge ready">55 Câu • Sẵn sàng</span>
+            </div>
+        </a>
+
+        <!-- Chương 3 -->
+        <a href="chuong3.html" class="card">
+            <div class="num">3</div>
+            <div class="info">
+                <h3>Công & Năng lượng</h3>
+                <p>Công cơ học, động năng, thế năng, bảo toàn</p>
+                <span class="badge pending">Đang cập nhật</span>
+            </div>
+        </a>
+
+        <!-- Chương 4 -->
+        <a href="chuong4.html" class="card">
+            <div class="num">4</div>
+            <div class="info">
+                <h3>Động lượng & Va chạm</h3>
+                <p>Bảo toàn động lượng, va chạm đàn hồi & mềm</p>
+                <span class="badge pending">Đang cập nhật</span>
+            </div>
+        </a>
+
+        <!-- Chương 5 -->
+        <a href="chuong5.html" class="card">
+            <div class="num">5</div>
+            <div class="info">
+                <h3>Cơ học vật rắn</h3>
+                <p>Mô-men lực, mô-men quán tính, chuyển động lăn</p>
+                <span class="badge pending">Đang cập nhật</span>
+            </div>
+        </a>
+
+        <!-- Chương 6 -->
+        <a href="chuong6.html" class="card">
+            <div class="num">6</div>
+            <div class="info">
+                <h3>Cơ học chất lưu</h3>
+                <p>Áp suất tĩnh, định luật Pascal, Bernoulli</p>
+                <span class="badge pending">Đang cập nhật</span>
+            </div>
+        </a>
+
+        <!-- Chương 7 -->
+        <a href="chuong7.html" class="card">
+            <div class="num">7</div>
+            <div class="info">
+                <h3>Thuyết động học chất khí</h3>
+                <p>Phương trình trạng thái, các đẳng quá trình</p>
+                <span class="badge pending">Đang cập nhật</span>
+            </div>
+        </a>
+
+        <!-- Chương 8 -->
+        <a href="chuong8.html" class="card">
+            <div class="num">8</div>
+            <div class="info">
+                <h3>Nguyên lí nhiệt động lực học</h3>
+                <p>Nhiệt lượng, công, nội năng, Nguyên lí I & II</p>
+                <span class="badge pending">Đang cập nhật</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="footer-info">
+        <p>Ứng dụng ôn thi Vật lí Đại học • Đồ họa SVG HD</p>
+    </div>
+</div>
+
+<script>
+// JavaScript tạo hiệu ứng lắc con lắc đơn bằng hàm Sin toán học
+let angle = 0;
+const pendulum = document.getElementById('pendulum');
+
+function animatePendulum() {
+    angle += 0.04;
+    // Góc dao động từ -25 độ đến +25 độ
+    const currentAngle = Math.sin(angle) * 25;
+    pendulum.setAttribute('transform', `rotate(${currentAngle}, 180, 10)`);
+    requestAnimationFrame(animatePendulum);
+}
+
+animatePendulum();
+</script>
+
+</body>
+</html>
