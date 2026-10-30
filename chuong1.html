@@ -4,23 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#1e3c72">
-<title>Chương 2: Động lực học chất điểm - Trắc nghiệm Vật lí 1</title>
-<script>
-/* MathJax nhận delimiter có MỘT dấu gạch chéo ngược tại thời điểm chạy.
-   Vì đây là JavaScript string literal nên trong mã nguồn phải viết '\(' và '\)'.
-   Trong QUESTIONS_DATA, các chuỗi LaTeX được JSON-escape thành '\\(' để sau khi
-   JavaScript parse, MathJax nhận đúng ký tự '\(' và '\)'. */
-window.MathJax = {
-  tex: {
-    inlineMath: [['\\(','\\)'], ['$','$']],
-    displayMath: [['\\[','\\]'], ['$$','$$']]
-  },
-  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
-};
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<meta name="description" content="Bộ câu hỏi trắc nghiệm và bài tập Vật lí 1 - Chương I: Động học chất điểm.">
+<title>Chương 1: Động học chất điểm - Trắc nghiệm Vật lí 1</title>
 <style>
-
 :root{color-scheme:light dark;--bg:#f4f7f6;--card:#fff;--tx:#1e293b;--mu:#64748b;--pr:#1e3c72;--pr2:#2a5298;--ok:#10b981;--okb:#d1fae5;--no:#ef4444;--nob:#fee2e2;--bd:#e2e8f0;--sh:0 10px 25px rgba(30,60,114,.10);--fig:#f8fafc;--exp:#f8fafc}
 @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--card:#1e293b;--tx:#f1f5f9;--mu:#94a3b8;--okb:#064e3b;--nob:#7f1d1d;--bd:#334155;--sh:0 10px 25px rgba(0,0,0,.35);--fig:#f8fafc;--exp:#172033}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6}body{padding-bottom:24px}
@@ -30,1078 +16,1057 @@ window.MathJax = {
 .q{font-size:17px;font-weight:700;margin:10px 0 16px;line-height:1.55}.fig{background:var(--fig);border-radius:14px;margin:12px 0 18px;padding:10px;border:1px solid #dbe4ef;display:grid;place-items:center;overflow:hidden}.fig svg{width:100%;max-width:560px;height:auto;display:block}
 .opt{display:flex;gap:13px;align-items:center;width:100%;min-height:56px;text-align:left;font:inherit;color:var(--tx);background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:10px 14px;margin-bottom:10px;transition:border-color .18s,background .18s;cursor:pointer}.opt .l{flex:none;width:32px;height:32px;border-radius:8px;background:var(--bd);display:grid;place-items:center;font-weight:850;font-size:14px}.opt:not([disabled]):hover{border-color:var(--pr);background:color-mix(in srgb,var(--pr) 6%,var(--card))}.opt.ok{background:var(--okb);border-color:var(--ok)}.opt.ok .l{background:var(--ok);color:#fff}.opt.no{background:var(--nob);border-color:var(--no)}.opt.no .l{background:var(--no);color:#fff}.opt[disabled]{cursor:default}
 .input-area{width:100%;padding:12px 14px;border:2px solid var(--bd);border-radius:14px;font:inherit;color:var(--tx);background:var(--card);margin:4px 0 10px;outline:none}.input-area:focus{border-color:var(--pr)}.hint{font-size:13px;color:var(--mu);display:block;margin:0 0 6px}.feedback{display:none;font-size:14px;font-weight:750;padding:10px 12px;border-radius:10px;margin:10px 0}.feedback.good{background:var(--okb);color:var(--tx)}.feedback.bad{background:var(--nob);color:var(--tx)}.feedback.neutral{background:var(--fig);border:1px solid var(--bd)}
-.exp{display:none;background:var(--exp);border-radius:16px;padding:16px;margin-top:16px;border:1px solid var(--bd);overflow-wrap:anywhere}.exp.on{display:block;animation:fadeIn .25s}.exp h3{margin:0 0 8px;font-size:16px;color:var(--pr)}.exp p{margin:0 0 8px;font-size:14.5px;white-space:pre-line}.exp p:last-child{margin-bottom:0}@media(prefers-color-scheme:dark){.exp h3{color:#9dbbff}}@keyframes fadeIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+.exp{display:none;background:var(--exp);border-radius:16px;padding:16px;margin-top:16px;border:1px solid var(--bd);overflow-wrap:anywhere}.exp.on{display:block;animation:fadeIn .25s}.exp h3{margin:0 0 8px;font-size:16px;color:var(--pr)}.exp .explain{margin:0 0 8px;font-size:14.5px;white-space:pre-line}.exp .explain:last-child{margin-bottom:0}@media(prefers-color-scheme:dark){.exp h3{color:#9dbbff}}@keyframes fadeIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
 .controls{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;justify-content:center}.btn{flex:1;min-width:110px;min-height:48px;border:0;border-radius:14px;font:inherit;font-weight:750;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;padding:10px 12px;transition:transform .1s,opacity .1s}.btn:active{transform:scale(.98)}.btn:disabled{opacity:.4;cursor:not-allowed}.btn-primary{background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff;box-shadow:0 6px 15px rgba(42,82,152,.2)}.btn-secondary{background:var(--card);color:var(--tx);border:2px solid var(--bd)}
-.jump-container{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:14px 0 22px;color:var(--mu);font-weight:700;font-size:14px}.jump-container select{font:inherit;padding:10px 12px;border:2px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);max-width:100%}.note{font-size:12px;color:var(--mu);margin-top:8px}.manual-area{display:flex;gap:8px;flex-wrap:wrap}.manual-area input{flex:1;min-width:150px}.status-pill{display:inline-block;font-size:12px;font-weight:800;padding:4px 8px;border-radius:99px;background:#dcfce7;color:#166534}.status-pill.review{background:#fef3c7;color:#92400e}.status-pill.conditional{background:#dbeafe;color:#1e40af}.summary{font-size:13px;color:var(--mu);margin-top:12px}.method-note{border-left:3px solid #64748b;padding-left:12px}.status-counts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.status-counts span{border:1px solid var(--bd);border-radius:9px;padding:4px 8px;font-size:12px;color:var(--mu)}
+.jump-container{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:14px 0 22px;color:var(--mu);font-weight:700;font-size:14px}.jump-container select{font:inherit;padding:10px 12px;border:2px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);max-width:100%}.note{font-size:12px;color:var(--mu);margin-top:8px}.manual-area{display:flex;gap:8px;flex-wrap:wrap}.manual-area input{flex:1;min-width:150px}.status-pill{display:inline-block;font-size:12px;font-weight:800;padding:4px 8px;border-radius:99px;background:#dcfce7;color:#166534}.status-pill.review{background:#fef3c7;color:#92400e}.status-pill.conditional{background:#dbeafe;color:#1e40af}.summary{font-size:13px;color:var(--mu);margin-top:12px}.status-counts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.status-counts span{border:1px solid var(--bd);border-radius:9px;padding:4px 8px;font-size:12px;color:var(--mu)}.missing-box{border:1px dashed #d97706;background:#fffbeb;color:#78350f;border-radius:12px;padding:13px;font-size:14px}
 @media(max-width:480px){.q{font-size:16px}.opt{padding:10px 11px}.controls .btn{min-width:calc(50% - 10px)}}
-
-.answer-key{font-size:13px;color:var(--mu);margin-top:8px}.exp .formula{font-size:15px}.badge-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.diagram-caption{font-size:12px;color:#475569;text-align:center;margin-top:5px}.manual-actions{display:flex;gap:8px;flex-wrap:wrap}.manual-actions .btn{flex:1}.btn-reveal{background:var(--fig);border:1px solid var(--bd);color:var(--tx)}.exp .note-box{padding:9px 11px;border-left:3px solid #64748b;background:color-mix(in srgb,var(--bd) 25%,transparent);border-radius:7px}.opt .l{font-family:inherit}.opt .opt-text{flex:1}.small-stat{font-size:12px;color:var(--mu)}.source-note{font-size:12px;color:var(--mu);line-height:1.5;margin-top:8px}
-
 </style>
 </head>
 <body>
-<header class="top">
-  <h1>⚛️ Chương 2: Động lực học chất điểm</h1>
-  <p>Vật lí Đại cương · 56 câu (70–125) · SVG minh họa · MathJax</p>
-</header>
+<header class="top"><h1>⚛️ Chương 1: Động học chất điểm</h1><p>Vật lí Đại cương · Câu 1–69 · SVG minh họa · MathJax</p></header>
 <main class="wrap">
-  <section class="card" id="quiz-container" aria-live="polite">
-    <div class="progress-bg"><div class="progress-fill" id="progress-fill"></div></div>
-    <div id="question-content"></div>
-  </section>
-  <nav class="controls" aria-label="Điều hướng câu hỏi">
-    <a href="index.html" class="btn btn-secondary">🏠 Trang chủ</a>
-    <button class="btn btn-secondary" id="btn-prev" type="button">← Câu Trước</button>
-    <button class="btn btn-primary" id="btn-next" type="button">Câu Tiếp Theo →</button>
-  </nav>
-  <div class="jump-container">
-    <label for="question-select">Chuyển nhanh đến câu:</label>
-    <select id="question-select" aria-label="Chuyển nhanh đến câu"></select>
-  </div>
-  <section class="card">
-    <b>Tổng kết bộ câu hỏi</b>
-    <p class="summary">Đã nạp 56 câu thuộc Chương II theo dải số gốc 70–125. Các câu không có phương án A–D trong PDF được giữ ở dạng trả lời nhập tay; không bổ sung phương án ngoài tài liệu.</p>
-    <p class="summary" id="summary"></p>
-    <div class="status-counts" id="status-counts"></div>
-    <p class="source-note">Nguồn dữ liệu: “BỘ CÂU HỎI TRẮC NGHIỆM VẬT LÍ 1”. Một số câu có lỗi ký hiệu, thiếu giả thiết hoặc nhiều lựa chọn đúng được đánh dấu “Cần rà soát” và chú thích ngay trong lời giải.</p>
-  </section>
+<section class="card" id="quiz-container" aria-live="polite"><div class="progress-bg"><div class="progress-fill" id="progress-fill"></div></div><div id="question-content"></div></section>
+<nav class="controls" aria-label="Điều hướng câu hỏi"><a href="index.html" class="btn btn-secondary">🏠 Trang chủ</a><button class="btn btn-secondary" id="btn-prev" type="button">← Câu Trước</button><button class="btn btn-primary" id="btn-next" type="button">Câu Tiếp Theo →</button></nav>
+<div class="jump-container"><label for="question-select">Chuyển nhanh đến câu:</label><select id="question-select"></select></div>
+<section class="card"><b>Tổng kết bộ câu hỏi</b><p class="summary">Dữ liệu trích từ PDF Chương I. Có 68 câu hỏi thực tế trong tài liệu; số Câu 53 bị thiếu và được giữ làm mục trống để bảo toàn đánh số. Câu 70 là câu đầu của Chương II nên không đưa vào đây.</p><p class="summary" id="summary"></p><div class="status-counts" id="status-counts"></div><p class="note">Các câu có phương án được giữ theo PDF. Những câu nguồn không có A/B/C/D dùng ô nhập câu trả lời; câu mơ hồ hoặc thiếu giả thiết được gắn trạng thái riêng. Một số câu không thể chấm tự động vì là câu giải thích bằng lời.</p></section>
 </main>
+<script>
+// MathJax configuration follows the supplied Chapter 3/4 template: JS escapes produce the \( and \) delimiters.
+window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
 const QUESTIONS_DATA = [
   {
-    "id": 70,
-    "question": "Nhận biết điều xảy ra đối với hệ số ma sát giữa hai mặt tiếp xúc nếu lực ép hai mặt tiếp xúc tăng lên hai lần?",
+    "id": 1,
+    "question": "Chỉ ra khái niệm: Chuyển động là gì?",
+    "type": "mc",
+    "options": [
+      "Là sự thay đổi vận tốc của vật trong không gian, theo thời gian.",
+      "Là sự thay đổi vị trí của vật này so với một vật làm mốc theo thời gian.",
+      "Là sự thay đổi tốc độ nhanh hay chậm của một vật so với một vật khác được chọn làm mốc.",
+      "Là quãng đường mà vật đi được trong một đơn vị thời gian."
+    ],
+    "answer": 1,
+    "explanation": "Chuyển động cơ học được xác định bằng sự thay đổi vị trí của vật so với vật mốc theo thời gian. Chọn <strong>B</strong> vì đây là định nghĩa đầy đủ; thay đổi vận tốc hoặc tốc độ không phải điều kiện bắt buộc (vật có thể chuyển động thẳng đều).",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight"
+  },
+  {
+    "id": 2,
+    "question": "Chỉ ra khái niệm: Gia tốc là gì?",
+    "type": "mc",
+    "options": [
+      "Là đạo hàm của vectơ gia tốc theo thời gian.",
+      "Là sự thay đổi tốc độ nhanh hay chậm của một vật so với một vật khác được chọn làm mốc.",
+      "Là đại lượng vectơ đặc trưng cho sự biến thiên vận tốc của vật theo thời gian.",
+      "Là đại lượng đặc trưng cho sự biến thiên vị trí của vật theo thời gian."
+    ],
+    "answer": 2,
+    "explanation": "Gia tốc là đại lượng vectơ biểu thị mức độ biến thiên của vectơ vận tốc theo thời gian: \\(\\vec a=\\Delta\\vec v/\\Delta t\\) (trung bình) và \\(\\vec a=d\\vec v/dt\\) (tức thời). Chọn <strong>C</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "vectors"
+  },
+  {
+    "id": 3,
+    "question": "Chỉ ra khái niệm: Gia tốc trung bình là gì?",
+    "type": "mc",
+    "options": [
+      "Là tỷ số giữa độ biến thiên vận tốc và khoảng thời gian xảy ra sự biến thiên đó.",
+      "Là đại lượng đặc trưng cho sự biến thiên vị trí của vật theo thời gian.",
+      "Là đạo hàm của vận tốc theo thời gian.",
+      "Là tỷ số giữa độ biến thiên vị trí của vật và thời gian xảy ra sự biến thiên đó."
+    ],
+    "answer": 0,
+    "explanation": "Gia tốc trung bình được xác định bởi \\(\\vec a_{tb}=\\Delta\\vec v/\\Delta t=(\\vec v_2-\\vec v_1)/(t_2-t_1)\\). Chọn <strong>A</strong>. Phương án D mô tả vận tốc trung bình theo độ dời.",
+    "status": "verified",
+    "note": "",
+    "diagram": "vectors"
+  },
+  {
+    "id": 4,
+    "question": "Nêu khái niệm gia tốc tức thời?",
+    "type": "mc",
+    "options": [
+      "Là tỷ số giữa độ biến thiên vận tốc và khoảng thời gian xảy ra sự biến thiên đó.",
+      "Là đạo hàm của vận tốc theo thời gian.",
+      "Là đại lượng đặc trưng cho sự biến thiên vị trí của vật theo thời gian.",
+      "Là tỷ số giữa độ biến thiên vị trí của vật và thời gian xảy ra sự biến thiên đó."
+    ],
+    "answer": 1,
+    "explanation": "Gia tốc tức thời là giới hạn của gia tốc trung bình khi khoảng thời gian xét tiến tới 0: \\(\\vec a=d\\vec v/dt\\). Chọn <strong>B</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "vectors"
+  },
+  {
+    "id": 5,
+    "question": "Một vật chuyển động thẳng biến đổi đều, tại một thời điểm gia tốc và vận tốc đều có giá trị dương. Chỉ ra tính chất chuyển động của vật tại thời điểm đó?",
+    "type": "mc",
+    "options": [
+      "Chậm dần đều.",
+      "Nhanh dần đều.",
+      "Đều.",
+      "Biến đổi không đều."
+    ],
+    "answer": 1,
+    "explanation": "Vận tốc và gia tốc cùng dấu (đều dương) nên độ lớn vận tốc đang tăng. Vì gia tốc không đổi, vật nhanh dần đều. Chọn <strong>B</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight"
+  },
+  {
+    "id": 6,
+    "question": "Nêu đặc điểm của vectơ gia tốc trong chuyển động thẳng biến đổi đều?",
+    "type": "mc",
+    "options": [
+      "Luôn cùng phương, cùng chiều với vectơ vận tốc.",
+      "Luôn cùng phương, ngược chiều với vectơ vận tốc.",
+      "Không đổi về độ lớn.",
+      "Luôn thay đổi cả phương, chiều và độ lớn."
+    ],
+    "answer": 2,
+    "explanation": "Trong chuyển động thẳng biến đổi đều, vectơ gia tốc không đổi: phương và chiều cố định, độ lớn không đổi. Nó có thể cùng chiều hoặc ngược chiều vận tốc tùy vật nhanh dần hay chậm dần. Chọn <strong>C</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "vectors"
+  },
+  {
+    "id": 7,
+    "question": "Chuyển động thẳng là gì?",
+    "type": "mc",
+    "options": [
+      "Xe đi thẳng tới đèn đỏ rồi dừng lại.",
+      "Xe vừa đi tới vừa nảy lên khỏi mặt đường thẳng.",
+      "Xe lùi thẳng ngã tư rồi dừng lại.",
+      "Xe đi tới đi lui trên một đường thẳng."
+    ],
+    "answer": null,
+    "explanation": "Chuyển động thẳng là chuyển động có quỹ đạo là một đường thẳng. Trong các ví dụ được in, A, C và D đều có thể là chuyển động theo đường thẳng; B có thêm chuyển động nảy lên nên quỹ đạo không còn là một đường thẳng. Vì vậy đề có nhiều phương án có thể thỏa định nghĩa và không có một đáp án duy nhất chắc chắn.",
+    "status": "review",
+    "note": "Các phương án A, C và D đều mô tả quỹ đạo thẳng; đề không phân biệt rõ đáp án duy nhất.",
+    "diagram": "straight"
+  },
+  {
+    "id": 8,
+    "question": "Chỉ ra đặc điểm của gia tốc trong chuyển động thẳng đều?",
+    "type": "mc",
+    "options": [
+      "Có giá trị âm.",
+      "Thay đổi theo thời gian.",
+      "Có giá trị bằng 0.",
+      "Có giá trị dương."
+    ],
+    "answer": 2,
+    "explanation": "Chuyển động thẳng đều có vectơ vận tốc không đổi, vì vậy \\(\\vec a=d\\vec v/dt=\\vec 0\\). Chọn <strong>C</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight"
+  },
+  {
+    "id": 9,
+    "question": "Chỉ ra đặc điểm của gia tốc trong chuyển động thẳng biến đổi không đều?",
+    "type": "mc",
+    "options": [
+      "Có thể âm hoặc dương.",
+      "Có giá trị bằng 0.",
+      "Là hằng số dương.",
+      "Là hằng số âm."
+    ],
+    "answer": 0,
+    "explanation": "Chuyển động thẳng biến đổi không đều có gia tốc thay đổi theo thời gian; giá trị đại số của gia tốc có thể dương hoặc âm tùy chiều trục và chiều biến thiên vận tốc. Chọn <strong>A</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight"
+  },
+  {
+    "id": 10,
+    "question": "Chất điểm chuyển động chậm dần đều trên trục Ox theo chiều dương, vận tốc ban đầu là 10 m/s và gia tốc có độ lớn là 2 m/s². Chỉ ra giá trị đại số của gia tốc tại thời điểm 1 s?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Vật chuyển động theo chiều dương nên \\(v>0\\). Chậm dần nghĩa là gia tốc ngược chiều vận tốc, do đó \\(a=-2\\,\\text{m/s}^2\\). Gia tốc không đổi trong chuyển động chậm dần đều nên tại \\(t=1\\,\\text{s}\\), \\(a=-2\\,\\text{m/s}^2\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "deceleration",
+    "expected": -2,
+    "unit": "m/s²"
+  },
+  {
+    "id": 11,
+    "question": "Một vật chuyển động thẳng biến đổi đều, tại một thời điểm gia tốc có giá trị dương còn vận tốc có giá trị âm, chỉ ra tính chất chuyển động của vật tại thời điểm đó?",
     "type": "manual",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** Trong mô hình ma sát khô Coulomb, hệ số ma sát \\(\\mu\\) phụ thuộc chủ yếu vào bản chất và tình trạng của hai bề mặt tiếp xúc, không phụ thuộc trực tiếp vào lực ép pháp tuyến.\\n\\nNếu lực ép \\(N\\) tăng gấp đôi thì lực ma sát cực đại hoặc lực ma sát trượt \\(f=\\mu N\\) tăng gấp đôi (khi các điều kiện khác không đổi), nhưng **hệ số ma sát vẫn không đổi**.",
+    "explanation": "Vận tốc âm cho biết vật chuyển động theo chiều âm của trục Ox; gia tốc dương hướng theo chiều dương. Hai vectơ ngược chiều nên độ lớn vận tốc giảm: vật **chậm dần** tại thời điểm đang xét. Do gia tốc không đổi nên đây là chuyển động chậm dần đều trong khoảng thời gian mà hai dấu còn như vậy.",
     "status": "verified",
-    "note": "PDF không có phương án A–D cho câu 70; giữ dạng trả lời tự luận, không tự tạo lựa chọn.",
-    "diagram": "contact",
-    "targetText": "Hệ số ma sát không đổi; lực ma sát tăng gấp đôi nếu cùng chế độ ma sát."
+    "note": "",
+    "diagram": "deceleration"
   },
   {
-    "id": 71,
-    "question": "Chỉ ra đặc điểm Sai khi nói về lực ma sát trượt?",
+    "id": 12,
+    "question": "Trong chuyển động thẳng nhanh dần đều, chỉ ra đặc điểm của vectơ gia tốc",
     "type": "mc",
     "options": [
-      "Luôn cân bằng với thành phần tiếp tuyến với mặt tiếp xúc của ngoại lực.",
-      "Xuất hiện khi vật trượt trên bề mặt một vật khác.",
-      "Luôn ngược với chiều chuyển động.",
-      "Tỉ lệ với áp lực vuông góc với mặt tiếp xúc."
+      "Luôn cùng phương, cùng chiều với vectơ vận tốc.",
+      "Luôn cùng phương, có thể cùng chiều hoặc ngược chiều vectơ vận tốc.",
+      "Luôn cùng phương, ngược chiều với vectơ vận tốc.",
+      "Luôn thay đổi cả phương, chiều và độ lớn."
     ],
     "answer": 0,
-    "explanation": "**Lý thuyết:** Độ lớn ma sát trượt gần đúng theo \\(f_k=\\mu_kN\\); lực có phương tiếp tuyến mặt tiếp xúc và chiều ngược với chuyển động tương đối tại mặt tiếp xúc. Nó không nhất thiết cân bằng thành phần tiếp tuyến của ngoại lực vì hợp lực có thể gây gia tốc.\\n\\nVì vậy phát biểu A là sai.",
+    "explanation": "Chuyển động nhanh dần có độ lớn vận tốc tăng, vì vậy vectơ gia tốc cùng hướng với vectơ vận tốc. Chuyển động thẳng nên chúng cùng phương. Chọn <strong>A</strong>.",
     "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "friction"
+    "note": "",
+    "diagram": "vectors"
   },
   {
-    "id": 72,
-    "question": "Một vật đặt đứng yên tự do trên mặt phẳng ngang. Chỉ ra mối quan hệ giữa phản lực và trọng lực tác dụng vào vật?",
+    "id": 13,
+    "question": "Trong chuyển động thẳng chậm dần đều, chỉ ra đặc điểm của vectơ gia tốc?",
     "type": "mc",
     "options": [
-      "Hai lực trực đối.",
-      "Hai lực cùng chiều.",
-      "Hai lực có độ lớn bằng nhau.",
-      "Hai lực sẽ làm vật chuyển động theo phương ngang."
+      "Luôn cùng phương, có thể cùng chiều hoặc ngược chiều vectơ vận tốc.",
+      "Luôn cùng phương, ngược chiều với vectơ vận tốc.",
+      "Luôn cùng phương, cùng chiều với vectơ vận tốc.",
+      "Luôn thay đổi cả phương, chiều và độ lớn."
     ],
-    "answer": [
-      0,
+    "answer": 1,
+    "explanation": "Chậm dần đều nghĩa là độ lớn vận tốc giảm đều, do đó gia tốc luôn ngược hướng với vận tốc trong khoảng chuyển động đang xét. Chọn <strong>B</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "deceleration"
+  },
+  {
+    "id": 14,
+    "question": "Nêu khái niệm gia tốc tiếp tuyến?",
+    "type": "mc",
+    "options": [
+      "Là thành phần gia tốc theo phương thẳng đứng.",
+      "Là thành phần gia tốc cho biết sự biến thiên về tốc độ của chất điểm.",
+      "Là thành phần gia tốc cho biết sự biến thiên về hướng của vận tốc của chất điểm.",
+      "Là thành phần gia tốc theo phương ngang."
+    ],
+    "answer": 1,
+    "explanation": "Gia tốc tiếp tuyến \\(a_t\\) nằm dọc tiếp tuyến quỹ đạo và đặc trưng cho sự thay đổi độ lớn vận tốc (tốc độ). Chọn <strong>B</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular"
+  },
+  {
+    "id": 15,
+    "question": "Nêu khái niệm gia tốc pháp tuyến?",
+    "type": "mc",
+    "options": [
+      "Là thành phần gia tốc cho biết sự biến thiên về độ lớn vận tốc của chất điểm.",
+      "Là thành phần gia tốc theo phương ngang.",
+      "Là thành phần gia tốc cho biết sự biến thiên về hướng của vận tốc của chất điểm.",
+      "Là thành phần gia tốc theo phương thẳng đứng."
+    ],
+    "answer": 2,
+    "explanation": "Gia tốc pháp tuyến \\(a_n\\) vuông góc với vận tốc tức thời và làm thay đổi hướng của vectơ vận tốc; với chuyển động cong \\(a_n=v^2/R\\). Chọn <strong>C</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular"
+  },
+  {
+    "id": 16,
+    "question": "Trong chuyển động ném, chỉ ra thời điểm chất điểm đạt độ cao cực đại?",
+    "type": "manual",
+    "options": [],
+    "answer": null,
+    "explanation": "Tại đỉnh quỹ đạo, thành phần vận tốc theo phương thẳng đứng bằng 0: \\(v_y=0\\). Nếu ném xiên lên với vận tốc đầu \\(v_0\\), thời gian đạt đỉnh là \\(t_{max}=v_0\\sin\\alpha/g\\). Thành phần vận tốc ngang vẫn khác 0 (nếu góc ném không vuông góc).",
+    "status": "verified",
+    "note": "",
+    "diagram": "projectile"
+  },
+  {
+    "id": 17,
+    "question": "Một chiếc xe chuyển động với quỹ đạo là đường tròn với tốc độ không đổi, chỉ ra đại lượng có giá trị bằng 0?",
+    "type": "mc",
+    "options": [
+      "Gia tốc tiếp tuyến bằng 0.",
+      "Gia tốc pháp tuyến bằng 0.",
+      "Gia tốc toàn phần bằng 0.",
+      "Vận tốc góc bằng 0."
+    ],
+    "answer": 0,
+    "explanation": "Chuyển động tròn đều có tốc độ không đổi nên gia tốc tiếp tuyến bằng 0. Gia tốc pháp tuyến \\(a_n=v^2/R\\) khác 0 khi xe đang chuyển động trên đường tròn. Chọn <strong>A</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular"
+  },
+  {
+    "id": 18,
+    "question": "Thành phần vectơ gia tốc tiếp tuyến và thành phần vectơ gia tốc pháp tuyến nếu đều tồn tại, hãy chỉ ra hướng của hai thành phần đó?",
+    "type": "manual",
+    "options": [],
+    "answer": null,
+    "explanation": "Gia tốc tiếp tuyến nằm trên tiếp tuyến quỹ đạo: cùng chiều vận tốc khi nhanh dần và ngược chiều vận tốc khi chậm dần. Gia tốc pháp tuyến hướng từ chất điểm vào tâm cong (tâm đường tròn tức thời), vuông góc với tiếp tuyến. Hai thành phần vuông góc nhau.",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular"
+  },
+  {
+    "id": 19,
+    "question": "Một chiếc xe chuyển động trên đường tròn với tốc độ tăng dần đều. Hãy chỉ ra tính chất chuyển động của xe?",
+    "type": "mc",
+    "options": [
+      "Tròn đều.",
+      "Tròn nhanh dần đều.",
+      "Tròn chậm dần đều.",
+      "Tròn biến đổi không đều."
+    ],
+    "answer": 1,
+    "explanation": "Quỹ đạo tròn và tốc độ tăng đều nên xe chuyển động tròn nhanh dần đều. Chọn <strong>B</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular"
+  },
+  {
+    "id": 20,
+    "question": "Chỉ ra phát biểu Đúng khi nói về các đặc điểm của vận tốc và gia tốc trong chuyển động của chất điểm:",
+    "type": "mc",
+    "options": [
+      "Nếu vật chuyển động chậm dần thì vectơ gia tốc ngược hướng với vectơ vận tốc.",
+      "Nếu gia tốc pháp tuyến khác không thì quỹ đạo của vật là đường cong.",
+      "Vectơ gia tốc luôn cùng phương với vectơ vận tốc.",
+      "Nếu vật chuyển động nhanh dần thì vectơ gia tốc cùng hướng với vectơ vận tốc."
+    ],
+    "answer": null,
+    "explanation": "Các phát biểu A, B và D đều đúng trong cách hiểu thông thường: chậm dần thì gia tốc ngược hướng vận tốc; gia tốc pháp tuyến khác 0 cho biết quỹ đạo cong; nhanh dần thì gia tốc cùng hướng vận tốc. Phát biểu C không đúng tổng quát. Do đề yêu cầu chọn một phát biểu đúng nhưng có nhiều lựa chọn đúng, câu này không thể chấm một đáp án duy nhất.",
+    "status": "review",
+    "note": "A, B và D đều có nội dung đúng; đề có nhiều đáp án đúng.",
+    "diagram": "vectors"
+  },
+  {
+    "id": 21,
+    "question": "Chỉ ra đặc điểm chuyển động của viên đạn sau khi ra khỏi nòng súng (bỏ qua sức cản không khí)?",
+    "type": "mc",
+    "options": [
+      "Tầm xa của đạn sẽ lớn nhất nếu nòng súng nằm ngang.",
+      "Tầm xa của đạn sẽ lớn nhất nếu nòng súng nghiêng góc 60° so với phương ngang.",
+      "Độ cao của đạn sẽ lớn nhất nếu nòng súng đặt vuông góc với mặt đất.",
+      "Nếu mục tiêu ở mặt đất và nằm trong tầm bắn thì có 2 góc ngắm để trúng đích."
+    ],
+    "answer": null,
+    "explanation": "Nếu điểm bắn và điểm rơi cùng độ cao, tầm xa lớn nhất tại góc 45°, nên A và B sai. Độ cao cực đại lớn nhất khi ném thẳng đứng (C đúng). Với một tầm xa nhỏ hơn tầm xa cực đại, thường có hai góc ném bù nhau (D đúng). Câu có ít nhất hai phát biểu đúng nên cần rà soát, không chọn một đáp án duy nhất.",
+    "status": "review",
+    "note": "C và D đều đúng theo mô hình ném xiên lý tưởng, cùng độ cao đầu-cuối.",
+    "diagram": "projectile"
+  },
+  {
+    "id": 22,
+    "question": "Chỉ ra công thức về độ lớn của vectơ gia tốc trong chuyển động tròn đều?",
+    "type": "manual",
+    "options": [],
+    "answer": null,
+    "explanation": "Trong chuyển động tròn đều, gia tốc là gia tốc hướng tâm: \\(a=a_n=v^2/R=\\omega^2R\\), hướng vào tâm quỹ đạo. Gia tốc tiếp tuyến bằng 0.",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular"
+  },
+  {
+    "id": 23,
+    "question": "Một chất điểm chuyển động với phương trình vectơ vị trí \\(\\vec r(t)=(5\\cos 3t)\\,\\vec i+(5\\sin 3t)\\,\\vec j\\). Chỉ ra đặc điểm chuyển động của chất điểm?",
+    "type": "manual",
+    "options": [],
+    "answer": null,
+    "explanation": "Tọa độ thỏa \\(x=5\\cos 3t\\), \\(y=5\\sin 3t\\). Bình phương và cộng hai phương trình: \\(x^2+y^2=25\\), nên quỹ đạo là đường tròn tâm O, bán kính 5 m. Góc quay có tốc độ góc không đổi \\(\\omega=3\\,\\text{rad/s}\\), vì vậy đây là chuyển động tròn đều.",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular"
+  },
+  {
+    "id": 24,
+    "question": "Chọn phát biểu đúng về các tính chất của vectơ vận tốc và vectơ gia tốc?",
+    "type": "mc",
+    "options": [
+      "Vectơ vận tốc là đạo hàm của quãng đường mà chất điểm đi được.",
+      "Vectơ vận tốc có phương tiếp tuyến với quỹ đạo và chiều là chiều chuyển động.",
+      "Vectơ gia tốc biểu thị sự thay đổi nhanh chậm của chuyển động.",
+      "Vectơ gia tốc có giá trị bằng đạo hàm của độ lớn vận tốc."
+    ],
+    "answer": 1,
+    "explanation": "Vectơ vận tốc tức thời tiếp tuyến với quỹ đạo và hướng theo chiều chuyển động. A diễn đạt không chính xác vì đạo hàm tọa độ/vectơ vị trí theo thời gian mới cho vectơ vận tốc; C chỉ nói một phần ý nghĩa của gia tốc; D chỉ liên quan đến thành phần tiếp tuyến. Chọn <strong>B</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "vectors"
+  },
+  {
+    "id": 25,
+    "question": "Chỉ ra đặc điểm của vận tốc và gia tốc của một trái banh được ném thẳng đứng lên trên tại điểm cao nhất?",
+    "type": "mc",
+    "options": [
+      "Gia tốc của banh khác không nhưng vận tốc bằng không.",
+      "Gia tốc của banh bằng không nhưng vận tốc khác không.",
+      "Gia tốc và vận tốc của banh đều bằng không.",
+      "Gia tốc và vận tốc của banh đều khác không."
+    ],
+    "answer": 0,
+    "explanation": "Tại điểm cao nhất, vận tốc tức thời bằng 0 trong khoảnh khắc, nhưng trọng trường vẫn tác dụng nên gia tốc bằng \\(g\\) hướng xuống, không bằng 0. Chọn <strong>A</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "freefall"
+  },
+  {
+    "id": 26,
+    "question": "Nhận biết đại lượng vật lý nào được đo trên đồng hồ gắn trên xe máy?",
+    "type": "manual",
+    "options": [],
+    "answer": null,
+    "explanation": "Đồng hồ tốc độ (speedometer) trên xe máy hiển thị **tốc độ tức thời** của xe, thường theo km/h. Đây là độ lớn của vận tốc tại thời điểm đang quan sát.",
+    "status": "verified",
+    "note": "",
+    "diagram": "speed"
+  },
+  {
+    "id": 27,
+    "question": "Khi mô tả một chiếc xe chạy thẳng đều về phía Tây, chọn chiều dương Ox là về phía Đông. Chỉ ra kết luận đúng đối với giá trị của vận tốc và gia tốc?",
+    "type": "mc",
+    "options": [
+      "Gia tốc của xe dương.",
+      "Vận tốc của xe âm.",
+      "Gia tốc của xe âm.",
+      "Vận tốc của xe dương."
+    ],
+    "answer": 1,
+    "explanation": "Chiều dương chọn về phía Đông, còn xe chạy về phía Tây nên vận tốc đại số âm. Vì xe chạy thẳng đều nên gia tốc bằng 0. Chọn <strong>B</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight"
+  },
+  {
+    "id": 28,
+    "question": "Chỉ ra các trường hợp tương ứng với đại lượng vận tốc tức thời?",
+    "type": "mc",
+    "options": [
+      "Xe máy chuyển động với vận tốc 30 km/h trong thời gian 2 giờ thì đến TPHCM.",
+      "Vận động viên chạm đích với vận tốc 10 m/s.",
+      "Vận tốc người đi bộ từ nhà đến trường trong 30 phút là 5 km/h.",
+      "Ô tô chuyển động từ A đến B ngược chiều dương trong 4 giờ với tốc độ 40 km/h."
+    ],
+    "answer": 1,
+    "explanation": "Cụm từ “chạm đích với vận tốc 10 m/s” mô tả vận tốc tại một thời điểm cụ thể, tức vận tốc tức thời. Các trường hợp còn lại gắn với một khoảng thời gian hoặc hành trình. Chọn <strong>B</strong>.",
+    "status": "verified",
+    "note": "",
+    "diagram": "speed"
+  },
+  {
+    "id": 29,
+    "question": "Một ô tô đang đi thẳng thì hãm phanh, vận tốc của ô tô biến đổi theo: \\(v=20-4t\\). Xác định phương trình vị trí của ô tô là?",
+    "type": "manual",
+    "options": [],
+    "answer": null,
+    "explanation": "Ta có \\(v=dx/dt=20-4t\\). Lấy tích phân theo thời gian: \\(x(t)=x_0+20t-2t^2\\). Nếu chọn gốc tọa độ tại vị trí ô tô bắt đầu hãm phanh thì \\(x_0=0\\), do đó \\(x=20t-2t^2\\).",
+    "status": "conditional",
+    "note": "Đề không cho vị trí ban đầu x₀; kết quả cụ thể cần chọn mốc tọa độ. Giả sử x₀=0 tại lúc bắt đầu hãm phanh.",
+    "diagram": "deceleration"
+  },
+  {
+    "id": 30,
+    "question": "Một mô tô xuất phát không tốc độ đầu ở A đi thẳng hướng về B, với độ lớn gia tốc là 0,5 m/s². Chọn gốc tọa độ O ở A, chiều dương Ox cùng chiều chuyển động. Xác định phương trình vận tốc và vị trí của mô tô lần lượt là?",
+    "type": "manual",
+    "options": [],
+    "answer": null,
+    "explanation": "Xe xuất phát từ nghỉ nên \\(v_0=0\\), gia tốc \\(a=0,5\\,\\text{m/s}^2\\). Phương trình vận tốc: \\(v=v_0+at=0,5t\\,\\text{(m/s)}\\). Với \\(x_0=0\\), phương trình tọa độ: \\(x=x_0+v_0t+\\tfrac12at^2=0,25t^2\\,\\text{(m)}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight"
+  },
+  {
+    "id": 31,
+    "question": "Một sinh viên đi xe máy với tốc độ đều là 10 m/s hướng thẳng từ A đến B. Lấy gốc tọa độ tại A, gốc thời gian lúc bắt đầu đi. Xác định phương trình vị trí và gia tốc của anh ta?",
+    "type": "manual",
+    "options": [],
+    "answer": null,
+    "explanation": "Chọn chiều dương từ A đến B. Chuyển động thẳng đều có \\(v=10\\,\\text{m/s}\\), \\(x_0=0\\), nên \\(x=10t\\,\\text{(m)}\\). Vận tốc không đổi nên gia tốc \\(a=0\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight"
+  },
+  {
+    "id": 32,
+    "question": "Xác định từ thích hợp điền vào chỗ trống trong phát biểu sau: Trong chuyển động thẳng, khi một chất điểm tăng tốc thì nó sẽ đi được những quãng đường ngày càng ...(1)... trong những khoảng thời gian ...(2)...",
+    "type": "manual",
+    "options": [],
+    "answer": null,
+    "explanation": "Trong các khoảng thời gian bằng nhau liên tiếp, nếu tốc độ tăng thì quãng đường đi được trong mỗi khoảng thời gian đó tăng dần. Điền: (1) **lớn hơn**; (2) **bằng nhau**.",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight"
+  },
+  {
+    "id": 33,
+    "question": "Một ô tô đang đi với vận tốc là 40 m/s thì thấy vật cản cách đó 500 m, người lái liền hãm phanh, xe chạy thẳng chậm dần đều với gia tốc -1,55 m/s². Xác định vận tốc của ô tô khi đâm vào vật cản?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Dùng hệ thức \\(v^2=v_0^2+2as\\): \\(v^2=40^2+2(-1,55)(500)=1600-1550=50\\). Do xe vẫn đi tới vật cản nên \\(v=\\sqrt{50}\\approx7,07\\,\\text{m/s}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "deceleration",
+    "expected": 7.0710678118654755,
+    "unit": "m/s",
+    "tolerance": 0.03
+  },
+  {
+    "id": 34,
+    "question": "Một chiếc xe chạy nhanh dần với phương trình vận tốc: \\(v=0,2t^2+2t\\) (tính theo đơn vị chuẩn hệ SI, gốc thời gian lúc xe bắt đầu chuyển động). Xác định phương trình vị trí của xe?",
+    "type": "manual",
+    "options": [],
+    "answer": null,
+    "explanation": "Từ \\(v=dx/dt=0,2t^2+2t\\), tích phân được \\(x=x_0+\\frac{0,2}{3}t^3+t^2=x_0+\\frac{t^3}{15}+t^2\\). Nếu chọn gốc tọa độ tại vị trí xuất phát thì \\(x=\\frac{t^3}{15}+t^2\\) (m).",
+    "status": "conditional",
+    "note": "Đề không nói rõ gốc tọa độ; dạng tổng quát có hằng số vị trí ban đầu x₀.",
+    "diagram": "straight"
+  },
+  {
+    "id": 35,
+    "question": "Một chiếc xe chạy nhanh dần với phương trình vận tốc: \\(v=0,2t^2+2t\\) (tính theo hệ SI). Xác định phương trình gia tốc của xe?",
+    "type": "manual",
+    "options": [],
+    "answer": null,
+    "explanation": "Gia tốc là đạo hàm của vận tốc: \\(a=dv/dt=d(0,2t^2+2t)/dt=0,4t+2\\,\\text{m/s}^2\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight"
+  },
+  {
+    "id": 36,
+    "question": "Trong chân không, một người ném một vật thẳng đứng lên trên với vận tốc đầu là 40 m/s. Xác định thời gian vật đó đạt độ cao cực đại?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Tại độ cao cực đại, \\(v=0\\). Dùng \\(v=v_0-gt\\): \\(t=v_0/g=40/g\\). Với \\(g=9,8\\,\\text{m/s}^2\\), \\(t\\approx4,08\\,\\text{s}\\); nếu lấy \\(g=10\\,\\text{m/s}^2\\), kết quả là 4,00 s.",
+    "status": "conditional",
+    "note": "Đề không cho g; hệ thống chấp nhận cả cách lấy g=9,8 và g=10 m/s².",
+    "diagram": "freefall",
+    "expected": [
+      4.081632653061225,
+      4
+    ],
+    "unit": "s",
+    "tolerance": 0.03
+  },
+  {
+    "id": 37,
+    "question": "Trong chân không, một người thả rơi một vật ở độ cao 20 m so với mặt đất. Xác định thời gian vật đó rơi tới đất?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Vật thả rơi nên \\(v_0=0\\). Từ \\(h=\\tfrac12gt^2\\), suy ra \\(t=\\sqrt{2h/g}=\\sqrt{40/g}\\). Với \\(g=9,8\\,\\text{m/s}^2\\), \\(t\\approx2,02\\,\\text{s}\\); nếu lấy \\(g=10\\), \\(t=2,00\\,\\text{s}\\).",
+    "status": "conditional",
+    "note": "Đề không cho g; hệ thống chấp nhận cả g=9,8 và g=10 m/s².",
+    "diagram": "freefall",
+    "expected": [
+      2.0203050891044216,
       2
     ],
-    "explanation": "**Lý thuyết:** Với vật đứng yên trên mặt phẳng ngang và không có lực thẳng đứng nào khác, \\(N=P=mg\\). Hai lực cùng phương, ngược chiều, cùng độ lớn và cùng tác dụng lên một vật nên là hai lực cân bằng (trực đối theo cách gọi trong tài liệu).\\n\\nChọn A vì diễn đạt đầy đủ nhất. Phương án C cũng nêu một tính chất đúng nhưng không đầy đủ; đây là điểm mơ hồ của câu trắc nghiệm.",
-    "status": "review",
-    "note": "A là mô tả đầy đủ nhất; C cũng đúng một phần (độ lớn bằng nhau), nên câu gốc có hai phương án đúng theo nghĩa hẹp.",
-    "diagram": "normal"
+    "unit": "s",
+    "tolerance": 0.03
   },
   {
-    "id": 73,
-    "question": "Chỉ ra phát biểu Đúng khi nói về mối quan hệ giữa lực và chuyển động của một vật?",
-    "type": "mc",
-    "options": [
-      "Vật chuyển động được là nhờ có lực tác dụng lên nó.",
-      "Khi vận tốc của vật thay đổi thì chắc chắn đã có lực tác dụng lên vật.",
-      "Nếu không chịu lực nào tác dụng thì vật phải đứng yên.",
-      "Khi không chịu lực nào tác dụng lên vật nữa thì vật đang chuyển động sẽ lập tức dừng lại."
-    ],
-    "answer": 1,
-    "explanation": "**Lý thuyết:** Định luật II Newton: \\(\\sum\\vec F=m\\vec a\\). Khi vectơ vận tốc thay đổi thì gia tốc khác 0, do đó hợp lực tác dụng lên vật phải khác 0. Vật vẫn có thể chuyển động thẳng đều khi hợp lực bằng 0, nên không cần có lực để duy trì chuyển động.\\n\\nChọn B.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "newton"
-  },
-  {
-    "id": 74,
-    "question": "Chỉ ra kết luận Đúng khi nói về cặp “lực và phản lực” trong định luật III Newton?",
-    "type": "mc",
-    "options": [
-      "Phải bằng nhau về độ lớn nhưng không cần phải cùng giá.",
-      "Tác dụng vào hai vật khác nhau.",
-      "Không cần phải bằng nhau về độ lớn.",
-      "Tác dụng vào cùng một vật."
-    ],
-    "answer": 1,
-    "explanation": "**Lý thuyết:** Định luật III Newton: nếu vật A tác dụng lên vật B một lực thì B đồng thời tác dụng lại A một lực cùng giá, cùng độ lớn, ngược chiều. Hai lực này tác dụng lên **hai vật khác nhau**, nên không triệt tiêu nhau trên cùng một vật.\\n\\nChọn B.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "thirdlaw"
-  },
-  {
-    "id": 75,
-    "question": "Một vật trọng lượng 20 N đang nằm trên mặt phẳng ngang có hệ số ma sát trượt của vật và sàn là 0,4. Chỉ ra độ lớn lực kéo theo phương ngang để vật chuyển động đều?",
-    "type": "manual",
+    "id": 38,
+    "question": "Trong chân không, một vật được ném lên từ mặt đất với vận tốc đầu là 10 m/s, góc ném là 45° so với phương ngang. Xác định tầm xa của vật?",
+    "type": "num",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** Chuyển động đều theo phương ngang có gia tốc bằng 0 nên tổng lực theo phương ngang bằng 0. Trên mặt phẳng ngang, \\(N=P=20\\,\\mathrm N\\).\\n\\n\\(f_k=\\mu_kN=0,4\\times20=8\\,\\mathrm N\\). Do lực kéo cân bằng ma sát trượt, \\(F=8\\,\\mathrm N\\).",
-    "status": "verified",
-    "note": "PDF không có phương án A–D; đáp án số được tính trực tiếp từ dữ kiện gốc.",
-    "diagram": "friction",
-    "target": 8,
-    "tolerance": 0.01,
-    "targetText": "8 N"
-  },
-  {
-    "id": 76,
-    "question": "Một vật có khối lượng m=5 kg, đặt trên một mặt phẳng ngang có hệ số ma sát là k=0,2. Tác dụng vào vật một lực theo phương ngang, hướng sang phải, có độ lớn là 15 N. Chỉ ra giá trị độ lớn gia tốc của vật?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Theo định luật II Newton, \\(a=(F-f_k)/m\\), với \\(f_k=\\mu N=\\mu mg\\).\\n\\nLấy \\(g=9,8\\,\\mathrm{m/s^2}\\): \\(f_k=0,2\\times5\\times9,8=9,8\\,\\mathrm N\\), nên \\(a=(15-9,8)/5=1,04\\,\\mathrm{m/s^2}\\). Nếu quy ước gần đúng \\(g=10\\,\\mathrm{m/s^2}\\), kết quả là \\(1,00\\,\\mathrm{m/s^2}\\).",
+    "explanation": "Vật rơi về cùng độ cao phóng nên tầm xa \\(R=\\frac{v_0^2\\sin2\\alpha}{g}\\). Thay \\(v_0=10\\,\\text{m/s}\\), \\(\\alpha=45^\\circ\\): \\(R=100/g\\). Với \\(g=9,8\\), \\(R\\approx10,20\\,\\text{m}\\); với \\(g=10\\), \\(R=10,0\\,\\text{m}\\).",
     "status": "conditional",
-    "note": "Đề không nêu giá trị g; chấp nhận cả kết quả theo g=9,8 hoặc g=10 m/s².",
-    "diagram": "horizontal",
-    "target": [
-      1.0,
-      1.04
+    "note": "Đề không cho g; hệ thống chấp nhận kết quả theo g=9,8 hoặc g=10 m/s².",
+    "diagram": "projectile",
+    "expected": [
+      10.204081632653061,
+      10
     ],
-    "tolerance": 0.05,
-    "targetText": "Khoảng 1,0–1,04 m/s²"
+    "unit": "m",
+    "tolerance": 0.05
   },
   {
-    "id": 77,
-    "question": "Chỉ ra các đặc điểm Sai của trọng lực và trọng lượng?",
-    "type": "mc",
-    "options": [
-      "Độ lớn của trọng lực được gọi là trọng lượng.",
-      "Trọng lượng là một thuộc tính của vật xác định mức độ chống lại sự thay đổi vận tốc của nó.",
-      "Lực hấp dẫn là lực hút giữa mọi vật chất có khối lượng.",
-      "Lực hấp dẫn của Trái Đất tác động lên các vật thể có khối lượng và làm chúng rơi xuống đất."
-    ],
-    "answer": 1,
-    "explanation": "**Lý thuyết:** Trọng lượng là độ lớn của trọng lực \\(P=mg\\). Đại lượng đặc trưng cho mức quán tính, tức mức chống lại sự thay đổi vận tốc, là **khối lượng**, không phải trọng lượng. Lực hấp dẫn là lực hút giữa các vật có khối lượng.\\n\\nPhát biểu B đã mô tả khối lượng nhưng gọi là trọng lượng, nên B sai.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "gravity"
-  },
-  {
-    "id": 78,
-    "question": "Chỉ ra phát biểu Sai khi nói về lực ma sát nghỉ?",
-    "type": "mc",
-    "options": [
-      "Lực ma sát nghỉ đúng bằng lực tác động từ bên ngoài.",
-      "Lực ma sát nghỉ cực đại \\(f_{s,\\max}=\\mu_sN\\), với µs là hệ số ma sát nghỉ.",
-      "Lực ma sát nghỉ tỉ lệ thuận với phản lực tác dụng lên vật.",
-      "Lực ma sát nghỉ ngược hướng với hợp lực tác dụng lên vật."
-    ],
-    "answer": 2,
-    "explanation": "**Lý thuyết:** Ma sát nghỉ tự điều chỉnh để cân bằng thành phần lực song song mặt tiếp xúc, trong giới hạn \\(0\\le f_s\\le f_{s,\\max}=\\mu_sN\\). Chỉ **ma sát nghỉ cực đại** mới bằng \\(\\mu_sN\\), còn lực ma sát nghỉ thực tế không luôn tỉ lệ thuận với N.\\n\\nChọn C theo cách hiểu chuẩn. Câu A và D diễn đạt khái quát chưa chặt chẽ, vì thế câu gốc có phần mơ hồ.",
-    "status": "review",
-    "note": "Chọn C vì chỉ ma sát nghỉ cực đại mới bằng μsN; các phát biểu A và D cũng không chính xác nếu hiểu tổng quát.",
-    "diagram": "friction"
-  },
-  {
-    "id": 79,
-    "question": "Chỉ ra phát biểu Sai khi nói về lực ma sát trượt?",
-    "type": "mc",
-    "options": [
-      "Diện tích mặt tiếp xúc càng lớn thì hệ số ma sát càng lớn.",
-      "Lực ma sát trượt ngược hướng với hướng chuyển động của vật.",
-      "Lực ma sát trượt tỉ lệ thuận với phản lực tác dụng lên vật.",
-      "Độ lớn lực ma sát trượt \\(f_k=\\mu_kN\\), với µk là hệ số ma sát trượt."
-    ],
-    "answer": 0,
-    "explanation": "**Lý thuyết:** Theo mô hình ma sát khô, \\(f_k=\\mu_kN\\); hệ số \\(\\mu_k\\) phụ thuộc cặp bề mặt và tình trạng tiếp xúc, không tăng chỉ vì diện tích tiếp xúc biểu kiến lớn hơn.\\n\\nChọn A.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "friction"
-  },
-  {
-    "id": 80,
-    "question": "Chỉ ra phát biểu Sai khi nói về lực đàn hồi?",
-    "type": "mc",
-    "options": [
-      "Lực đàn hồi là lực sinh ra khi vật đàn hồi bị biến dạng.",
-      "Độ lớn của lực đàn hồi luôn luôn được xác định theo định luật Hooke.",
-      "Lực đàn hồi có xu hướng đưa vật trở lại trạng thái ban đầu khi chưa bị biến dạng.",
-      "Lực đàn hồi tỉ lệ thuận với độ biến dạng của vật."
-    ],
-    "answer": 1,
-    "explanation": "**Lý thuyết:** Lực đàn hồi xuất hiện khi vật bị biến dạng và có xu hướng chống lại biến dạng. Định luật Hooke \\(F_{đh}=k|\\Delta l|\\) chỉ áp dụng trong giới hạn đàn hồi (và vùng biến dạng tuyến tính), không đúng trong mọi trường hợp.\\n\\nChọn B.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "spring"
-  },
-  {
-    "id": 81,
-    "question": "Chỉ ra hình vẽ biểu diễn phản lực bị Sai trong các trường hợp sau?",
-    "type": "mc",
-    "options": [
-      "Hình 1: Vật trên mặt ngang, phản lực hướng lên vuông góc mặt bàn.",
-      "Hình 2: Vật trên mặt nghiêng, phản lực được vẽ thẳng đứng.",
-      "Hình 3: Vật trên mặt nghiêng, phản lực vuông góc mặt tiếp xúc.",
-      "Hình 4: Vật trên mặt ngang, phản lực hướng lên và trọng lực hướng xuống."
-    ],
-    "answer": 1,
-    "explanation": "**Lý thuyết:** Phản lực pháp tuyến luôn vuông góc với mặt tiếp xúc và hướng từ mặt tiếp xúc lên vật. Trên mặt phẳng nghiêng, phản lực phải vuông góc với mặt phẳng nghiêng, không nhất thiết thẳng đứng.\\n\\nTrong hình 2, vectơ \\(\\vec N\\) được vẽ thẳng đứng trong khi mặt tiếp xúc nghiêng; đây là hình sai. Chọn B (hình 2).",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "normal"
-  },
-  {
-    "id": 82,
-    "question": "Chỉ ra biểu thức giá trị của phản lực N trên hình vẽ dưới đây?",
-    "type": "manual",
+    "id": 39,
+    "question": "Trong chân không, tại vị trí có độ cao 15 m so với mặt đất, một người ném một vật hướng xiên lên 30° so với phương ngang, với tốc độ đầu là 20 m/s. Vật đạt độ cao cực đại là?",
+    "type": "num",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** Lực \\(\\vec F\\) ép chếch xuống dưới nên thành phần thẳng đứng của lực là \\(F\\sin\\theta\\), cùng chiều với trọng lực. Vật không gia tốc theo phương thẳng đứng nên \\(N-mg-F\\sin\\theta=0\\).\\n\\nSuy ra \\(\\boxed{N=mg+F\\sin\\theta}\\).",
-    "status": "verified",
-    "note": "PDF chỉ cung cấp hình minh họa, không có phương án A–D; lời giải nêu trực tiếp biểu thức.",
-    "diagram": "pushdown",
-    "targetText": "N = mg + F sin θ"
-  },
-  {
-    "id": 83,
-    "question": "Chỉ ra biểu thức giá trị của phản lực N trên hình vẽ dưới đây?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Lực \\(\\vec F\\) kéo chếch lên nên thành phần thẳng đứng \\(F\\sin\\theta\\) hướng lên, làm giảm phản lực. Cân bằng theo phương thẳng đứng: \\(N+F\\sin\\theta-mg=0\\).\\n\\nSuy ra \\(\\boxed{N=mg-F\\sin\\theta}\\). Điều kiện tiếp xúc còn duy trì là \\(F\\sin\\theta\\le mg\\).",
-    "status": "verified",
-    "note": "PDF chỉ cung cấp hình minh họa, không có phương án A–D; lời giải nêu trực tiếp biểu thức.",
-    "diagram": "pullup",
-    "targetText": "N = mg - F sin θ"
-  },
-  {
-    "id": 84,
-    "question": "Chỉ ra phát biểu Sai khi nói về hệ quy chiếu quán tính và hệ quy chiếu phi quán tính?",
-    "type": "mc",
-    "options": [
-      "Trong hệ quy chiếu quán tính có lực quán tính tác dụng lên vật.",
-      "Hệ quy chiếu phi quán tính là các hệ quy chiếu chuyển động có gia tốc so với hệ quy chiếu quán tính.",
-      "Hệ quy chiếu gắn với Trái Đất có thể xem là hệ quy chiếu quán tính.",
-      "Khi không có ngoại lực tác dụng và được quan sát từ một hệ quy chiếu quán tính, một vật đứng yên sẽ vẫn đứng yên và vật chuyển động thẳng đều sẽ tiếp tục chuyển động thẳng đều."
-    ],
-    "answer": 0,
-    "explanation": "**Lý thuyết:** Trong hệ quy chiếu quán tính, định luật I Newton đúng mà không cần thêm lực quán tính. Lực quán tính chỉ được đưa vào khi mô tả chuyển động trong hệ quy chiếu phi quán tính (hệ có gia tốc so với hệ quán tính).\\n\\nPhát biểu A nói có lực quán tính trong hệ quán tính nên sai.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "frames"
-  },
-  {
-    "id": 85,
-    "question": "Tác dụng lực F lên vật m đặt trên mặt phẳng ngang làm vật chuyển động, hệ số ma sát giữa vật m và mặt phẳng ngang là k. Chỉ ra kết luận Sai đối với các bước giải cho bài này?",
-    "type": "mc",
-    "options": [
-      "Phương trình hình chiếu lên trục Ox: \\(F-F_{ms}=ma\\).",
-      "Phương trình động lực học: \\(\\vec F+\\vec N+\\vec P+\\vec F_{ms}=m\\vec a\\).",
-      "Phương trình hình chiếu lên trục Ox: \\(F-F_{ms}+N-P=ma\\).",
-      "Biểu thức gia tốc: \\(a=\\frac{F-kmg}{m}\\)."
-    ],
-    "answer": 2,
-    "explanation": "**Lý thuyết:** Với lực kéo ngang, chọn Ox nằm ngang và Oy thẳng đứng. Phương trình đúng là \\(F-F_{ms}=ma\\), \\(N-P=0\\), \\(F_{ms}=kN=kmg\\). Do đó \\(a=(F-kmg)/m\\).\\n\\nPhương án C đưa cả \\(N-P\\) vào phương trình chiếu trên Ox, sai vì các lực này theo phương Oy.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "horizontal"
-  },
-  {
-    "id": 86,
-    "question": "Thả vật m trượt từ đỉnh mặt phẳng nghiêng xuống dưới, hệ số ma sát giữa vật và mặt phẳng nghiêng là k. Chỉ ra kết luận Sai đối với các bước giải cho bài này?",
-    "type": "mc",
-    "options": [
-      "Phương trình hình chiếu lên Ox: \\(P\\sin\\alpha-F_{ms}=ma\\).",
-      "Phương trình hình chiếu lên Oy: \\(N-P=0\\).",
-      "Phương trình động lực học: \\(\\vec N+\\vec P+\\vec F_{ms}=m\\vec a\\).",
-      "Biểu thức gia tốc: \\(a=g(\\sin\\alpha-k\\cos\\alpha)\\)."
-    ],
-    "answer": 1,
-    "explanation": "**Lý thuyết:** Chọn Ox song song mặt phẳng nghiêng hướng xuống và Oy vuông góc mặt phẳng. Thành phần trọng lực theo Ox là \\(P\\sin\\alpha\\); theo Oy là \\(P\\cos\\alpha\\).\\n\\nVì vậy phương trình pháp tuyến phải là \\(N-P\\cos\\alpha=0\\), không phải \\(N-P=0\\). Gia tốc dọc dốc là \\(a=g(\\sin\\alpha-k\\cos\\alpha)\\). Chọn B.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "inclineDown"
-  },
-  {
-    "id": 87,
-    "question": "Chỉ ra phát biểu Sai khi mô tả các phương trình của vật trên hình vẽ dưới đây?",
-    "type": "mc",
-    "options": [
-      "\\(F\\cos\\theta-F_{ms}=ma\\).",
-      "\\(F_{ms}=k(mg-F\\sin\\alpha)\\).",
-      "\\(N=mg+F\\sin\\theta\\).",
-      "\\(\\vec F_{ms}+\\vec N+\\vec F+\\vec P=m\\vec a\\)."
-    ],
-    "answer": 2,
-    "explanation": "**Lý thuyết:** Lực F kéo chếch lên góc \\(\\theta\\), nên theo phương đứng \\(N+F\\sin\\theta-mg=0\\), hay \\(N=mg-F\\sin\\theta\\). Ma sát trượt là \\(F_{ms}=kN\\).\\n\\nPhương án C lại ghi \\(N=mg+F\\sin\\theta\\), sai dấu vì thành phần thẳng đứng của lực F hướng lên. Chọn C. (Ở một biểu thức trong đề, góc được ghi \\(\\alpha\\) thay vì \\(\\theta\\); xem như lỗi ký hiệu.)",
-    "status": "review",
-    "note": "Phương án C sai dấu rõ ràng; công thức ở phương án B dùng α trong khi hình dùng θ, có thể là lỗi ký hiệu của đề.",
-    "diagram": "pullup"
-  },
-  {
-    "id": 88,
-    "question": "Chỉ ra phát biểu Sai khi mô tả chuyển động của vật trên hình vẽ?",
-    "type": "mc",
-    "options": [
-      "\\(F\\cos\\theta-F_{ms}=ma\\).",
-      "\\(N=mg+F\\sin\\theta\\).",
-      "\\(F_{ms}=k(mg-F\\sin\\alpha)\\).",
-      "\\(\\vec F_{ms}+\\vec N+\\vec F+\\vec P=m\\vec a\\)."
-    ],
-    "answer": 2,
-    "explanation": "**Lý thuyết:** Trong hình, lực F chếch xuống dưới một góc \\(\\theta\\). Khi không có gia tốc theo phương đứng, \\(N=mg+F\\sin\\theta\\), vì thành phần đứng của F ép vật xuống. Do đó \\(F_{ms}=k(mg+F\\sin\\theta)\\).\\n\\nPhương án C dùng dấu trừ, nên sai. Chọn C.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "pushdown"
-  },
-  {
-    "id": 89,
-    "question": "Một ô tô có khối lượng 2 tấn, khi không chở hàng nó khởi hành với gia tốc là 0,3 m/s². Khi ô tô đó chở hàng thì nó khởi hành với gia tốc là 0,2 m/s². Biết rằng lực tác dụng vào ô tô trong hai trường hợp đều bằng nhau. Xác định khối lượng của hàng hóa trên xe?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Áp dụng \\(F=ma\\). Khi không chở hàng: \\(F=2000\\times0,3=600\\,\\mathrm N\\). Lực như nhau khi chở hàng nên tổng khối lượng là \\(m=F/a=600/0,2=3000\\,\\mathrm{kg}\\).\\n\\nKhối lượng hàng: \\(m_h=3000-2000=\\boxed{1000\\,\\mathrm{kg}}\\) (1 tấn).",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "car",
-    "target": 1000,
-    "tolerance": 1,
-    "targetText": "1000 kg (1 tấn)"
-  },
-  {
-    "id": 90,
-    "question": "Cho hai vật m1 và m2 nằm trên một sàn nhà nằm ngang không ma sát. Nếu tác dụng vào m1 một lực F theo phương ngang thì m1 chuyển động với gia tốc 8 m/s². Nếu tác dụng lực F đó vào vật m2 thì m2 chuyển động với gia tốc 4 m/s². Đem ghép hai vật đó thành một vật và chịu tác dụng của lực F. Xác định gia tốc của hai vật?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Từ \\(F=m_1a_1\\) và \\(F=m_2a_2\\), suy ra \\(m_1=F/8\\), \\(m_2=F/4\\). Khi ghép hai vật, khối lượng tổng là \\(m=3F/8\\).\\n\\nGia tốc mới: \\(a=F/(3F/8)=\\boxed{8/3\\approx2,67\\,\\mathrm{m/s^2}}\\).",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "twoBlocks",
-    "target": 2.6666666666666665,
-    "tolerance": 0.02,
-    "targetText": "2,67 m/s²"
-  },
-  {
-    "id": 91,
-    "question": "Một vật có khối lượng 50 kg, bắt đầu chuyển động nhanh dần đều và sau khi đi được 50 cm thì có vận tốc là 2,52 km/h. Xác định hợp lực tác dụng vào vật?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Vật bắt đầu từ nghỉ, chuyển động nhanh dần đều: \\(v^2-v_0^2=2as\\). Đổi đơn vị \\(v=2,52/3,6=0,70\\,\\mathrm{m/s}\\), \\(s=0,50\\,\\mathrm m\\).\\n\\n\\(a=0,70^2/(2\\times0,50)=0,49\\,\\mathrm{m/s^2}\\). Hợp lực \\(F=ma=50\\times0,49=\\boxed{24,5\\,\\mathrm N}\\).",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "block",
-    "target": 24.5,
-    "tolerance": 0.1,
-    "targetText": "24,5 N"
-  },
-  {
-    "id": 92,
-    "question": "Người ta đẩy một cái thùng có khối lượng 30 kg theo phương ngang bằng một lực 80 N. Hệ số ma sát giữa thùng và mặt sàn là 0,3. Xác định tính chất chuyển động và độ lớn của lực ma sát tác dụng lên vật?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Nếu hệ số 0,3 được hiểu là hệ số ma sát nghỉ, giới hạn ma sát nghỉ là \\(f_{s,\\max}=\\mu_smg\\). Lấy \\(g=9,8\\), giá trị này là \\(0,3\\times30\\times9,8=88,2\\,\\mathrm N\\), lớn hơn lực đẩy 80 N. Khi đó vật vẫn đứng yên và ma sát nghỉ tự điều chỉnh bằng 80 N.\\n\\nTuy nhiên đề không nói rõ hệ số là ma sát nghỉ hay trượt. Nếu hiểu là hệ số ma sát trượt thì không thể dùng nó để kết luận chắc chắn vật bắt đầu trượt hay đứng yên. Vì vậy kết luận phụ thuộc cách hiểu dữ kiện.",
-    "status": "review",
-    "note": "Đề không phân biệt hệ số ma sát nghỉ hay trượt. Với cách hiểu μs=0,3 và g=9,8 m/s², vật đứng yên, f_s=80 N; giới hạn ma sát nghỉ là 88,2 N.",
-    "diagram": "horizontal",
-    "targetText": "Nếu μ là hệ số ma sát nghỉ: vật đứng yên, f_s = 80 N."
-  },
-  {
-    "id": 93,
-    "question": "Xác định các cụm từ thích hợp để điền vào chỗ trống: Véctơ (1) … của một vật luôn cùng hướng với lực tác dụng lên vật. Độ lớn của vectơ gia tốc tỉ lệ thuận với độ lớn của vectơ (2) … tác dụng lên vật và tỉ lệ nghịch với khối lượng của vật.",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Theo định luật II Newton, \\(\\vec a=\\vec F_{\\mathrm{hợp}}/m\\). Vectơ gia tốc cùng hướng với hợp lực; độ lớn gia tốc tỉ lệ thuận với độ lớn hợp lực và tỉ lệ nghịch với khối lượng.\\n\\nĐiền (1) **gia tốc**; (2) **hợp lực** (hay lực tổng hợp).",
-    "status": "verified",
-    "note": "PDF không có phương án lựa chọn; câu điền khuyết được giữ ở dạng trả lời tay.",
-    "diagram": "newton",
-    "targetText": "(1) gia tốc; (2) hợp lực (lực tổng hợp)."
-  },
-  {
-    "id": 94,
-    "question": "Sơ đồ lực tác dụng lên vật m được mô tả như hình vẽ. Xác định kết luận nào dưới đây là Sai đối với các bước giải toán cho bài tập này?",
-    "type": "mc",
-    "options": [
-      "Phương trình động lực học: \\(\\vec F+\\vec N+\\vec P+\\vec F_{ms}=m\\vec a\\).",
-      "Phương trình hình chiếu lên Oy: \\(N-P=0\\).",
-      "Phương trình hình chiếu lên Ox: \\(F\\cos\\theta-F_{ms}=ma\\).",
-      "Biểu thức gia tốc: \\(a=\\frac{F\\cos\\theta-k(mg+F\\sin\\theta)}{m}\\)."
-    ],
-    "answer": 1,
-    "explanation": "**Lý thuyết:** Lực F trong hình hướng chếch xuống, vì vậy thành phần thẳng đứng của nó cùng chiều trọng lực. Chiếu theo Oy: \\(N-P-F\\sin\\theta=0\\), không phải \\(N-P=0\\). Khi đó \\(N=mg+F\\sin\\theta\\) và \\(a=[F\\cos\\theta-k(mg+F\\sin\\theta)]/m\\).\\n\\nPhương án B sai vì bỏ qua thành phần đứng của lực F trong phương trình Oy.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "pushdown"
-  },
-  {
-    "id": 95,
-    "question": "Sơ đồ lực tác dụng lên vật m được mô tả như hình vẽ. Xác định kết luận Sai đối với các bước giải toán cho bài tập này?",
-    "type": "mc",
-    "options": [
-      "Biểu thức gia tốc: \\(a=\\frac{F\\cos\\theta-k(mg+F\\sin\\theta)}{m}\\).",
-      "Phương trình hình chiếu lên Ox: \\(F\\cos\\theta-F_{ms}=ma\\).",
-      "Phương trình động lực học: \\(\\vec F+\\vec N+\\vec P+\\vec F_{ms}=m\\vec a\\).",
-      "Phương trình hình chiếu lên Oy: \\(N-P+F\\sin\\theta=0\\)."
-    ],
-    "answer": 0,
-    "explanation": "**Lý thuyết:** Lực F hướng chếch lên nên \\(N=mg-F\\sin\\theta\\). Do đó \\(F_{ms}=k(mg-F\\sin\\theta)\\) và \\(a=[F\\cos\\theta-k(mg-F\\sin\\theta)]/m\\).\\n\\nPhương án A ghi dấu cộng trước \\(F\\sin\\theta\\) trong biểu thức ma sát/gia tốc, trái với việc lực kéo hướng lên làm giảm phản lực. Chọn A.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "pullup"
-  },
-  {
-    "id": 96,
-    "question": "Vật m chuyển động từ dưới chân mặt phẳng nghiêng đi lên dốc, sơ đồ lực được mô tả như hình vẽ. Xác định kết luận Sai đối với các bước giải toán cho bài tập này?",
-    "type": "mc",
-    "options": [
-      "Phương trình động lực học: \\(\\vec N+\\vec P+\\vec F_{ms}=m\\vec a\\).",
-      "Biểu thức gia tốc: \\(a=g\\sin\\alpha-kg\\cos\\alpha\\).",
-      "Phương trình hình chiếu lên Ox: \\(-mg\\sin\\alpha-F_{ms}=ma\\).",
-      "Phương trình hình chiếu lên Oy: \\(N-P\\cos\\alpha=0\\)."
-    ],
-    "answer": 1,
-    "explanation": "**Lý thuyết:** Chọn chiều dương Ox hướng lên dốc. Trọng lực thành phần dọc dốc và lực ma sát đều hướng xuống dốc, nên \\(-mg\\sin\\alpha-F_{ms}=ma\\). Theo pháp tuyến \\(N-mg\\cos\\alpha=0\\).\\n\\nSuy ra gia tốc đại số \\(a=-g(\\sin\\alpha+k\\cos\\alpha)\\). Phương án B ghi \\(a=g\\sin\\alpha-kg\\cos\\alpha\\), sai dấu của thành phần trọng lực (và không thể hiện đúng gia tốc âm theo chiều Ox).",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "inclineUp"
-  },
-  {
-    "id": 97,
-    "question": "Hai vật được nối với nhau bằng một sợi dây không giãn, được vắt qua một ròng rọc không khối lượng, sơ đồ lực được mô tả như hình vẽ. Xác định các bước giải toán để tìm gia tốc cho vật?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Với dây nhẹ, không giãn và ròng rọc lý tưởng, hai vật có gia tốc cùng độ lớn \\(a\\) và lực căng hai nhánh dây bằng nhau \\(T\\). Chọn chiều dương là chiều chuyển động dự đoán: vật 1 đi lên, vật 2 đi xuống.\\n\\nVới vật 1: \\(T-m_1g=m_1a\\). Với vật 2: \\(m_2g-T=m_2a\\). Cộng hai phương trình: \\(\\boxed{a=\\frac{(m_2-m_1)g}{m_1+m_2}}\\). Dấu của a xác định chiều thực tế.",
-    "status": "verified",
-    "note": "PDF chỉ có sơ đồ, không có bộ lựa chọn; lời giải trình bày hệ phương trình Atwood chuẩn.",
-    "diagram": "atwood",
-    "targetText": "a = (m₂ − m₁)g/(m₁ + m₂); T − m₁g = m₁a; m₂g − T = m₂a."
-  },
-  {
-    "id": 98,
-    "question": "Vật m được kéo lên một mặt phẳng nghiêng bằng lực F, sơ đồ lực được mô tả như hình vẽ. Xác định các bước giải toán để tìm gia tốc cho vật?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Chọn Ox song song mặt phẳng nghiêng hướng lên, Oy vuông góc mặt phẳng. Với lực kéo song song mặt dốc và ma sát trượt hướng xuống dốc: \\(N=mg\\cos\\alpha\\), \\(F_{ms}=kmg\\cos\\alpha\\).\\n\\nChiếu theo Ox: \\(F-mg\\sin\\alpha-F_{ms}=ma\\), nên \\(\\boxed{a=F/m-g(\\sin\\alpha+k\\cos\\alpha)}\\). Nếu đề không cho hệ số ma sát, đặt \\(k=0\\) hoặc giữ ký hiệu theo điều kiện thực tế.",
-    "status": "review",
-    "note": "Đề gốc không nêu độ lớn lực F, góc α hoặc hệ số ma sát; chỉ có thể trình bày phương pháp tổng quát theo giả thiết lực F song song mặt dốc.",
-    "diagram": "inclinePull",
-    "targetText": "N=mg cosα; F−mg sinα−Fms=ma; a=F/m−g(sinα+k cosα)."
-  },
-  {
-    "id": 99,
-    "question": "Hai vật được nối với nhau bằng một sợi dây không co giãn, tác dụng lực F lên vật thứ hai để hệ chuyển động. Hệ số ma sát giữa hai vật với mặt phẳng là k. Xác định các bước giải toán để tìm gia tốc cho vật?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Hai vật nối bằng dây nhẹ nên cùng độ lớn gia tốc \\(a\\), lực căng dây có độ lớn T. Xét cả hệ, lực kéo F hướng phải, hai lực ma sát hướng trái. Nếu cùng hệ số ma sát k và mặt phẳng ngang: \\(F_{ms1}=km_1g\\), \\(F_{ms2}=km_2g\\).\\n\\n\\(\\boxed{a=\\frac{F-k(m_1+m_2)g}{m_1+m_2}}\\). Với vật 1: \\(T-F_{ms1}=m_1a\\); từ đó tìm \\(T=m_1a+km_1g\\).",
-    "status": "verified",
-    "note": "Không có phương án A–D; biểu thức giả thiết lực F nằm ngang và cả hai vật có cùng hệ số ma sát k.",
-    "diagram": "twoBlocks",
-    "targetText": "a=[F−k(m₁+m₂)g]/(m₁+m₂); T−km₁g=m₁a."
-  },
-  {
-    "id": 100,
-    "question": "Hai vật được nối với nhau bằng một sợi dây không giãn, được vắt qua một ròng rọc không khối lượng, sơ đồ lực được mô tả như hình vẽ. Xác định kết luận Sai về các phương trình động lực học?",
-    "type": "mc",
-    "options": [
-      "Phương trình độ lớn của vật 2: \\(P_2-T_2=m_2a_2\\).",
-      "Phương trình động lực học: \\(\\vec P_1+\\vec T_1=m_1\\vec a_1;\\;\\vec P_2+\\vec T_2=m_2\\vec a_2\\).",
-      "Phương trình độ lớn của vật 1: \\(P_1-T_1=m_1a_1\\).",
-      "Gia tốc: \\(a=\\frac{m_2g-m_1g}{m_1+m_2}\\)."
-    ],
-    "answer": 2,
-    "explanation": "**Lý thuyết:** Với chiều dương của vật 1 hướng lên và vật 2 hướng xuống, các phương trình là \\(T-P_1=m_1a\\) và \\(P_2-T=m_2a\\). Cộng lại được \\(a=(m_2-m_1)g/(m_1+m_2)\\).\\n\\nPhương án C viết \\(P_1-T=m_1a\\), ngược dấu với chiều dương đã chọn cho vật 1, nên sai.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "atwood"
-  },
-  {
-    "id": 101,
-    "question": "Phân biệt sơ đồ lực hình vẽ dưới mô tả một vật chuyển động trong trường hợp nào dưới đây?",
-    "type": "mc",
-    "options": [
-      "Vật được bắn từ chân mặt phẳng nghiêng và chuyển động có ma sát đi lên mặt phẳng nghiêng.",
-      "Vật được kéo chuyển động từ chân mặt phẳng nghiêng và chuyển động có ma sát đi lên mặt phẳng nghiêng.",
-      "Vật được thả từ đỉnh xuống chân mặt phẳng nghiêng và chuyển động có ma sát trên mặt phẳng nghiêng.",
-      "Vật được thả từ đỉnh xuống chân mặt phẳng nghiêng và chuyển động không ma sát trên mặt phẳng nghiêng."
-    ],
-    "answer": 0,
-    "explanation": "**Lý thuyết:** Trên sơ đồ, vật nằm trên mặt phẳng nghiêng, có trọng lực, phản lực và ma sát hướng xuống dốc; không có lực kéo ngoài. Ma sát hướng xuống dốc chứng tỏ vật đang chuyển động lên dốc (ma sát ngược chiều chuyển động tương đối).\\n\\nTrường hợp phù hợp là vật được bắn từ chân dốc và tiếp tục đi lên có ma sát. Chọn A.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "inclineLaunch"
-  },
-  {
-    "id": 102,
-    "question": "Phân biệt sơ đồ lực hình vẽ dưới mô tả một vật chuyển động trong trường hợp nào dưới đây?",
-    "type": "mc",
-    "options": [
-      "Vật được thả từ đỉnh xuống chân mặt phẳng nghiêng và chuyển động có ma sát trên mặt phẳng nghiêng.",
-      "Vật được kéo chuyển động từ chân mặt phẳng nghiêng và chuyển động có ma sát đi lên mặt phẳng nghiêng.",
-      "Vật được bắn từ chân mặt phẳng nghiêng và chuyển động có ma sát đi lên mặt phẳng nghiêng.",
-      "Vật được thả từ đỉnh xuống chân mặt phẳng nghiêng và chuyển."
-    ],
-    "answer": 1,
-    "explanation": "**Lý thuyết:** Sơ đồ thể hiện lực kéo F hướng lên dốc và ma sát hướng xuống dốc, tức vật được kéo từ chân dốc đi lên trên mặt phẳng nghiêng có ma sát.\\n\\nChọn B. Phương án D trong PDF bị cắt cụt ở cuối câu và được giữ nguyên trạng thái rút gọn trong bộ dữ liệu.",
-    "status": "verified",
-    "note": "Phương án D trong PDF bị cắt cụt, được giữ lại đúng phần văn bản nhìn thấy; hình vẽ xác định đáp án B.",
-    "diagram": "inclinePull"
-  },
-  {
-    "id": 103,
-    "question": "Hai vật được nối với nhau bằng một sợi dây không co giãn, tác dụng lực F lên vật thứ hai để hệ chuyển động. Hệ số ma sát giữa hai vật với mặt phẳng là k. Xác định kết luận Sai đối với các bước giải toán?",
-    "type": "mc",
-    "options": [
-      "Mối liên hệ: \\(a_1=a_2,\\;T_1=T_2\\).",
-      "Vật 1: \\(F+T_1-F_{ms1}=m_1a_1\\).",
-      "Gia tốc hệ: \\(a=\\frac{F-kP_1-kP_2}{m_1+m_2}\\).",
-      "Vật 2: \\(F-T_2-F_{ms2}=m_2a_2\\)."
-    ],
-    "answer": 1,
-    "explanation": "**Lý thuyết:** Với hai vật nằm ngang và F tác dụng lên vật 2, dây kéo vật 1 thông qua lực căng T. Hai vật có cùng độ lớn gia tốc và lực căng hai đầu của một dây nhẹ qua ròng rọc lý tưởng (hoặc dây nối thẳng) có cùng độ lớn. Phương trình vật 1 phải là \\(T-F_{ms1}=m_1a\\); vật 2: \\(F-T-F_{ms2}=m_2a\\).\\n\\nPhương án B thêm lực F trực tiếp vào vật 1 dù F tác dụng lên vật 2, nên là kết luận sai.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "twoBlocks"
-  },
-  {
-    "id": 104,
-    "question": "Hai vật được nối với nhau bằng một sợi dây không giãn, được vắt qua một ròng rọc không khối lượng, sơ đồ lực được mô tả như hình vẽ. Xác định kết luận Đúng đối với các bước giải toán?",
-    "type": "mc",
-    "options": [
-      "Mối liên hệ: \\(a_1=a_2,\\;T_1=T_2\\).",
-      "Phương trình độ lớn: \\(-P_2+T_2=m_2a_2;\\;P_1-T_1=m_1a_1\\).",
-      "Phương trình động lực học: \\(\\vec P_1+\\vec T_1=m_1\\vec a_1;\\;\\vec P_2+\\vec T_2=m_2\\vec a_2\\).",
-      "Gia tốc: \\(a=\\frac{m_1g-m_2g}{m_1+m_2}\\)."
-    ],
-    "answer": [
-      0,
-      2
-    ],
-    "explanation": "**Lý thuyết:** Với mỗi vật, phương trình vectơ là tổng các lực bằng \\(m\\vec a\\). Theo hình, chiều dương của vật 1 hướng lên và vật 2 hướng xuống: \\(T-P_1=m_1a\\), \\(P_2-T=m_2a\\). Gia tốc có dấu phụ thuộc hiệu hai trọng lượng.\\n\\nTrong các phương án của đề, A (cùng độ lớn gia tốc và lực căng bằng nhau) và C (phương trình vectơ Newton) đều đúng với dây/ròng rọc lý tưởng. Câu gốc yêu cầu chọn một đáp án nhưng có ít nhất hai lựa chọn đúng. Các biểu thức độ lớn ở phương án B bị đảo dấu so với chiều đã chọn.",
-    "status": "review",
-    "note": "Trong mô hình dây/ròng rọc lý tưởng, cả quan hệ a1=a2, T1=T2 và phương trình vectơ đều đúng; câu hỏi “một lựa chọn đúng” có hơn một đáp án.",
-    "diagram": "atwood"
-  },
-  {
-    "id": 105,
-    "question": "Người ta đẩy một cái thùng có khối lượng 25 kg theo phương ngang bằng một lực 80 N. Hệ số ma sát giữa thùng và mặt sàn là 0,1. Xác định gia tốc của thùng hàng?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Với lực nằm ngang, \\(N=mg\\), \\(F_{ms}=\\mu N=\\mu mg\\), do đó \\(a=(F-\\mu mg)/m\\).\\n\\nLấy \\(g=9,8\\): \\(F_{ms}=0,1\\times25\\times9,8=24,5\\,\\mathrm N\\); \\(a=(80-24,5)/25=\\boxed{2,22\\,\\mathrm{m/s^2}}\\). Với \\(g=10\\), kết quả là \\(2,20\\,\\mathrm{m/s^2}\\).",
+    "explanation": "Thành phần vận tốc thẳng đứng ban đầu: \\(v_{0y}=v_0\\sin30^\\circ=10\\,\\text{m/s}\\). Độ cao tăng thêm đến đỉnh: \\(\\Delta h=v_{0y}^2/(2g)=100/(2g)\\). Tổng độ cao cực đại tính từ mặt đất: \\(h_{max}=15+100/(2g)\\). Với \\(g=9,8\\), \\(h_{max}\\approx20,10\\,\\text{m}\\); với \\(g=10\\), kết quả 20,0 m.",
     "status": "conditional",
-    "note": "Đề không nêu g; chấp nhận xấp xỉ 2,20 m/s² nếu dùng g=10 hoặc 2,22 m/s² nếu dùng g=9,8.",
-    "diagram": "horizontal",
-    "target": [
-      2.2,
-      2.22
+    "note": "Đề không cho g; hệ thống chấp nhận kết quả theo g=9,8 hoặc g=10 m/s².",
+    "diagram": "projectile",
+    "expected": [
+      20.10204081632653,
+      20
     ],
-    "tolerance": 0.03,
-    "targetText": "Khoảng 2,20–2,22 m/s²"
+    "unit": "m",
+    "tolerance": 0.06
   },
   {
-    "id": 106,
-    "question": "Tác dụng lực F lên vật m đặt trên mặt phẳng ngang làm vật chuyển động, hệ số ma sát giữa vật m và mặt phẳng ngang là k. Xác định các bước giải toán để tìm gia tốc cho vật?",
-    "type": "manual",
+    "id": 40,
+    "question": "Một chất điểm quay quanh một trục cố định với phương trình vị trí góc tuân theo: \\(\\theta=0,1t^2+t\\); bán kính 1 m. Xác định độ lớn gia tốc tiếp tuyến của chất điểm tại thời điểm 5 giây?",
+    "type": "num",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** Chọn Ox ngang theo chiều lực, Oy thẳng đứng lên.\\n\\nTheo Oy: \\(N-mg=0\\Rightarrow N=mg\\). Ma sát trượt: \\(F_{ms}=kN=kmg\\). Theo Ox: \\(F-F_{ms}=ma\\).\\n\\nVậy \\(\\boxed{a=(F-kmg)/m}\\), với giả thiết lực F nằm ngang và vật đang trượt.",
+    "explanation": "Vận tốc góc \\(\\omega=d\\theta/dt=0,2t+1\\); gia tốc góc \\(\\alpha=d\\omega/dt=0,2\\,\\text{rad/s}^2\\). Gia tốc tiếp tuyến \\(a_t=R\\alpha=1\\times0,2=0,2\\,\\text{m/s}^2\\), không phụ thuộc thời điểm vì \\(\\alpha\\) không đổi.",
     "status": "verified",
-    "note": "PDF chỉ có hình lực F ngang, không nêu giá trị F, m hoặc k; lời giải giữ công thức tổng quát.",
-    "diagram": "horizontal",
-    "targetText": "N=mg; Fms=kmg; F−Fms=ma; a=(F−kmg)/m."
+    "note": "",
+    "diagram": "circular",
+    "expected": 0.2,
+    "unit": "m/s²"
   },
   {
-    "id": 107,
-    "question": "Một khối hộp được thả không ma sát từ đỉnh một mặt phẳng nghiêng, góc nghiêng θ=30° như hình vẽ, chọn trục Ox song song với mặt phẳng nghiêng hướng xuống. Xác định các bước giải toán để tìm gia tốc cho vật?",
-    "type": "manual",
+    "id": 41,
+    "question": "Một chất điểm quay quanh một trục cố định với phương trình vị trí góc tuân theo: \\(\\theta=0,1t^2+t\\); bán kính 1 m. Độ lớn gia tốc pháp tuyến của chất điểm tại thời điểm 5 giây là?",
+    "type": "num",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** Vật trượt không ma sát nên lực dọc mặt phẳng chỉ còn thành phần trọng lực \\(mg\\sin\\theta\\). Theo phương vuông góc: \\(N=mg\\cos\\theta\\).\\n\\nTheo Ox: \\(mg\\sin30^\\circ=ma\\Rightarrow a=g\\sin30^\\circ=g/2\\). Với \\(g=9,8\\), \\(a=4,9\\,\\mathrm{m/s^2}\\); với \\(g=10\\), \\(a=5,0\\,\\mathrm{m/s^2}\\).",
+    "explanation": "\\(\\omega=d\\theta/dt=0,2t+1\\). Tại \\(t=5\\,\\text{s}\\), \\(\\omega=2\\,\\text{rad/s}\\). Gia tốc pháp tuyến \\(a_n=\\omega^2R=2^2\\times1=4\\,\\text{m/s}^2\\).",
     "status": "verified",
-    "note": "Kết quả chính xác ở dạng biểu thức a=g/2; giá trị số phụ thuộc quy ước g.",
-    "diagram": "inclineDown",
-    "targetText": "a = g sin30° = g/2 (khoảng 4,9–5,0 m/s²)."
+    "note": "",
+    "diagram": "circular",
+    "expected": 4,
+    "unit": "m/s²"
   },
   {
-    "id": 108,
-    "question": "Một vật có khối lượng 10 kg đặt trên sàn nhà. Người ta kéo vật bằng một lực F hướng chếch lên trên và hợp với phương nằm ngang một góc α=30° như hình vẽ. Vật chuyển động với vận tốc không đổi trên sàn nhà. Hệ số ma sát trượt giữa vật và sàn nhà là 0,2. Lấy g=9,8 m/s². Xác định độ lớn của lực F?",
+    "id": 42,
+    "question": "Xác định cụm từ thích hợp điền vào chỗ trống: Trong chuyển động ném, theo phương ngang chất điểm chuyển động ...(1)... và theo phương đứng chất điểm chuyển động ...(2)...",
     "type": "manual",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** Chuyển động đều nên \\(F\\cos\\alpha=f_k=\\mu N\\). Theo phương đứng: \\(N+F\\sin\\alpha-mg=0\\Rightarrow N=mg-F\\sin\\alpha\\).\\n\\nThay vào: \\(F\\cos\\alpha=\\mu(mg-F\\sin\\alpha)\\), suy ra \\(F=\\frac{\\mu mg}{\\cos\\alpha+\\mu\\sin\\alpha}\\).\\n\\nThay số: \\(F=\\frac{0,2\\times10\\times9,8}{\\cos30^\\circ+0,2\\sin30^\\circ}\\approx\\boxed{20,3\\,\\mathrm N}\\).",
+    "explanation": "Bỏ qua sức cản không khí: theo phương ngang không có gia tốc nên chuyển động thẳng đều; theo phương thẳng đứng có gia tốc trọng trường không đổi nên chuyển động thẳng biến đổi đều (rơi tự do/ném thẳng đứng). Điền: (1) **thẳng đều**; (2) **thẳng biến đổi đều**.",
     "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "pullup",
-    "target": 20.3,
-    "tolerance": 0.15,
-    "targetText": "20,3 N"
+    "note": "",
+    "diagram": "projectile"
   },
   {
-    "id": 109,
-    "question": "Một vật có khối lượng 60 kg đặt trên sàn nhà nằm ngang. Hệ số ma sát trượt giữa vật và sàn nhà là 0,2. Người ta đẩy vật bằng một lực 200 N theo phương hợp với phương ngang một góc 30°, chếch xuống dưới như hình vẽ và làm cho vật trượt trên sàn. Tính gia tốc của vật?",
+    "id": 43,
+    "question": "Xác định cụm từ thích hợp điền vào chỗ trống: Trong chuyển động tròn biến đổi đều, thành phần gia tốc tiếp tuyến là ...(1)... và thành phần gia tốc pháp tuyến ...(2)...",
     "type": "manual",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** Thành phần ngang của lực đẩy là \\(F\\cos30^\\circ\\); thành phần thẳng đứng hướng xuống làm tăng phản lực: \\(N=mg+F\\sin30^\\circ\\). Ma sát \\(f_k=\\mu N\\).\\n\\nVới \\(g=9,8\\): \\(N=60\\times9,8+200\\times0,5=688\\,\\mathrm N\\); \\(f_k=0,2\\times688=137,6\\,\\mathrm N\\).\\n\\n\\(a=\\frac{200\\cos30^\\circ-137,6}{60}\\approx\\boxed{0,59\\,\\mathrm{m/s^2}}\\).",
+    "explanation": "Với chuyển động tròn biến đổi đều (gia tốc góc không đổi), gia tốc tiếp tuyến \\(a_t=R\\alpha\\) có độ lớn không đổi. Gia tốc pháp tuyến \\(a_n=v^2/R=\\omega^2R\\) thay đổi theo tốc độ; nếu tốc độ tăng thì \\(a_n\\) tăng, nếu tốc độ giảm thì \\(a_n\\) giảm. Điền: (1) **không đổi**; (2) **thay đổi theo tốc độ**.",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular"
+  },
+  {
+    "id": 44,
+    "question": "Tại độ cao 20 m so với mặt đất, một hòn đá được ném xiên lên góc 30° với tốc độ đầu 36 km/h. Xác định độ cao cực đại của hòn đá?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Đổi \\(36\\,\\text{km/h}=10\\,\\text{m/s}\\). Thành phần thẳng đứng \\(v_{0y}=10\\sin30^\\circ=5\\,\\text{m/s}\\). Độ cao tăng thêm \\(\\Delta h=v_{0y}^2/(2g)=25/(2g)\\). Vậy \\(h_{max}=20+25/(2g)\\): khoảng 21,28 m nếu \\(g=9,8\\), hoặc 21,25 m nếu \\(g=10\\,\\text{m/s}^2\\).",
     "status": "conditional",
-    "note": "Đề không nêu g; dùng g=9,8 m/s² cho kết quả khoảng 0,59 m/s²; nếu g=10 thì khoảng 0,55 m/s².",
-    "diagram": "pushdown",
-    "target": [
-      0.553,
-      0.593
+    "note": "Đề không nêu g; cả hai quy ước g=9,8 và g=10 cho kết quả gần nhau.",
+    "diagram": "projectile",
+    "expected": [
+      21.275510204081634,
+      21.25
     ],
-    "tolerance": 0.04,
-    "targetText": "Khoảng 0,56–0,59 m/s²"
+    "unit": "m",
+    "tolerance": 0.04
   },
   {
-    "id": 110,
-    "question": "Một khối hộp được bắn lên mặt nghiêng không ma sát, góc nghiêng θ=30° với vận tốc ban đầu bằng 15 m/s như hình vẽ. Tính quãng đường khối hộp đi được cho đến khi dừng lại?",
+    "id": 45,
+    "question": "Chất điểm chuyển động tròn với vị trí dài: \\(s=3t^2\\) (m) với \\(r=2\\,\\text{m}\\). Tại thời điểm 10 giây, xác định vận tốc góc của chất điểm?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Vận tốc dài \\(v=ds/dt=6t\\). Tại \\(t=10\\,\\text{s}\\), \\(v=60\\,\\text{m/s}\\). Vận tốc góc \\(\\omega=v/r=60/2=30\\,\\text{rad/s}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular",
+    "expected": 30,
+    "unit": "rad/s"
+  },
+  {
+    "id": 46,
+    "question": "Chất điểm M chuyển động trên đường tròn bán kính R = 2 m với phương trình: \\(s=3t^2+t\\) (hệ SI). Trong đó s là độ dài cung OM, O là điểm gốc trên đường tròn. Xác định vận tốc góc và gia tốc góc của chất điểm lúc t = 0,5 s?",
     "type": "manual",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** Khi vật đi lên mặt phẳng nghiêng nhẵn, gia tốc dọc dốc hướng xuống có độ lớn \\(a=g\\sin30^\\circ\\). Tại điểm dừng, \\(v=0\\). Dùng \\(v^2=v_0^2-2as\\):\\n\\n\\(s=\\frac{v_0^2}{2g\\sin30^\\circ}=\\frac{15^2}{g}\\). Với \\(g=9,8\\), \\(s\\approx22,96\\,\\mathrm m\\); nếu \\(g=10\\), \\(s=22,5\\,\\mathrm m\\).",
+    "explanation": "Vận tốc dài \\(v=ds/dt=6t+1\\). Tại \\(t=0,5\\,\\text{s}\\), \\(v=4\\,\\text{m/s}\\), do đó \\(\\omega=v/R=4/2=2\\,\\text{rad/s}\\). Gia tốc tiếp tuyến \\(a_t=dv/dt=6\\,\\text{m/s}^2\\), nên gia tốc góc \\(\\alpha=a_t/R=6/2=3\\,\\text{rad/s}^2\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular"
+  },
+  {
+    "id": 47,
+    "question": "Chất điểm chuyển động tròn với vị trí góc: \\(\\theta=4t^2\\) (rad), với \\(R=0,5\\,\\text{m}\\). Xác định gia tốc tiếp tuyến của chất điểm tại t = 0,5?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Gia tốc góc \\(\\alpha=d^2\\theta/dt^2=8\\,\\text{rad/s}^2\\). Gia tốc tiếp tuyến \\(a_t=R\\alpha=0,5\\times8=4\\,\\text{m/s}^2\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular",
+    "expected": 4,
+    "unit": "m/s²"
+  },
+  {
+    "id": 48,
+    "question": "Chất điểm M chuyển động trên đường tròn bán kính R = 2 m với phương trình: \\(s=3t^2+t\\) (hệ SI). Trong đó s là độ dài cung OM, O là điểm gốc trên đường tròn. Xác định gia tốc góc của chất điểm lúc t = 0,5 s?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Từ \\(s=3t^2+t\\): \\(v=ds/dt=6t+1\\), \\(a_t=dv/dt=6\\,\\text{m/s}^2\\). Gia tốc góc \\(\\alpha=a_t/R=6/2=3\\,\\text{rad/s}^2\\). Đây là hằng số, nên kết quả không phụ thuộc thời điểm.",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular",
+    "expected": 3,
+    "unit": "rad/s²"
+  },
+  {
+    "id": 49,
+    "question": "Chất điểm chuyển động tròn quanh tâm O, góc quay tuân theo phương trình \\(\\theta=0,5t^2+0,25t\\). Biết rằng ở thời điểm t = 2 giây, chất điểm có vận tốc dài là v = 18 m/s. Tại thời điểm này, xác định độ lớn gia tốc tiếp tuyến?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Vận tốc góc \\(\\omega=d\\theta/dt=t+0,25\\). Tại \\(t=2\\), \\(\\omega=2,25\\,\\text{rad/s}\\). Từ \\(v=\\omega R=18\\), suy ra \\(R=18/2,25=8\\,\\text{m}\\). Gia tốc góc \\(\\alpha=d\\omega/dt=1\\,\\text{rad/s}^2\\). Do đó \\(a_t=R\\alpha=8\\,\\text{m/s}^2\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular",
+    "expected": 8,
+    "unit": "m/s²"
+  },
+  {
+    "id": 50,
+    "question": "Súng đại bác đặt ngang mặt nước biển, bắn đạn với vận tốc đầu nòng 100 m/s. Xác định tầm xa cực đại của đạn?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Giả sử điểm phóng và điểm rơi cùng độ cao, bỏ qua sức cản không khí. Tầm xa \\(R=v_0^2\\sin2\\alpha/g\\) đạt cực đại khi \\(\\alpha=45^\\circ\\), do đó \\(R_{max}=v_0^2/g=10000/g\\). Với \\(g=9,8\\), \\(R_{max}\\approx1020,4\\,\\text{m}\\); nếu lấy \\(g=10\\), kết quả 1000 m.",
     "status": "conditional",
-    "note": "Đề không cho g; hai cách quy ước thường dùng cho đáp số khoảng 22,5–23,0 m.",
-    "diagram": "inclineLaunch",
-    "target": [
-      22.5,
-      22.96
+    "note": "Cần hiểu “đặt ngang mặt nước biển” là điểm phóng ở cùng độ cao với điểm rơi; đề không cho g.",
+    "diagram": "projectile",
+    "expected": [
+      1020.408163265306,
+      1000
     ],
-    "tolerance": 0.6,
-    "targetText": "Khoảng 22,5–23,0 m"
+    "unit": "m",
+    "tolerance": 1
   },
   {
-    "id": 111,
-    "question": "Một vật bắt đầu trượt từ đỉnh một mặt phẳng nghiêng có góc nghiêng α=30°. Hệ số ma sát trượt giữa vật và mặt phẳng nghiêng là 0,4. Tính gia tốc của vật?",
+    "id": 51,
+    "question": "Chất điểm M chuyển động trên đường tròn bán kính R = 18,5 m với phương trình: \\(s=3t^3+t\\) (hệ SI). Trong đó s là độ dài cung OM, O là điểm gốc trên đường tròn. Tính gia tốc tiếp tuyến và gia tốc pháp tuyến của chất điểm lúc t = 2 s?",
     "type": "manual",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** Chọn chiều xuống dốc là chiều dương. Thành phần trọng lực kéo xuống là \\(mg\\sin\\alpha\\), ma sát hướng lên dốc có độ lớn \\(\\mu mg\\cos\\alpha\\).\\n\\n\\(a=g(\\sin30^\\circ-0,4\\cos30^\\circ)\\). Với \\(g=9,8\\), \\(a\\approx1,51\\,\\mathrm{m/s^2}\\); với \\(g=10\\), \\(a\\approx1,54\\,\\mathrm{m/s^2}\\).",
-    "status": "conditional",
-    "note": "Đề không nêu g; chấp nhận khoảng 1,51–1,54 m/s² tùy quy ước.",
-    "diagram": "inclineDown",
-    "target": [
-      1.51,
-      1.54
-    ],
-    "tolerance": 0.05,
-    "targetText": "Khoảng 1,51–1,54 m/s²"
+    "explanation": "Vận tốc dài \\(v=ds/dt=9t^2+1\\). Tại \\(t=2\\): \\(v=37\\,\\text{m/s}\\). Gia tốc tiếp tuyến \\(a_t=dv/dt=18t=36\\,\\text{m/s}^2\\). Gia tốc pháp tuyến \\(a_n=v^2/R=37^2/18,5=1369/18,5=74\\,\\text{m/s}^2\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "circular"
   },
   {
-    "id": 112,
-    "question": "Lựa chọn cụm từ thích hợp điền vào chỗ trống: Véctơ gia tốc của một vật luôn (1) … với lực tác dụng lên vật. Độ lớn của vectơ gia tốc tỉ lệ thuận với độ lớn của vectơ lực tác dụng lên vật và (2) … với khối lượng của vật.",
+    "id": 52,
+    "question": "Một vật được ném lên từ mặt đất trong trọng trường với vận tốc đầu v₀. Tính góc ném hợp với phương ngang để tầm xa đạt cực đại?",
     "type": "manual",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** Theo \\(\\vec a=\\vec F_{\\mathrm{hợp}}/m\\), vectơ gia tốc cùng hướng với hợp lực; độ lớn tỉ lệ thuận với độ lớn lực và tỉ lệ nghịch với khối lượng.\\n\\nĐiền: (1) **cùng hướng**; (2) **tỉ lệ nghịch**.",
+    "explanation": "Khi vật rơi về đúng độ cao phóng và bỏ qua sức cản không khí, tầm xa \\(R=v_0^2\\sin2\\alpha/g\\). Giá trị cực đại xảy ra khi \\(\\sin2\\alpha=1\\), tức \\(2\\alpha=90^\\circ\\). Do đó \\(\\alpha=45^\\circ\\).",
     "status": "verified",
-    "note": "PDF không có phương án A–D; giữ dạng điền khuyết.",
-    "diagram": "newton",
-    "targetText": "(1) cùng hướng; (2) tỉ lệ nghịch."
+    "note": "",
+    "diagram": "projectile"
   },
   {
-    "id": 113,
-    "question": "Lựa chọn cụm từ thích hợp điền từ vào chỗ trống: Khi không có ngoại lực tác dụng và được quan sát từ một …, một vật đứng yên sẽ vẫn đứng yên và một vật đang chuyển động thẳng đều sẽ tiếp tục chuyển động thẳng đều.",
-    "type": "manual",
+    "id": 53,
+    "question": "Câu 53 không xuất hiện trong tài liệu PDF được cung cấp.",
+    "type": "missing",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** Đây là nội dung định luật I Newton (định luật quán tính), đúng khi quan sát trong **hệ quy chiếu quán tính**.\\n\\nCụm từ cần điền: hệ quy chiếu quán tính.",
-    "status": "verified",
-    "note": "PDF không có phương án A–D; giữ dạng điền khuyết.",
-    "diagram": "frames",
-    "targetText": "Hệ quy chiếu quán tính."
-  },
-  {
-    "id": 114,
-    "question": "Lựa chọn cụm từ thích hợp điền từ vào chỗ trống: Hệ quy chiếu phi quán tính là các hệ quy chiếu chuyển động có (1) … so với hệ quy chiếu quán tính. Trong hệ quy chiếu phi quán tính có xuất hiện (2) …",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Hệ quy chiếu phi quán tính chuyển động có gia tốc so với hệ quy chiếu quán tính. Khi áp dụng định luật Newton trong hệ này, phải bổ sung lực quán tính \\(\\vec F_{qt}=-m\\vec a_{hệ}\\).\\n\\nĐiền (1) **gia tốc**; (2) **lực quán tính**.",
-    "status": "verified",
-    "note": "PDF không có phương án A–D; giữ dạng điền khuyết.",
-    "diagram": "frames",
-    "targetText": "(1) gia tốc; (2) lực quán tính."
-  },
-  {
-    "id": 115,
-    "question": "Hai vật gắn với nhau thông qua một sợi dây không co giãn, hệ số ma sát giữa vật 2 và mặt phẳng ngang là k, tác dụng lực F để hệ chuyển động theo chiều như mô tả trên hình vẽ. Lựa chọn kết luận Sai đối với các bước giải toán?",
-    "type": "mc",
-    "options": [
-      "Lực ma sát tác dụng lên vật 2: \\(f_{ms}=kmg\\).",
-      "Lực tác dụng lên vật 1 được mô tả như sơ đồ: lực căng hướng lên, trọng lực hướng xuống.",
-      "Lực tác dụng lên vật 2 gồm phản lực, trọng lực, lực kéo, lực căng và ma sát như sơ đồ.",
-      "Phương trình chiếu vật 2 theo phương ngang: \\(F\\cos\\theta-f_{ms}-T_2=m_2a_2\\)."
-    ],
-    "answer": 0,
-    "explanation": "**Lý thuyết:** Lực F kéo vật 2 chếch lên góc \\(\\theta\\), do đó phản lực mặt bàn là \\(N_2=m_2g-F\\sin\\theta\\), không phải \\(m_2g\\). Vì vậy ma sát trên vật 2 có độ lớn \\(f_{ms}=k(m_2g-F\\sin\\theta)\\).\\n\\nPhương án A ghi \\(f_{ms}=kmg\\), bỏ qua thành phần nâng của lực F nên sai. Chọn A.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "pulleyPull"
-  },
-  {
-    "id": 116,
-    "question": "Hai vật gắn với nhau thông qua một sợi dây không co giãn, hệ số ma sát giữa vật 2 và mặt phẳng ngang là k, tác dụng lực F để hệ chuyển động theo chiều như mô tả trên hình vẽ. Xác định các bước giải toán để tìm gia tốc cho vật?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Chọn chiều dương: vật 1 đi lên, vật 2 đi sang phải. Với dây nhẹ, \\(a_1=a_2=a\\), lực căng hai nhánh dây bằng nhau là T.\\n\\nVật 1: \\(T-m_1g=m_1a\\). Vật 2: \\(F\\cos\\theta-f_{ms}-T=m_2a\\). Theo phương đứng vật 2: \\(N+F\\sin\\theta-m_2g=0\\), nên \\(f_{ms}=k(m_2g-F\\sin\\theta)\\).\\n\\nCộng hai phương trình ngang/dọc chuyển động: \\(\\boxed{a=\\frac{F\\cos\\theta-k(m_2g-F\\sin\\theta)-m_1g}{m_1+m_2}}\\).",
-    "status": "verified",
-    "note": "PDF không nêu số liệu F, k, θ; lời giải trình bày công thức tổng quát theo sơ đồ.",
-    "diagram": "pulleyPull",
-    "targetText": "a=[F cosθ−k(m₂g−F sinθ)−m₁g]/(m₁+m₂)."
-  },
-  {
-    "id": 117,
-    "question": "Hai vật gắn với nhau thông qua một sợi dây không co giãn, bỏ qua ma sát giữa vật 2 và mặt phẳng nghiêng, ròng rọc không khối lượng. Biết m1=5 kg, m2=6 kg, góc nghiêng bằng 45°. Xác định các bước giải toán để tìm gia tốc cho vật?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Thành phần trọng lực của vật 2 dọc mặt nghiêng là \\(m_2g\\sin45^\\circ\\). So sánh với trọng lực vật 1: \\(m_1g>m_2g\\sin45^\\circ\\), vì \\(5>6\\times0,707\\), nên m1 đi xuống, m2 đi lên dốc.\\n\\nPhương trình: \\(m_1g-T=m_1a\\); \\(T-m_2g\\sin45^\\circ=m_2a\\). Suy ra \\(a=\\frac{(m_1-m_2\\sin45^\\circ)g}{m_1+m_2}\\approx0,67\\,\\mathrm{m/s^2}\\) nếu \\(g=9,8\\) (khoảng 0,69 nếu g=10).",
-    "status": "conditional",
-    "note": "Đề không nêu g; hệ phương trình và chiều chuyển động xác định được, giá trị số phụ thuộc g.",
-    "diagram": "inclinePulley",
-    "target": [
-      0.67,
-      0.69
-    ],
-    "tolerance": 0.03,
-    "targetText": "a ≈ 0,67–0,69 m/s²; m₁ đi xuống."
-  },
-  {
-    "id": 118,
-    "question": "Hai vật gắn với nhau thông qua một sợi dây không co giãn, hệ số ma sát giữa hai vật và mặt phẳng ngang là k, tác dụng lực F để hệ chuyển động, sơ đồ lực tác dụng lên các vật được mô tả trên hình vẽ. Lựa chọn kết luận Sai đối với các phương trình?",
-    "type": "mc",
-    "options": [
-      "Vật 1: \\(\\vec T_1+\\vec N_1+\\vec P_1+\\vec F_{ms1}=m_1\\vec a_1\\).",
-      "Chiếu Ox vật 1: \\(T_1-F_{ms1}-F_{ms2}=m_1a_1\\).",
-      "Vật 2: \\(\\vec T_2+\\vec N_2+\\vec P_2+\\vec F_{ms2}+\\vec F=m_2\\vec a_2\\).",
-      "Chiếu Ox vật 2: \\(F\\cos\\theta-T_2-F_{ms2}=m_2a_2\\)."
-    ],
-    "answer": 1,
-    "explanation": "**Lý thuyết:** Xét riêng vật 1, theo phương ngang chỉ có lực căng T kéo sang phải và ma sát \\(F_{ms1}\\) cản sang trái: \\(T_1-F_{ms1}=m_1a_1\\). Ma sát của vật 2 không tác dụng trực tiếp lên vật 1.\\n\\nPhương án B đưa thêm \\(-F_{ms2}\\) vào phương trình của vật 1 nên sai. Chọn B.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "twoBlocks"
-  },
-  {
-    "id": 119,
-    "question": "Hai vật gắn với nhau thông qua một sợi dây không co giãn, hệ số ma sát giữa hai vật và mặt phẳng ngang là k, tác dụng lực F để hệ chuyển động, sơ đồ lực tác dụng lên các vật được mô tả trên hình vẽ. Xác định các bước giải toán để tìm gia tốc cho vật?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Theo hình, lực F kéo vật 2 chếch lên góc \\(\\alpha\\); hai vật cùng gia tốc a và lực căng T. Với vật 1: \\(T-km_1g=m_1a\\). Với vật 2: \\(F\\cos\\alpha-T-k(m_2g-F\\sin\\alpha)=m_2a\\).\\n\\nCộng hai phương trình: \\(\\boxed{a=\\frac{F\\cos\\alpha-k[m_1g+m_2g-F\\sin\\alpha]}{m_1+m_2}}\\). Sau đó \\(T=m_1a+km_1g\\). Điều kiện là vật vẫn tiếp xúc sàn và F có thành phần hướng lên như sơ đồ.",
-    "status": "verified",
-    "note": "PDF không có dữ kiện số; công thức được lập theo sơ đồ lực hai vật và lực kéo chếch lên.",
-    "diagram": "twoBlocksPull",
-    "targetText": "a={F cosα−k[m₁g+m₂g−F sinα]}/(m₁+m₂); T=m₁a+km₁g."
-  },
-  {
-    "id": 120,
-    "question": "Cho cơ hệ như hình vẽ, biết m1=2 kg, m2=3 kg, m3=4 kg, hệ số ma sát giữa m2 với mặt phẳng ngang k=0,1. Lựa chọn kết luận Sai liên quan tới cơ hệ?",
-    "type": "mc",
-    "options": [
-      "Có 5 lực tác dụng lên vật 2.",
-      "Gia tốc: \\(a=\\frac{m_3g-m_1g-km_2g}{m_1+m_2+m_3}\\).",
-      "Lực căng của cả hai sợi dây có độ lớn đều bằng nhau vì ròng rọc không khối lượng.",
-      "Hệ chuyển động theo chiều vật 3 đi xuống."
-    ],
-    "answer": 2,
-    "explanation": "**Lý thuyết:** Vật m2 trên bàn chịu trọng lực, phản lực, ma sát và hai lực căng của hai dây: tổng cộng 5 lực. Nếu m3 đi xuống thì gia tốc hệ \\(a=\\frac{m_3g-m_1g-km_2g}{m_1+m_2+m_3}\\), dương với dữ kiện đã cho. Hai dây riêng biệt qua hai ròng rọc có lực căng T1 và T3 khác nhau nói chung.\\n\\nPhát biểu C sai: ròng rọc không khối lượng không làm cho lực căng của hai sợi dây khác nhau trở thành bằng nhau.",
-    "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "threeMasses"
-  },
-  {
-    "id": 121,
-    "question": "Cho cơ hệ như hình vẽ, biết m1=2 kg, m2=3 kg, m3=4 kg, hệ số ma sát giữa m2 với mặt phẳng ngang k=0,1. Xác định các bước giải toán để tìm gia tốc cho vật?",
-    "type": "manual",
-    "options": [],
-    "answer": null,
-    "explanation": "**Lý thuyết:** Hệ chuyển động theo chiều m3 đi xuống, m1 đi lên và m2 sang phải. Với hai dây/ròng rọc lý tưởng, ba vật có cùng độ lớn gia tốc a; gọi lực căng hai dây lần lượt T1, T3.\\n\\n\\(T_1-m_1g=m_1a\\); \\(T_3-T_1-km_2g=m_2a\\); \\(m_3g-T_3=m_3a\\). Cộng ba phương trình: \\(a=\\frac{(m_3-m_1-km_2)g}{m_1+m_2+m_3}\\).\\n\\nThay số: \\(a=\\frac{(4-2-0,3)g}{9}=\\frac{1,7g}{9}\\approx1,85\\,\\mathrm{m/s^2}\\) nếu \\(g=9,8\\) (khoảng 1,89 nếu g=10).",
-    "status": "conditional",
-    "note": "Đề không nêu g; hệ phương trình có hai lực căng khác nhau vì là hai dây riêng biệt.",
-    "diagram": "threeMasses",
-    "target": [
-      1.85,
-      1.89
-    ],
-    "tolerance": 0.05,
-    "targetText": "a ≈ 1,85–1,89 m/s²; m₃ đi xuống."
-  },
-  {
-    "id": 122,
-    "question": "Hai vật gắn với nhau thông qua một sợi dây không co giãn, hệ số ma sát giữa hai vật và mặt phẳng ngang là k, tác dụng lực F để hệ chuyển động, sơ đồ lực tác dụng lên các vật được mô tả trên hình vẽ. Lựa chọn kết luận Đúng đối với cơ hệ?",
-    "type": "mc",
-    "options": [
-      "Chiếu Oy vật 1: \\(N_1-m_1g+T_1-F_{ms1}=0\\).",
-      "Chiếu Oy vật 2: \\(N_2-F\\cos\\alpha-P_2=0\\).",
-      "Phương trình độ lớn vật 2: \\(F\\cos\\alpha-T_2-F_{ms2}=m_2a_2\\).",
-      "Phương trình độ lớn vật 1: \\(T_1-F_{ms1}=m_1a_1\\)."
-    ],
-    "answer": [
-      2,
-      3
-    ],
-    "explanation": "**Lý thuyết:** Theo hình, hai vật chuyển động sang phải; với vật 1, chiếu Ox được \\(T_1-F_{ms1}=m_1a_1\\). Với vật 2, lực F chếch xuống một góc α nên thành phần ngang là \\(F\\cos\\alpha\\), phương trình Ox là \\(F\\cos\\alpha-T_2-F_{ms2}=m_2a_2\\).\\n\\nCả phương án C và D đều là các phương trình chiếu ngang hợp lý theo sơ đồ. Vì đề chỉ yêu cầu một kết luận đúng nhưng có ít nhất hai lựa chọn đúng, không thể chấm một đáp án duy nhất; khi luyện tập, chọn C hoặc D đều cần được chấp nhận.",
+    "explanation": "Không có nội dung câu hỏi, dữ kiện hay phương án của Câu 53 trong phần Chương I của PDF. Câu này được giữ làm mốc đánh số để không làm lệch số thứ tự; không thể giải hoặc chấm điểm khi thiếu toàn bộ đề.",
     "status": "review",
-    "note": "Câu gốc có ít nhất hai đáp án đúng (C và D). Hai phương trình Oy ở A và B sai thành phần lực; B còn dùng Fcosα thay vì Fsinα theo phương đứng.",
-    "diagram": "twoBlocksPushDown"
+    "note": "Thiếu hoàn toàn trong nguồn PDF; không tự bổ sung nội dung.",
+    "diagram": "missing"
   },
   {
-    "id": 123,
-    "question": "Hai vật gắn với nhau thông qua một sợi dây không co giãn, bỏ qua ma sát giữa vật 2 và mặt phẳng nghiêng, ròng rọc không khối lượng. Biết m1=5 kg, m2=6 kg, góc nghiêng bằng 45°. Lựa chọn kết luận Sai đối với cơ hệ?",
-    "type": "mc",
-    "options": [
-      "Phương trình vật 1: \\(P_1-T_1=m_1a_1\\).",
-      "Vật 1 chuyển động đi xuống.",
-      "Phương trình vật 2: \\(T_2-P_2\\cos\\theta=m_2a_2\\).",
-      "Gia tốc: \\(a=\\frac{m_1g-m_2g\\sin\\alpha}{m_1+m_2}\\)."
-    ],
-    "answer": 2,
-    "explanation": "**Lý thuyết:** Thành phần trọng lực của m2 dọc mặt nghiêng là \\(m_2g\\sin\\alpha\\), không phải \\(m_2g\\cos\\theta\\) nếu θ được đo giữa mặt phẳng và phương ngang (hai góc này bổ sung nhau). Với dữ kiện: \\(m_1g>m_2g\\sin45^\\circ\\), nên m1 đi xuống.\\n\\nPhương án C dùng \\(P_2\\cos\\theta\\) làm thành phần dọc dốc; đây là thành phần pháp tuyến, nên sai. Chọn C.",
+    "id": 54,
+    "question": "Chất điểm chuyển động thẳng với phương trình: \\(x=10+6t^2-4t^3\\) (với x tính bằng m, t tính bằng s), vật chuyển động nhanh dần theo chiều dương. Tính vận tốc cực đại của vật?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Vận tốc \\(v=dx/dt=12t-12t^2\\). Đạo hàm vận tốc là gia tốc \\(a=12-24t\\). Vận tốc đạt cực đại tại \\(a=0\\Rightarrow t=0,5\\,\\text{s}\\) (trong giai đoạn vật nhanh dần theo chiều dương). Khi đó \\(v=12(0,5)-12(0,5)^2=6-3=3\\,\\text{m/s}\\).",
     "status": "verified",
-    "note": "Đối chiếu nội dung gốc; xem lời giải để biết điều kiện áp dụng.",
-    "diagram": "inclinePulley"
+    "note": "",
+    "diagram": "straight",
+    "expected": 3,
+    "unit": "m/s"
   },
   {
-    "id": 124,
-    "question": "Hai vật gắn với nhau thông qua một sợi dây không co giãn, hệ số ma sát giữa vật 2 và mặt phẳng nghiêng là 0,1, ròng rọc không khối lượng. Biết m1=5 kg, m2=6 kg, góc nghiêng bằng 30°. Xác định gia tốc vật?",
-    "type": "manual",
+    "id": 55,
+    "question": "Ô tô bắt đầu chuyển động nhanh dần đều, trong giây đầu nó đi được 3 m. Tính quãng đường trong giây tiếp theo nó đi được?",
+    "type": "num",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** So sánh lực kéo: trọng lực m1 kéo xuống là \\(m_1g\\); lực cản khi m2 bị kéo lên dốc gồm \\(m_2g\\sin30^\\circ+\\mu m_2g\\cos30^\\circ\\). Vì \\(5>6(0,5+0,1\\times0,866)\\), m1 đi xuống.\\n\\n\\(a=\\frac{m_1g-m_2g\\sin30^\\circ-\\mu m_2g\\cos30^\\circ}{m_1+m_2}\\). Với g=9,8, \\(a\\approx1,32\\,\\mathrm{m/s^2}\\); với g=10, \\(a\\approx1,35\\,\\mathrm{m/s^2}\\).",
+    "explanation": "Xe bắt đầu từ nghỉ. Trong giây đầu: \\(s_1=\\tfrac12a(1)^2=3\\Rightarrow a=6\\,\\text{m/s}^2\\). Quãng đường đi trong giây thứ hai: \\(s_{(1\\to2)}=x(2)-x(1)=\\tfrac12a(4-1)=1,5a=9\\,\\text{m}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight",
+    "expected": 9,
+    "unit": "m"
+  },
+  {
+    "id": 56,
+    "question": "Khoảng cách nhỏ nhất để một chiếc ô tô đang có gia tốc không đổi, tốc độ 27 km/h dừng lại là 28,125 m. Tính toán khoảng cách nhỏ nhất để chiếc xe có cùng gia tốc đang chạy với tốc độ 54 km/h dừng lại là bao nhiêu?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Với cùng độ lớn gia tốc hãm, quãng đường phanh \\(s=v_0^2/(2|a|)\\) tỉ lệ với bình phương tốc độ. Tốc độ tăng gấp đôi: \\(54/27=2\\), nên quãng đường phanh tăng gấp \\(2^2=4\\) lần. \\(s_2=4\\times28,125=112,5\\,\\text{m}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "deceleration",
+    "expected": 112.5,
+    "unit": "m"
+  },
+  {
+    "id": 57,
+    "question": "Một xe đang di chuyển với tốc độ 36 km/h thì gia tốc và sau 2 s xe lên tới tốc độ 54 km/h. Tính tốc độ của xe ở thời điểm 3 s?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Hiểu câu gốc là xe bắt đầu chuyển động nhanh dần đều tại thời điểm ban đầu. Đổi \\(36\\,\\text{km/h}=10\\,\\text{m/s}\\), \\(54\\,\\text{km/h}=15\\,\\text{m/s}\\). Gia tốc \\(a=(15-10)/2=2,5\\,\\text{m/s}^2\\). Sau 3 s: \\(v=10+2,5\\times3=17,5\\,\\text{m/s}=63\\,\\text{km/h}\\).",
     "status": "conditional",
-    "note": "Đề không cho g; giả sử m1 đi xuống, ma sát của m2 hướng xuống dốc và dùng g=9,8 hoặc 10 m/s².",
-    "diagram": "inclinePulley",
-    "target": [
-      1.32,
-      1.35
+    "note": "Câu gốc bị thiếu từ sau cụm “thì gia tốc”; lời giải hiểu là xe bắt đầu gia tốc không đổi từ t=0.",
+    "diagram": "straight",
+    "expected": [
+      17.5,
+      63
     ],
-    "tolerance": 0.04,
-    "targetText": "a ≈ 1,32–1,35 m/s²; m₁ đi xuống."
+    "unit": "m/s hoặc km/h",
+    "tolerance": 0.1
   },
   {
-    "id": 125,
-    "question": "Cho cơ hệ như hình vẽ, biết m1=2 kg, m2=3 kg, m3=4 kg, hệ số ma sát giữa m2 với mặt phẳng ngang k=0,1. Tính lực căng dây?",
+    "id": 58,
+    "question": "Một người đi xe đạp xuất phát ở A lúc 9h sáng, đi thẳng hướng về B cách A 10 km. Xe đạp đi với tốc độ đều là 5 m/s. Tính thời điểm người đi xe đạp đến B?",
     "type": "manual",
     "options": [],
     "answer": null,
-    "explanation": "**Lý thuyết:** Đây là hệ ba vật với **hai sợi dây riêng biệt**, nên có hai lực căng khác nhau T1 và T3. Theo kết quả hệ: \\(a=\\frac{(m_3-m_1-km_2)g}{m_1+m_2+m_3}=\\frac{1,7g}{9}\\). Với g=9,8, \\(a\\approx1,851\\,\\mathrm{m/s^2}\\).\\n\\nVật m1 đi lên: \\(T_1-m_1g=m_1a\\Rightarrow T_1=m_1(g+a)\\approx2(9,8+1,851)=\\boxed{23,30\\,\\mathrm N}\\). Vật m3 đi xuống: \\(m_3g-T_3=m_3a\\Rightarrow T_3=m_3(g-a)\\approx4(9,8-1,851)=\\boxed{31,80\\,\\mathrm N}\\). Nếu g=10, lần lượt khoảng 23,78 N và 32,44 N.\\n\\nVì đề dùng số ít “lực căng dây” nhưng hình có hai dây, cần báo cáo cả T1 và T3.",
-    "status": "review",
-    "note": "Hình có hai dây riêng, nên có hai lực căng khác nhau. Đề không nêu g và dùng từ “lực căng dây” ở số ít; báo cáo cả hai lực căng.",
-    "diagram": "threeMasses",
-    "targetText": "Với g=9,8: T₁≈23,30 N; T₃≈31,80 N. Với g=10: T₁≈23,78 N; T₃≈32,44 N."
+    "explanation": "Đổi \\(10\\,\\text{km}=10000\\,\\text{m}\\). Thời gian đi \\(t=s/v=10000/5=2000\\,\\text{s}=33\\,\\text{phút}\\,20\\,\\text{giây}\\). Xuất phát lúc 9:00:00 nên đến B lúc **9:33:20 sáng**.",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight"
+  },
+  {
+    "id": 59,
+    "question": "Xe 1 xuất phát ở A hướng thẳng về B cách đó 200 m, đi với tốc độ không đổi là 10 m/s. Cùng lúc xe 2 xuất phát ở B hướng thẳng về A, không tốc độ đầu, gia tốc có độ lớn 1 m/s². Tính thời điểm hai xe gặp nhau kể từ lúc xuất phát?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Chọn gốc tại A, chiều dương từ A đến B. Xe 1: \\(x_1=10t\\). Xe 2 chuyển động nhanh dần về A từ nghỉ: \\(x_2=200-\\tfrac12t^2\\). Khi gặp nhau: \\(10t=200-0,5t^2\\Rightarrow t^2+20t-400=0\\). Nghiệm dương \\(t=-10+10\\sqrt5\\approx12,36\\,\\text{s}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "meeting",
+    "expected": 12.360679774997898,
+    "unit": "s"
+  },
+  {
+    "id": 60,
+    "question": "Một người đua ô tô, xuất phát không tốc độ đầu và gia tốc xe ở mức 3 m/s² để đi hết đường đua thẳng dài 2 km. Tính tốc độ của xe ở vị trí cuối đường đua?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Đổi \\(s=2\\,\\text{km}=2000\\,\\text{m}\\). Xe xuất phát nghỉ, gia tốc không đổi: \\(v^2=v_0^2+2as=2\\times3\\times2000=12000\\). Suy ra \\(v=\\sqrt{12000}\\approx109,54\\,\\text{m/s}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight",
+    "expected": 109.54451150103323,
+    "unit": "m/s"
+  },
+  {
+    "id": 61,
+    "question": "Chất điểm di chuyển dọc trục Ox với vị trí tuân theo: \\(x=3t^2-t\\) (đơn vị chuẩn hệ SI). Tính toán tốc độ trung bình trong khoảng thời gian từ 3 giây đến 4 giây là?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Tại \\(t=3\\): \\(x_3=3(9)-3=24\\,\\text{m}\\). Tại \\(t=4\\): \\(x_4=3(16)-4=44\\,\\text{m}\\). Vận tốc \\(v=6t-1\\) dương trong khoảng này nên quãng đường bằng độ dời 20 m. Tốc độ trung bình \\(=20/(4-3)=20\\,\\text{m/s}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight",
+    "expected": 20,
+    "unit": "m/s"
+  },
+  {
+    "id": 62,
+    "question": "Chất điểm chuyển động thẳng với phương trình: \\(x=-t^2+10t\\) (với x tính bằng m, t tính bằng s). Tính toán vị trí mà chất điểm dừng lại?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Vận tốc \\(v=dx/dt=-2t+10\\). Vật dừng tức thời khi \\(v=0\\Rightarrow t=5\\,\\text{s}\\). Thay vào phương trình vị trí: \\(x(5)=-25+50=25\\,\\text{m}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight",
+    "expected": 25,
+    "unit": "m"
+  },
+  {
+    "id": 63,
+    "question": "Chất điểm chuyển động thẳng với phương trình: \\(x=-t^2+10t\\) (với x tính bằng m, t tính bằng s). Tính vận tốc trung bình trên quãng đường đi từ lúc đầu tới lúc dừng?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Vật dừng tại \\(t=5\\,\\text{s}\\) vì \\(v=-2t+10=0\\). Vị trí ban đầu \\(x(0)=0\\), vị trí lúc dừng \\(x(5)=25\\,\\text{m}\\). Trong khoảng này vật đi theo chiều dương, nên \\(v_{tb}=\\Delta x/\\Delta t=25/5=5\\,\\text{m/s}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight",
+    "expected": 5,
+    "unit": "m/s"
+  },
+  {
+    "id": 64,
+    "question": "Một tàu cao tốc đang di chuyển ở tốc độ 50 m/s hướng về một chiếc phao cách đó 100 m. Người lái tàu bắt đầu hãm tốc với gia tốc -4 m/s². Tính thời gian tàu tới phao kể từ lúc hãm phanh?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Chọn chiều chuyển động là dương. Độ dời đến phao: \\(100=50t+\\tfrac12(-4)t^2=50t-2t^2\\). Suy ra \\(t^2-25t+50=0\\), nên \\(t=(25\\pm\\sqrt{425})/2\\). Chọn nghiệm nhỏ hơn vì đó là lần đầu tàu đi qua vị trí phao: \\(t\\approx2,19\\,\\text{s}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "deceleration",
+    "expected": 2.192235935955848,
+    "unit": "s"
+  },
+  {
+    "id": 65,
+    "question": "Một tàu cao tốc đang di chuyển ở tốc độ 50 m/s hướng về một chiếc phao cách đó 100 m. Tài xế bắt đầu hãm tốc với gia tốc -4 m/s². Tính toán tốc độ tàu khi đến phao?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Dùng \\(v^2=v_0^2+2as\\): \\(v^2=50^2+2(-4)(100)=2500-800=1700\\). Vậy tốc độ khi đến phao là \\(v=\\sqrt{1700}\\approx41,23\\,\\text{m/s}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "deceleration",
+    "expected": 41.23105625617661,
+    "unit": "m/s"
+  },
+  {
+    "id": 66,
+    "question": "Một người chạy xe máy thẳng từ nhà đến chỗ làm, anh ta đi với tốc độ không đổi là 13 m/s, xuất phát lúc 6 giờ 45 phút sáng và tới chỗ làm lúc 6 giờ 59 phút. Tính toán khoảng cách từ nhà anh ta tới chỗ làm?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Thời gian đi: 14 phút = 840 s. Quãng đường \\(s=vt=13\\times840=10920\\,\\text{m}=10,92\\,\\text{km}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "straight",
+    "expected": 10920,
+    "unit": "m"
+  },
+  {
+    "id": 67,
+    "question": "Xe 1 xuất phát ở A đi thẳng về B với tốc độ đều là 10 m/s, cùng lúc xe 2 xuất phát ở B đi thẳng về A với tốc độ đều là 5 m/s. Biết AB = 3 km. Tính thời điểm hai xe gặp nhau kể từ lúc xuất phát?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Đổi \\(AB=3\\,\\text{km}=3000\\,\\text{m}\\). Hai xe đi ngược chiều nên tốc độ tiến lại gần nhau là \\(v_{rel}=10+5=15\\,\\text{m/s}\\). Thời gian gặp nhau: \\(t=3000/15=200\\,\\text{s}=3\\,\\text{phút}\\,20\\,\\text{giây}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "meeting",
+    "expected": 200,
+    "unit": "s"
+  },
+  {
+    "id": 68,
+    "question": "Một viên đạn bắn từ mặt đất thẳng đứng lên trên đạt độ cao cực đại sau 15 s. Cho g = 9,8 m/s². Tính độ cao cực đại mà viên đạn đạt được?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Tại độ cao cực đại, \\(v=0\\). Với thời gian lên \\(t=15\\,\\text{s}\\), độ cao cực đại \\(h=\\tfrac12gt^2=0,5\\times9,8\\times15^2=1102,5\\,\\text{m}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "freefall",
+    "expected": 1102.5,
+    "unit": "m"
+  },
+  {
+    "id": 69,
+    "question": "Một cầu thủ đá bóng tại mặt đất, có thể đá quả bóng có tầm xa cực đại 60 m. Tính độ cao cực đại mà quả bóng đạt tới trường hợp này?",
+    "type": "num",
+    "options": [],
+    "answer": null,
+    "explanation": "Tầm xa cực đại trên mặt phẳng ngang đạt ở góc ném 45°. Khi đó \\(R_{max}=v_0^2/g=60\\). Độ cao cực đại của quỹ đạo \\(H=v_0^2\\sin^245^\\circ/(2g)=v_0^2/(4g)=R_{max}/4=15\\,\\text{m}\\).",
+    "status": "verified",
+    "note": "",
+    "diagram": "projectile",
+    "expected": 15,
+    "unit": "m"
   }
 ];
-
-const completed = new Set();
-const correctSet = new Set();
-const attempts = Object.create(null);
-let index = 0;
-const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-const labels = ['A','B','C','D'];
-
-function svgShell(inner, width=520, height=220, label='Sơ đồ lực minh họa') {
-  const defs = `<defs>
-    <marker id="arrBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="#2563eb"/></marker>
-    <marker id="arrRed" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="#dc2626"/></marker>
-    <marker id="arrGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="#059669"/></marker>
-    <marker id="arrPurple" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="#7c3aed"/></marker>
-  </defs>`;
-  return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${label}" xmlns="http://www.w3.org/2000/svg">${defs}${inner}</svg>`;
+const letters=['A','B','C','D'];
+let currentIndex=0;
+const attempts=QUESTIONS_DATA.map(()=>({submitted:false,choice:null,value:'',correct:null}));
+const $=id=>document.getElementById(id);
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function statusName(s){return s==='verified'?'Đã kiểm chứng':s==='conditional'?'Có giả định':s==='review'?'Cần rà soát':'Thiếu dữ liệu';}
+function gradable(q){return (q.type==='mc'&&Number.isInteger(q.answer))||(q.type==='num'&&q.expected!==undefined);}
+function scoreStats(){let earned=0,max=0,completed=0,correct=0;QUESTIONS_DATA.forEach((q,i)=>{const a=attempts[i];if(gradable(q)){max+=10;if(a.correct===true){earned+=10;correct++;}}if(a.submitted)completed++;});return{earned,max,completed,correct};}
+function updateSummary(){
+ const counts={verified:0,conditional:0,review:0};QUESTIONS_DATA.forEach(q=>{if(counts[q.status]!==undefined)counts[q.status]++;});
+ const stats=scoreStats();
+ $('summary').textContent=`Đã hoàn thành ${stats.completed}/${QUESTIONS_DATA.length} mục; đúng ${stats.correct} câu có thể tự chấm. Điểm tự động: ${stats.earned}/${stats.max}. Nguồn có 68 câu hỏi; Câu 53 được giữ làm mốc trống vì PDF không có nội dung.`;
+ $('status-counts').innerHTML=`<span>verified: ${counts.verified}</span><span>conditional: ${counts.conditional}</span><span>review: ${counts.review}</span><span>có thể chấm tự động: ${stats.max/10}</span>`;
 }
-function getDiagram(q) {
-  let s='';
-  switch(q.id) {
-    case 70: case 71: case 75: case 78: case 79:
-      s=`<path d="M35 164H485" stroke="#64748b" stroke-width="5"/><rect x="205" y="105" width="110" height="58" rx="7" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/><path d="M260 103V35" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="275" y="43" font-size="16" fill="#1e40af">N</text><path d="M260 165V208" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="276" y="204" font-size="16" fill="#1e40af">P=mg</text><path d="M315 133H420" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="365" y="120" font-size="15" fill="#b91c1c">F kéo</text><path d="M205 133H105" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="112" y="117" font-size="15" fill="#b91c1c">Fms</text><text x="260" y="139" text-anchor="middle" font-size="16" fill="#1e3a8a">m</text>`;
-      return svgShell(s,520,220,'Vật trên mặt phẳng ngang chịu lực ma sát');
-    case 72: case 74: case 77: case 80: case 84: case 93: case 112: case 113: case 114:
-      s=`<rect x="205" y="88" width="110" height="64" rx="7" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/><path d="M260 88V25" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="278" y="34" font-size="17" fill="#1e3a8a">N / a</text><path d="M260 152V210" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="278" y="203" font-size="17" fill="#1e3a8a">P / F</text><path d="M65 180H455" stroke="#64748b" stroke-width="5"/><text x="260" y="124" font-size="16" fill="#1e3a8a" text-anchor="middle">Vật m</text>`;
-      return svgShell(s,520,230,'Sơ đồ minh họa định luật Newton');
-    case 73: case 85: case 106:
-      s=`<path d="M45 174H480" stroke="#64748b" stroke-width="5"/><rect x="190" y="112" width="110" height="60" rx="7" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/><path d="M300 142H430" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="365" y="130" font-size="16" fill="#b91c1c">F</text><path d="M190 142H95" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="105" y="128" font-size="15" fill="#b91c1c">Fms</text><path d="M245 112V38" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="260" y="45" font-size="16" fill="#1e40af">N</text><path d="M245 172V215" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="260" y="209" font-size="16" fill="#1e40af">P</text><text x="245" y="150" font-size="16" text-anchor="middle" fill="#1e3a8a">m</text>`;
-      return svgShell(s,520,230,'Sơ đồ lực trên vật nằm ngang');
-    case 81:
-      s=`<rect x="6" y="6" width="246" height="96" rx="8" fill="#f8fafc" stroke="#cbd5e1"/><text x="16" y="24" font-size="13" fill="#334155">Hình 1 · mặt ngang</text><rect x="92" y="48" width="72" height="32" fill="#bfdbfe" stroke="#1e40af"/><path d="M128 48V29" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><path d="M128 80V96" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><rect x="268" y="6" width="246" height="96" rx="8" fill="#fff7ed" stroke="#cbd5e1"/><text x="278" y="24" font-size="13" fill="#334155">Hình 2 · N vẽ thẳng đứng</text><path d="M292 82L466 35L478 82Z" fill="#e2e8f0" stroke="#64748b"/><rect x="365" y="45" width="62" height="27" transform="rotate(-16 396 58)" fill="#bfdbfe" stroke="#1e40af"/><path d="M396 50V19" stroke="#dc2626" stroke-width="3" marker-end="url(#arrRed)"/><rect x="6" y="112" width="246" height="96" rx="8" fill="#f8fafc" stroke="#cbd5e1"/><text x="16" y="130" font-size="13" fill="#334155">Hình 3 · N vuông góc dốc</text><path d="M26 192L198 145L210 192Z" fill="#e2e8f0" stroke="#64748b"/><rect x="100" y="151" width="62" height="27" transform="rotate(-16 131 164)" fill="#bfdbfe" stroke="#1e40af"/><path d="M132 153L121 124" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><rect x="268" y="112" width="246" height="96" rx="8" fill="#f8fafc" stroke="#cbd5e1"/><text x="278" y="130" font-size="13" fill="#334155">Hình 4 · mặt ngang</text><rect x="365" y="151" width="62" height="36" fill="#bfdbfe" stroke="#1e40af"/><path d="M396 151V133" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><path d="M396 187V204" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/>`;
-      return svgShell(s,520,215,'Bốn sơ đồ biểu diễn phản lực pháp tuyến');
-    case 82: case 88: case 94: case 109:
-      s=`<path d="M45 175H480" stroke="#334155" stroke-width="4"/><rect x="190" y="112" width="115" height="62" rx="5" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/><path d="M248 112V37" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="264" y="46" font-size="16" fill="#1e40af">N</text><path d="M248 174V216" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="264" y="208" font-size="16" fill="#1e40af">P=mg</text><path d="M305 130L402 190" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="408" y="184" font-size="16" fill="#b91c1c">F</text><path d="M190 141H100" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="104" y="126" font-size="15" fill="#b91c1c">Fms</text><path d="M314 128A45 45 0 0 1 350 146" fill="none" stroke="#64748b" stroke-width="2"/><text x="352" y="130" font-size="15" fill="#334155">θ</text>`;
-      return svgShell(s,520,230,'Vật bị đẩy chếch xuống trên mặt phẳng ngang');
-    case 83: case 87: case 95: case 108:
-      s=`<path d="M45 175H480" stroke="#334155" stroke-width="4"/><rect x="190" y="112" width="115" height="62" rx="5" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/><path d="M248 112V37" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="264" y="46" font-size="16" fill="#1e40af">N</text><path d="M248 174V216" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="264" y="208" font-size="16" fill="#1e40af">P=mg</text><path d="M305 130L405 48" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="412" y="48" font-size="16" fill="#b91c1c">F</text><path d="M190 141H100" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="104" y="126" font-size="15" fill="#b91c1c">Fms</text><path d="M314 128A45 45 0 0 0 350 95" fill="none" stroke="#64748b" stroke-width="2"/><text x="352" y="101" font-size="15" fill="#334155">θ</text>`;
-      return svgShell(s,520,230,'Vật được kéo chếch lên trên mặt phẳng ngang');
-    case 86: case 96: case 98: case 101: case 102: case 107: case 110: case 111:
-      s=`<path d="M52 190L445 78" stroke="#64748b" stroke-width="8"/><path d="M52 190L445 78" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 7"/><rect x="222" y="112" width="80" height="48" rx="5" transform="rotate(-16 262 136)" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/><path d="M250 118L222 42" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="208" y="39" font-size="16" fill="#1e40af">N</text><path d="M265 142L280 214" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="289" y="210" font-size="16" fill="#1e40af">P</text><path d="M252 143L205 160" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="158" y="164" font-size="15" fill="#b91c1c">Fms</text><path d="M90 190A38 38 0 0 1 125 178" fill="none" stroke="#64748b" stroke-width="2"/><text x="124" y="191" font-size="15" fill="#334155">α</text>`;
-      if([98,102].includes(q.id)) s+=`<path d="M290 117L385 62" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="392" y="60" font-size="15" fill="#b91c1c">F kéo</text>`;
-      if(q.id===110) s+=`<path d="M220 108L168 123" stroke="#7c3aed" stroke-width="4" marker-end="url(#arrPurple)"/><text x="115" y="118" font-size="14" fill="#6d28d9">v₀ lên dốc</text>`;
-      if(q.id===107) s+=`<text x="370" y="198" font-size="14" fill="#0f766e">Không ma sát</text>`;
-      return svgShell(s,520,230,'Vật trên mặt phẳng nghiêng');
-    case 97: case 100:
-      s=`<path d="M70 30H450" stroke="#94a3b8" stroke-width="10"/><circle cx="260" cy="62" r="32" fill="#e2e8f0" stroke="#64748b" stroke-width="4"/><circle cx="260" cy="62" r="7" fill="#64748b"/><path d="M228 62V146Q228 158 240 158H280Q292 158 292 146V62" fill="none" stroke="#475569" stroke-width="4"/><rect x="178" y="148" width="55" height="55" rx="7" fill="#bfdbfe" stroke="#1e40af"/><rect x="287" y="148" width="55" height="55" rx="7" fill="#fecaca" stroke="#b91c1c"/><text x="205" y="181" text-anchor="middle" font-size="16" fill="#1e3a8a">m₁</text><text x="314" y="181" text-anchor="middle" font-size="16" fill="#991b1b">m₂</text><path d="M205 148V111" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><path d="M314 203V218" stroke="#dc2626" stroke-width="3" marker-end="url(#arrRed)"/><text x="115" y="120" font-size="14" fill="#334155">T</text>`;
-      return svgShell(s,520,230,'Hệ hai vật qua ròng rọc lý tưởng');
-    case 99: case 103: case 118:
-      s=`<path d="M34 182H485" stroke="#64748b" stroke-width="6"/><rect x="115" y="116" width="100" height="62" rx="7" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/><rect x="290" y="116" width="100" height="62" rx="7" fill="#fecaca" stroke="#b91c1c" stroke-width="2"/><text x="165" y="153" text-anchor="middle" font-size="18" fill="#1e3a8a">m₁</text><text x="340" y="153" text-anchor="middle" font-size="18" fill="#991b1b">m₂</text><path d="M215 146H290" stroke="#7c3aed" stroke-width="4"/><text x="252" y="132" font-size="14" text-anchor="middle" fill="#6d28d9">T</text><path d="M390 146H472" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="425" y="130" font-size="16" fill="#b91c1c">F</text><path d="M165 116V44" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><text x="180" y="50" font-size="15" fill="#1e40af">N₁</text><path d="M340 116V44" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><text x="355" y="50" font-size="15" fill="#1e40af">N₂</text><path d="M115 146H55" stroke="#dc2626" stroke-width="3" marker-end="url(#arrRed)"/><path d="M290 165H235" stroke="#dc2626" stroke-width="3" marker-end="url(#arrRed)"/><text x="55" y="206" font-size="14" fill="#334155">Ma sát</text>`;
-      return svgShell(s,520,230,'Hai vật nối bằng dây trên mặt phẳng ngang');
-    case 105:
-    case 91: case 89: case 90:
-      s=`<path d="M35 176H480" stroke="#64748b" stroke-width="5"/><rect x="195" y="111" width="110" height="64" rx="7" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/><text x="250" y="150" text-anchor="middle" font-size="18" fill="#1e3a8a">m</text><path d="M305 140H420" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="360" y="126" font-size="16" fill="#b91c1c">F = ma</text><path d="M250 111V40" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><text x="266" y="48" font-size="15" fill="#1e40af">N</text><path d="M250 176V215" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><text x="266" y="211" font-size="15" fill="#1e40af">P</text>`;
-      return svgShell(s,520,230,'Minh họa định luật II Newton');
-    case 108: case 109:
-      return svgShell(`<path d="M35 180H485" stroke="#64748b" stroke-width="5"/><rect x="190" y="115" width="110" height="62" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/><path d="M300 135L410 ${q.id===108?65:190}" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="415" y="${q.id===108?64:190}" font-size="16" fill="#b91c1c">F=200 N / F</text><path d="M190 145H115" stroke="#dc2626" stroke-width="3" marker-end="url(#arrRed)"/><text x="70" y="133" font-size="14" fill="#b91c1c">Fms</text><text x="260" y="151" text-anchor="middle" font-size="16" fill="#1e3a8a">m</text><text x="350" y="165" font-size="14" fill="#334155">30°</text>`,520,230,'Lực kéo hoặc đẩy chếch trên vật');
-    case 115: case 116:
-      s=`<path d="M45 35H475" stroke="#94a3b8" stroke-width="9"/><circle cx="120" cy="66" r="24" fill="#e2e8f0" stroke="#64748b" stroke-width="3"/><path d="M96 66V155Q96 166 108 166H132" fill="none" stroke="#475569" stroke-width="3"/><rect x="70" y="157" width="52" height="50" fill="#bfdbfe" stroke="#1e40af"/><text x="96" y="188" text-anchor="middle" font-size="15" fill="#1e3a8a">m₁</text><path d="M120 66H286" stroke="#475569" stroke-width="3"/><rect x="246" y="115" width="96" height="55" fill="#fecaca" stroke="#b91c1c"/><text x="294" y="148" text-anchor="middle" font-size="16" fill="#991b1b">m₂</text><path d="M342 139L445 82" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="445" y="73" font-size="15" fill="#b91c1c">F</text><path d="M294 115V55" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><text x="308" y="58" font-size="14" fill="#1e40af">N₂</text><path d="M96 157V126" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><text x="48" y="128" font-size="14" fill="#1e40af">T</text>`;
-      return svgShell(s,520,230,'Một vật treo nối với vật trên bàn chịu lực kéo xiên');
-    case 119:
-      s=`<path d="M28 182H490" stroke="#64748b" stroke-width="6"/><rect x="95" y="116" width="96" height="62" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/><rect x="266" y="116" width="96" height="62" fill="#fecaca" stroke="#b91c1c" stroke-width="2"/><text x="143" y="153" text-anchor="middle" font-size="17" fill="#1e3a8a">m₁</text><text x="314" y="153" text-anchor="middle" font-size="17" fill="#991b1b">m₂</text><path d="M191 147H266" stroke="#7c3aed" stroke-width="4"/><text x="228" y="133" text-anchor="middle" font-size="14" fill="#6d28d9">T</text><path d="M362 130L448 76" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><text x="455" y="74" font-size="16" fill="#b91c1c">F</text><path d="M142 116V48" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><path d="M314 116V48" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><path d="M95 150H40M266 163H218" stroke="#dc2626" stroke-width="3" marker-end="url(#arrRed)"/><text x="42" y="205" font-size="13" fill="#475569">Fms</text>`;
-      return svgShell(s,520,230,'Hai vật nối dây, vật thứ hai bị kéo chếch lên');
-    case 120: case 121: case 125:
-      s=`<path d="M65 65H455" stroke="#64748b" stroke-width="10"/><path d="M82 70V110M438 70V110" stroke="#64748b" stroke-width="7"/><circle cx="82" cy="84" r="18" fill="#e2e8f0" stroke="#64748b" stroke-width="3"/><circle cx="438" cy="84" r="18" fill="#e2e8f0" stroke="#64748b" stroke-width="3"/><rect x="225" y="35" width="72" height="56" rx="5" fill="#fecaca" stroke="#b91c1c" stroke-width="2"/><text x="261" y="68" text-anchor="middle" font-size="17" fill="#991b1b">m₂</text><path d="M82 102V171" stroke="#475569" stroke-width="3"/><path d="M438 102V171" stroke="#475569" stroke-width="3"/><rect x="54" y="171" width="56" height="42" rx="4" fill="#bfdbfe" stroke="#1e40af"/><rect x="410" y="171" width="56" height="42" rx="4" fill="#bfdbfe" stroke="#1e40af"/><text x="82" y="198" text-anchor="middle" font-size="16" fill="#1e3a8a">m₁</text><text x="438" y="198" text-anchor="middle" font-size="16" fill="#1e3a8a">m₃</text><text x="260" y="18" text-anchor="middle" font-size="13" fill="#475569">T₁ ≠ T₃ (nói chung)</text><path d="M438 213V226" stroke="#dc2626" stroke-width="3" marker-end="url(#arrRed)"/>`;
-      return svgShell(s,520,235,'Hệ ba vật nối qua hai ròng rọc');
-    case 117: case 123: case 124:
-      return svgShell(`<path d="M70 34H450" stroke="#94a3b8" stroke-width="10"/><circle cx="260" cy="63" r="28" fill="#e2e8f0" stroke="#64748b" stroke-width="3"/><path d="M232 63V140Q232 150 245 150H275Q288 150 288 140V63" fill="none" stroke="#475569" stroke-width="4"/><rect x="183" y="147" width="52" height="58" rx="5" fill="#bfdbfe" stroke="#1e40af"/><text x="209" y="181" text-anchor="middle" font-size="16" fill="#1e3a8a">m₁</text><path d="M288 113L430 75L445 112Z" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/><rect x="345" y="75" width="58" height="35" transform="rotate(-15 374 92)" fill="#fecaca" stroke="#b91c1c"/><text x="374" y="99" text-anchor="middle" font-size="14" fill="#991b1b">m₂</text><text x="426" y="132" font-size="14" fill="#475569">α</text>`,520,230,'Hệ vật treo và vật trên mặt phẳng nghiêng');
-    case 122:
-      return svgShell(`<path d="M25 180H495" stroke="#64748b" stroke-width="5"/><rect x="115" y="118" width="100" height="60" fill="#bfdbfe" stroke="#1e40af"/><rect x="295" y="118" width="100" height="60" fill="#fecaca" stroke="#b91c1c"/><path d="M215 148H295" stroke="#7c3aed" stroke-width="4"/><path d="M395 140L470 185" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><path d="M345 118V50" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><path d="M165 118V50" stroke="#2563eb" stroke-width="3" marker-end="url(#arrBlue)"/><text x="165" y="151" text-anchor="middle" font-size="16">m₁</text><text x="345" y="151" text-anchor="middle" font-size="16">m₂</text><text x="441" y="174" font-size="15" fill="#b91c1c">F</text>`,520,230,'Hai vật nối với nhau, lực đẩy chếch xuống');
-    case 82+1000: break;
-    default:
-      s=`<path d="M45 170H475" stroke="#64748b" stroke-width="5"/><rect x="205" y="110" width="110" height="60" rx="7" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/><path d="M260 110V38" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><path d="M315 140H420" stroke="#dc2626" stroke-width="4" marker-end="url(#arrRed)"/><path d="M260 170V215" stroke="#2563eb" stroke-width="4" marker-end="url(#arrBlue)"/><text x="260" y="146" text-anchor="middle" font-size="16" fill="#1e3a8a">m</text><text x="278" y="45" font-size="15" fill="#1e40af">N</text><text x="425" y="137" font-size="15" fill="#b91c1c">F</text><text x="278" y="211" font-size="15" fill="#1e40af">P</text>`;
-      return svgShell(s,520,230,`Sơ đồ minh họa câu ${q.id}`);
-  }
-  return svgShell(s || `<text x="20" y="35">Sơ đồ lực</text>`,520,230,`Sơ đồ minh họa câu ${q.id}`);
+function getDiagram(q){
+ const defs=`<defs><marker id="arr-${q.id}" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#2563eb"/></marker><marker id="red-${q.id}" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#dc2626"/></marker><marker id="green-${q.id}" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#059669"/></marker></defs>`;
+ const a=`arr-${q.id}`,r=`red-${q.id}`,g=`green-${q.id}`;let body='';
+ switch(q.diagram){
+  case 'straight':
+   body=`<line x1="35" y1="120" x2="365" y2="120" stroke="#64748b" stroke-width="2"/><path d="M350 114L365 120L350 126" fill="none" stroke="#64748b" stroke-width="2"/><rect x="145" y="73" width="70" height="43" rx="8" fill="#bfdbfe" stroke="#2563eb" stroke-width="2"/><text x="180" y="99" text-anchor="middle" fill="#1e3a8a" font-size="13">vật</text><line x1="215" y1="82" x2="305" y2="82" stroke="#2563eb" stroke-width="3" marker-end="url(#${a})"/><text x="260" y="69" text-anchor="middle" fill="#2563eb" font-size="13">v</text><text x="200" y="151" text-anchor="middle" fill="#475569" font-size="12">Quỹ đạo thẳng · trục Ox</text>`;break;
+  case 'deceleration':
+   body=`<line x1="35" y1="120" x2="365" y2="120" stroke="#64748b" stroke-width="2"/><rect x="150" y="75" width="70" height="42" rx="8" fill="#bfdbfe" stroke="#2563eb" stroke-width="2"/><text x="185" y="101" text-anchor="middle" fill="#1e3a8a" font-size="13">vật</text><line x1="220" y1="82" x2="330" y2="82" stroke="#2563eb" stroke-width="3" marker-end="url(#${a})"/><text x="275" y="69" text-anchor="middle" fill="#2563eb" font-size="13">v</text><line x1="150" y1="58" x2="65" y2="58" stroke="#dc2626" stroke-width="3" marker-end="url(#${r})"/><text x="108" y="46" text-anchor="middle" fill="#dc2626" font-size="13">a</text><text x="200" y="151" text-anchor="middle" fill="#475569" font-size="12">Gia tốc ngược chiều vận tốc</text>`;break;
+  case 'vectors':
+   body=`<line x1="200" y1="130" x2="200" y2="24" stroke="#64748b" stroke-width="2"/><line x1="40" y1="130" x2="360" y2="130" stroke="#64748b" stroke-width="2"/><line x1="200" y1="130" x2="320" y2="58" stroke="#2563eb" stroke-width="3" marker-end="url(#${a})"/><text x="328" y="55" fill="#2563eb" font-size="13">v</text><line x1="200" y1="130" x2="90" y2="65" stroke="#dc2626" stroke-width="3" marker-end="url(#${r})"/><text x="77" y="59" fill="#dc2626" font-size="13">a</text><circle cx="200" cy="130" r="4" fill="#1e293b"/><text x="215" y="147" fill="#475569" font-size="12">O</text><text x="200" y="18" text-anchor="middle" fill="#475569" font-size="12">Vectơ vận tốc và gia tốc</text>`;break;
+  case 'projectile':
+   body=`<line x1="28" y1="137" x2="372" y2="137" stroke="#64748b" stroke-width="2"/><path d="M50 120 Q190 -18 335 137" fill="none" stroke="#2563eb" stroke-width="3" stroke-dasharray="6 4"/><circle cx="50" cy="120" r="5" fill="#2563eb"/><line x1="50" y1="120" x2="112" y2="68" stroke="#059669" stroke-width="3" marker-end="url(#${g})"/><text x="79" y="78" fill="#059669" font-size="12">v₀</text><line x1="190" y1="53" x2="190" y2="20" stroke="#dc2626" stroke-width="2" marker-end="url(#${r})"/><text x="204" y="26" fill="#dc2626" font-size="12">g</text><text x="198" y="153" text-anchor="middle" fill="#475569" font-size="12">Quỹ đạo ném xiên · bỏ qua sức cản không khí</text>`;break;
+  case 'circular':
+   body=`<circle cx="200" cy="83" r="55" fill="none" stroke="#94a3b8" stroke-width="2.5"/><circle cx="200" cy="83" r="4" fill="#334155"/><circle cx="255" cy="83" r="6" fill="#2563eb"/><line x1="200" y1="83" x2="255" y2="83" stroke="#64748b" stroke-width="2"/><text x="222" y="73" fill="#475569" font-size="12">R</text><line x1="255" y1="83" x2="255" y2="28" stroke="#2563eb" stroke-width="3" marker-end="url(#${a})"/><text x="267" y="32" fill="#2563eb" font-size="12">v, aₜ</text><line x1="255" y1="83" x2="212" y2="83" stroke="#dc2626" stroke-width="3" marker-end="url(#${r})"/><text x="228" y="101" fill="#dc2626" font-size="12">aₙ</text><text x="200" y="153" text-anchor="middle" fill="#475569" font-size="12">Chuyển động tròn · gia tốc hướng tâm</text>`;break;
+  case 'freefall':
+   body=`<line x1="45" y1="137" x2="355" y2="137" stroke="#64748b" stroke-width="2"/><circle cx="200" cy="42" r="14" fill="#bfdbfe" stroke="#2563eb" stroke-width="2"/><line x1="200" y1="59" x2="200" y2="110" stroke="#dc2626" stroke-width="3" marker-end="url(#${r})"/><text x="215" y="91" fill="#dc2626" font-size="13">g</text><text x="200" y="153" text-anchor="middle" fill="#475569" font-size="12">Chuyển động dưới tác dụng trọng lực</text>`;break;
+  case 'meeting':
+   body=`<line x1="30" y1="112" x2="370" y2="112" stroke="#64748b" stroke-width="2"/><rect x="55" y="64" width="58" height="38" rx="6" fill="#bfdbfe" stroke="#2563eb" stroke-width="2"/><rect x="287" y="64" width="58" height="38" rx="6" fill="#fecaca" stroke="#dc2626" stroke-width="2"/><text x="84" y="88" text-anchor="middle" fill="#1e3a8a">Xe 1</text><text x="316" y="88" text-anchor="middle" fill="#7f1d1d">Xe 2</text><line x1="115" y1="83" x2="190" y2="83" stroke="#2563eb" stroke-width="3" marker-end="url(#${a})"/><line x1="285" y1="83" x2="210" y2="83" stroke="#dc2626" stroke-width="3" marker-end="url(#${r})"/><text x="200" y="145" text-anchor="middle" fill="#475569" font-size="12">Hai vật chuyển động tiến lại gần nhau</text>`;break;
+  case 'speed':
+   body=`<path d="M85 104L105 67Q112 55 130 55H250Q268 55 278 69L310 104Z" fill="#bfdbfe" stroke="#2563eb" stroke-width="2"/><circle cx="135" cy="108" r="17" fill="#334155"/><circle cx="265" cy="108" r="17" fill="#334155"/><circle cx="135" cy="108" r="7" fill="#cbd5e1"/><circle cx="265" cy="108" r="7" fill="#cbd5e1"/><rect x="160" y="68" width="82" height="27" rx="7" fill="#fff" stroke="#2563eb"/><text x="201" y="86" text-anchor="middle" fill="#1e3a8a" font-size="13">km/h</text><text x="200" y="151" text-anchor="middle" fill="#475569" font-size="12">Tốc độ tức thời</text>`;break;
+  case 'missing':
+   body=`<rect x="52" y="26" width="296" height="100" rx="12" fill="#fff7ed" stroke="#d97706" stroke-width="2" stroke-dasharray="6 4"/><text x="200" y="69" text-anchor="middle" fill="#92400e" font-size="17" font-weight="700">Câu 53 bị thiếu</text><text x="200" y="94" text-anchor="middle" fill="#92400e" font-size="12">Không có dữ liệu trong PDF</text>`;break;
+  default:
+   body=`<line x1="38" y1="120" x2="362" y2="120" stroke="#64748b" stroke-width="2"/><rect x="155" y="68" width="90" height="50" rx="8" fill="#bfdbfe" stroke="#2563eb" stroke-width="2"/><text x="200" y="98" text-anchor="middle" fill="#1e3a8a" font-size="13">Vật chuyển động</text><text x="200" y="151" text-anchor="middle" fill="#475569" font-size="12">Sơ đồ minh họa</text>`;
+ }
+ return `<svg viewBox="0 0 400 165" role="img" aria-label="Sơ đồ minh họa câu ${q.id}">${defs}${body}</svg>`;
 }
-
-function statusName(status) {
-  return status==='verified'?'Đã kiểm chứng':status==='conditional'?'Có giả định':'Cần rà soát';
+function initJumpSelect(){const s=$('question-select');QUESTIONS_DATA.forEach((q,i)=>{const o=document.createElement('option');o.value=i;o.textContent=q.type==='missing'?`Câu ${q.id} · thiếu trong PDF`:`Câu ${q.id}`;s.appendChild(o);});}
+function render(){
+ const q=QUESTIONS_DATA[currentIndex],st=attempts[currentIndex],stats=scoreStats();$('progress-fill').style.width=`${(currentIndex+1)/QUESTIONS_DATA.length*100}%`;
+ let out=`<div class="meta"><span>📝 Câu ${q.id} / 69 · Mục ${currentIndex+1}/${QUESTIONS_DATA.length}</span><span>Điểm tự động: ${stats.earned}/${stats.max} · Đã làm: ${stats.completed}/${QUESTIONS_DATA.length}</span></div>`;
+ out+=`<div class="q">${q.question}</div><div class="fig">${getDiagram(q)}</div>`;
+ if(q.type==='mc'){
+  q.options.forEach((opt,i)=>{let cls='';if(st.submitted&&Number.isInteger(q.answer)){if(i===q.answer)cls='ok';else if(i===st.choice)cls='no';}else if(st.submitted&&i===st.choice)cls='no';out+=`<button type="button" class="opt ${cls}" data-choice="${i}" ${st.submitted?'disabled':''}><span class="l">${letters[i]||i+1}</span><span>${esc(opt)}</span></button>`;});
+ }else if(q.type==='num'||q.type==='manual'){
+  const label=q.type==='num'?'Nhập kết quả số':'Nhập công thức hoặc câu trả lời ngắn';
+  out+=`<label class="hint" for="custom-answer">${label}${q.unit?` · Đơn vị tham chiếu: ${esc(q.unit)}`:''}</label><div class="manual-area"><input id="custom-answer" type="text" class="input-area" autocomplete="off" placeholder="Nhập đáp án của bạn…" value="${esc(st.value)}" ${st.submitted?'disabled':''}>`;
+  if(!st.submitted)out+=`<button type="button" class="btn btn-primary" id="check-input" style="flex:0 0 auto">Kiểm tra / Xem lời giải</button>`;
+  out+='</div>';
+ }else if(q.type==='missing'){
+  out+=`<div class="missing-box"><strong>Không có đề bài gốc.</strong> Vị trí số 53 được giữ lại để bảo toàn thứ tự câu hỏi. Không có phương án, dữ kiện hoặc đáp án để giải.</div>`;
+ }
+ if(st.submitted){
+  let msg='',kind='neutral';
+  if(q.type==='mc'&&Number.isInteger(q.answer)){msg=st.correct?`Chính xác! Bạn được 10 điểm. Đáp án: ${letters[q.answer]}.`:`Chưa chính xác. Đáp án đúng: ${letters[q.answer]}.`;kind=st.correct?'good':'bad';}
+  else if(q.status==='review'){msg='Đã ghi nhận lựa chọn. Câu này được đánh dấu cần rà soát nên không chấm đúng/sai tự động.';kind='neutral';}
+  else if(q.type==='num'){msg=st.correct?'Kết quả phù hợp với đáp số tham chiếu trong sai số cho phép.':'Kết quả chưa khớp đáp số tham chiếu; hãy kiểm tra lại phép tính và giả định bên dưới.';kind=st.correct?'good':'bad';}
+  else if(q.type==='manual'){msg='Đã ghi nhận câu trả lời. Câu này không có đáp án tự luận để chấm tự động; hãy đối chiếu với lời giải.';kind='neutral';}
+  else {msg='Mục đánh số này không có dữ liệu câu hỏi trong PDF.';kind='neutral';}
+  out+=`<div class="feedback ${kind}" style="display:block">${esc(msg)}</div>`;
+ }
+ out+=`<div class="exp ${st.submitted?'on':''}"><h3>💡 Lời giải chi tiết</h3><div class="explain">${q.explanation||'Tài liệu nguồn không có đủ thông tin để giải câu này.'}</div><p class="note"><strong>Trạng thái:</strong> <span class="status-pill ${q.status}">${statusName(q.status)}</span>${q.note?` · ${esc(q.note)}`:''}</p></div>`;
+ $('question-content').innerHTML=out;
+ $('btn-prev').disabled=currentIndex===0;$('btn-next').disabled=currentIndex===QUESTIONS_DATA.length-1;$('btn-next').textContent=currentIndex===QUESTIONS_DATA.length-1?'Đã hết câu':'Câu Tiếp Theo →';$('question-select').value=String(currentIndex);
+ $('question-content').querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>checkMC(Number(b.dataset.choice))));const inputBtn=$('check-input');if(inputBtn)inputBtn.addEventListener('click',checkInput);
+ updateSummary();if(window.MathJax?.typesetPromise)MathJax.typesetPromise([$('question-content')]).catch(()=>{});
 }
-function statusClass(status) { return status==='verified'?'':status==='conditional'?'conditional':'review'; }
-function isCorrectAnswer(q, value) {
-  return Array.isArray(q.answer) ? q.answer.includes(value) : value===q.answer;
-}
-function correctLabels(q) {
-  const answers=Array.isArray(q.answer)?q.answer:[q.answer];
-  return answers.filter(Number.isInteger).map(i=>labels[i]).join(' / ');
-}
-function updateSummary() {
-  const counts={verified:0,conditional:0,review:0};
-  QUESTIONS_DATA.forEach(q=>counts[q.status]=(counts[q.status]||0)+1);
-  document.getElementById('summary').textContent=`Đã hoàn thành ${completed.size}/56 câu · Trả lời đúng ${correctSet.size}/56 câu · Đang xem câu ${index+1}/56.`;
-  document.getElementById('status-counts').innerHTML=`<span>verified: ${counts.verified}</span><span>conditional: ${counts.conditional}</span><span>review: ${counts.review}</span>`;
-}
-function render() {
-  const q=QUESTIONS_DATA[index], content=document.getElementById('question-content');
-  document.getElementById('progress-fill').style.width=((index+1)/QUESTIONS_DATA.length*100)+'%';
-  const saved=attempts[q.id];
-  let opts='';
-  if(q.type==='mc') {
-    opts='<div class="options">'+q.options.map((option,i)=>{
-      let cls='opt';
-      if(saved!==undefined && saved.kind==='mc') {
-        if(isCorrectAnswer(q,i)) cls+=' ok';
-        if(saved.value===i && !isCorrectAnswer(q,i)) cls+=' no';
-      }
-      return `<button type="button" class="${cls}" data-opt="${i}" ${saved!==undefined?'disabled':''}><span class="l">${labels[i]||i+1}</span><span class="opt-text">${option}</span></button>`;
-    }).join('')+'</div>';
-  } else {
-    const value=saved!==undefined && saved.kind==='manual'?saved.value:'';
-    opts=`<label class="hint" for="manual-answer">Nhập kết quả, công thức hoặc ý trả lời của bạn:</label>
-      <div class="manual-area"><input id="manual-answer" class="input-area" placeholder="Nhập câu trả lời..." value="${esc(value)}" ${saved!==undefined?'disabled':''}></div>
-      <div class="manual-actions"><button class="btn btn-primary" id="check-manual" type="button" ${saved!==undefined?'disabled':''}>Kiểm tra / Ghi nhận</button></div>`;
-  }
-  let feedback='';
-  if(saved!==undefined) {
-    feedback=saved.feedback;
-  }
-  const feedbackClass=saved?.result===true?'good':saved?.result===false?'bad':'neutral';
-  content.innerHTML=`<div class="meta"><span>📝 Câu ${index+1} / 56 · Mã câu gốc ${q.id}</span><span>Điểm: ${correctSet.size} / 56</span></div>
-    <div class="badge-line"><span class="status-pill ${statusClass(q.status)}">${statusName(q.status)}</span><span class="small-stat">${q.type==='mc'?'Trắc nghiệm':'Trả lời nhập tay'}</span></div>
-    <div class="q">${q.question}</div>
-    <div class="fig">${getDiagram(q)}<div class="diagram-caption">Sơ đồ SVG minh họa trực tiếp · Câu ${q.id}</div></div>
-    ${opts}
-    <div id="feedback" class="feedback ${feedbackClass}" style="${feedback?'display:block':'display:none'}">${feedback}</div>
-    <div class="controls" style="margin-top:12px"><button class="btn btn-secondary btn-reveal" id="btn-reveal" type="button">${document.getElementById('explanation')?.classList.contains('on')?'Ẩn lời giải':'Hiện lời giải'}</button></div>
-    <section id="explanation" class="exp ${saved!==undefined?'on':''}">
-      <h3>💡 Lời giải chi tiết</h3>
-      <p>${q.explanation.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')}</p>
-      <div class="note-box"><p><b>Ghi chú:</b> ${q.note}</p>${q.targetText?`<p class="answer-key"><b>Đáp án tham khảo:</b> ${q.targetText}</p>`:''}</div>
-    </section>`;
-  if(q.type==='mc') content.querySelectorAll('[data-opt]').forEach(button=>button.addEventListener('click',()=>choose(Number(button.dataset.opt))));
-  else if(saved===undefined) document.getElementById('check-manual').addEventListener('click',checkManual);
-  document.getElementById('btn-reveal').addEventListener('click',()=>{
-    const panel=document.getElementById('explanation');
-    panel.classList.toggle('on');
-    document.getElementById('btn-reveal').textContent=panel.classList.contains('on')?'Ẩn lời giải':'Hiện lời giải';
-    if(panel.classList.contains('on') && window.MathJax?.typesetPromise) MathJax.typesetPromise([panel]).catch(()=>{});
-  });
-  document.getElementById('btn-prev').disabled=index===0;
-  document.getElementById('btn-next').textContent=index===QUESTIONS_DATA.length-1?'Hoàn thành ✓':'Câu Tiếp Theo →';
-  document.getElementById('question-select').value=String(index);
-  updateSummary();
-  if(window.MathJax?.typesetPromise) MathJax.typesetPromise([content]).catch(()=>{});
-}
-function choose(value) {
-  const q=QUESTIONS_DATA[index];
-  if(attempts[q.id]!==undefined) return;
-  const ok=isCorrectAnswer(q,value);
-  attempts[q.id]={kind:'mc',value,result:ok,feedback:ok?`Chính xác! Đáp án ${correctLabels(q)}.`:`Chưa chính xác. Đáp án tham khảo: ${correctLabels(q)}.`};
-  completed.add(q.id);
-  if(ok) correctSet.add(q.id);
-  else correctSet.delete(q.id);
-  render();
-  const panel=document.getElementById('explanation');
-  panel.classList.add('on');
-  if(window.MathJax?.typesetPromise) MathJax.typesetPromise([panel]).catch(()=>{});
-}
-function parseNum(value) {
-  const m=String(value??'').trim().replace(/,/g,'.').match(/[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?/);
-  return m?Number(m[0]):NaN;
-}
-function checkManual() {
-  const q=QUESTIONS_DATA[index];
-  const input=document.getElementById('manual-answer');
-  const value=input.value.trim();
-  if(!value) { alert('Vui lòng nhập câu trả lời trước khi kiểm tra.'); input.focus(); return; }
-  let result=null, feedback='Đã ghi nhận câu trả lời. Câu này không có đáp án trắc nghiệm gốc để chấm tự động; hãy đối chiếu lời giải và đáp án tham khảo bên dưới.';
-  if(q.target!==undefined) {
-    const numeric=parseNum(value), targets=Array.isArray(q.target)?q.target:[q.target], tolerance=q.tolerance??0.05;
-    result=Number.isFinite(numeric) && targets.some(target=>Math.abs(numeric-target)<=tolerance);
-    feedback=result?'Chính xác! Kết quả nằm trong sai số cho phép.':'Kết quả chưa khớp đáp số tham khảo trong sai số cho phép. Hãy đối chiếu các bước tính bên dưới.';
-  } else if(q.keywords?.length) {
-    const normalized=value.toLocaleLowerCase('vi');
-    result=q.keywords.every(word=>normalized.includes(word.toLocaleLowerCase('vi')));
-    feedback=result?'Câu trả lời có chứa các ý chính cần thiết.':'Câu trả lời đã được ghi nhận; hãy đối chiếu các từ khóa và lời giải bên dưới.';
-  }
-  attempts[q.id]={kind:'manual',value,result,feedback};
-  completed.add(q.id);
-  if(result===true) correctSet.add(q.id); else correctSet.delete(q.id);
-  render();
-  document.getElementById('explanation').classList.add('on');
-  if(window.MathJax?.typesetPromise) MathJax.typesetPromise([document.getElementById('explanation')]).catch(()=>{});
-}
-document.getElementById('btn-prev').addEventListener('click',()=>{if(index>0){index--;render();}});
-document.getElementById('btn-next').addEventListener('click',()=>{
-  if(index<QUESTIONS_DATA.length-1){index++;render();}
-  else { document.getElementById('summary').textContent=`Đã đến hết 56 câu · Hoàn thành ${completed.size}/56 · Đúng ${correctSet.size}/56.`; document.querySelector('.card:last-child').scrollIntoView({behavior:'smooth',block:'center'}); }
-});
-const select=document.getElementById('question-select');
-QUESTIONS_DATA.forEach((q,i)=>{const option=document.createElement('option');option.value=String(i);option.textContent=`Câu ${i+1} · Mã gốc ${q.id}`;select.appendChild(option);});
-select.addEventListener('change',()=>{index=Number(select.value);render();});
-if(QUESTIONS_DATA.length!==56 || QUESTIONS_DATA[0].id!==70 || QUESTIONS_DATA[55].id!==125) console.error('Dữ liệu Chương II không đúng dải 70–125.');
-render();
+function checkMC(choice){const q=QUESTIONS_DATA[currentIndex],st=attempts[currentIndex];if(st.submitted)return;st.submitted=true;st.choice=choice;st.correct=Number.isInteger(q.answer)?choice===q.answer:null;render();}
+function parseNumber(value){let s=String(value??'').trim().replace(/\s/g,'').replace(/,/g,'.').replace(/(m\/s²|m\/s2|km\/h|rad\/s²|rad\/s2|rad\/s|m\/s|kg|J|N|m|s|°)$/i,'');const m=s.match(/[-+]?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?/i);return m?Number(m[0]):NaN;}
+function checkInput(){const q=QUESTIONS_DATA[currentIndex],st=attempts[currentIndex],el=$('custom-answer');if(!el||st.submitted)return;const value=el.value.trim();if(!value){alert('Vui lòng nhập đáp án trước khi kiểm tra.');el.focus();return;}st.value=value;st.submitted=true;if(q.type==='num'&&q.expected!==undefined){const actual=parseNumber(value),targets=Array.isArray(q.expected)?q.expected:[q.expected],tol=q.tolerance??Math.max(.02,Math.abs(targets[0])*.015);st.correct=Number.isFinite(actual)&&targets.some(t=>Math.abs(actual-t)<=tol);}else st.correct=null;render();}
+$('btn-prev').addEventListener('click',()=>{if(currentIndex>0){currentIndex--;render();}});
+$('btn-next').addEventListener('click',()=>{if(currentIndex<QUESTIONS_DATA.length-1){currentIndex++;render();}});
+$('question-select').addEventListener('change',e=>{const n=Number(e.target.value);if(Number.isInteger(n)&&n>=0&&n<QUESTIONS_DATA.length){currentIndex=n;render();}});
+initJumpSelect();render();
 </script>
 </body>
 </html>
